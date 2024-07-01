@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class AnimationController : MonoBehaviour
 {
     private Animator _animator;
+    [SerializeField] private Animator _swordAnimator;
     private Rigidbody2D _rigidbody;
 
     // values
@@ -29,6 +30,8 @@ public class AnimationController : MonoBehaviour
             _animator.SetFloat("xInput", x);
             _animator.SetFloat("yInput", y);
 
+            
+
         }
         catch (System.Exception e)
         {
@@ -39,12 +42,14 @@ public class AnimationController : MonoBehaviour
         return true;
     }
 
-    public bool Attack()
+    public bool Attack(float x, float y)
     {
         try
         {
             _animator.SetTrigger("Attack");
 
+            _swordAnimator.SetFloat("xInput", x);
+            _swordAnimator.SetFloat("yInput", y);
         }
         catch (System.Exception e)
         {

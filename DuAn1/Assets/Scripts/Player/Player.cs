@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         {
             meleeArea.SetActive(true);
             StartCoroutine(DisableMeleeAreaAfterDelay());
-            animation_Controller.Attack();
+            animation_Controller.Attack(vector2Input.x, vector2Input.y);
 
             lastAttackTime = Time.time;
 
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DisableMeleeAreaAfterDelay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
 
         meleeArea.SetActive(false);
     }
