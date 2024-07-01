@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -180,10 +180,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: Character_SlashUpRight_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 32
         y: 0
-        width: 40
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,12 +220,12 @@ TextureImporter:
       name: Character_SlashUpRight_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 40
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,12 +241,12 @@ TextureImporter:
       name: Character_SlashUpRight_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 96
         y: 0
-        width: 40
+        width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,6 +254,27 @@ TextureImporter:
       bones: []
       spriteID: ce7244f37b5e03b49aab8cd931cc0202
       internalID: -1615719491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_SlashUpRight_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb6b14257a0a274a9d2ca22f6fc0d32
+      internalID: 284269369
       vertices: []
       indices: 
       edges: []
@@ -273,6 +294,7 @@ TextureImporter:
       Character_SlashUpRight_1: -954198876
       Character_SlashUpRight_2: -223560822
       Character_SlashUpRight_3: -1615719491
+      Character_SlashUpRight_4: 284269369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

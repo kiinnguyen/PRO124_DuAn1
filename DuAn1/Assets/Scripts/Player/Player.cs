@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
 
     // Classes
-    //private AnimationController animation_Controller;
+    private AnimationController animation_Controller;
     //
     // values
     private float speedMove = 2f;
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
 
         // Classes
-        //animation_Controller = GetComponent<AnimationController>();
+        animation_Controller = GetComponent<AnimationController>();
 
         // Values
 
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         {
             meleeArea.SetActive(true);
             StartCoroutine(DisableMeleeAreaAfterDelay());
-            //animation_Controller.Attack();
+            animation_Controller.Attack();
 
             lastAttackTime = Time.time;
 
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
 
     private void RotateAttackArea(Vector2 vector)
     {
-        //animation_Controller.SetAnimation(vector.x, vector.y);
+        animation_Controller.SetAnimation(vector.x, vector.y);
 
         switch (vector)
         {
