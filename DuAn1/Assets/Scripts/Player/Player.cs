@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
 
     // Classes
-    //private AnimationController animation_Controller;
+    private AnimationController animation_Controller;
     //
     // values
     private float speedMove = 2f;
@@ -39,14 +39,21 @@ public class Player : MonoBehaviour
 
 
         // Classes
-        //animation_Controller = GetComponent<AnimationController>();
+        animation_Controller = GetComponent<AnimationController>();
 
         // Values
 
         // Children
 
     }
+
+    private void FixedUpdate()
+    {
+    }
+
     // Input Actions
+
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -59,6 +66,7 @@ public class Player : MonoBehaviour
             RotateAttackArea(vector2Input);
         }
         _rigidbody.velocity = new Vector2(vector2Input.x, vector2Input.y) * speedMove;
+
     }
 
     private float lastAttackTime;
@@ -77,7 +85,7 @@ public class Player : MonoBehaviour
         {
             meleeArea.SetActive(true);
             StartCoroutine(DisableMeleeAreaAfterDelay());
-            //animation_Controller.Attack();
+            animation_Controller.Attack();
 
             lastAttackTime = Time.time;
 
@@ -86,8 +94,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DisableMeleeAreaAfterDelay()
     {
-        yield return new WaitForSeconds(0.1f);
-
+        yield return new WaitForSeconds(0.5f);
         meleeArea.SetActive(false);
     }
 
@@ -95,7 +102,7 @@ public class Player : MonoBehaviour
 
     private void RotateAttackArea(Vector2 vector)
     {
-        //animation_Controller.SetAnimation(vector.x, vector.y);
+        animation_Controller.SetAnimation(vector.x, vector.y);
 
         switch (vector)
         {

@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -180,7 +180,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
+        width: 32
         height: 32
       alignment: 9
       pivot: {x: 0.5, y: 0.3}
@@ -199,9 +199,9 @@ TextureImporter:
       name: Character_SlashDownRight_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 32
         y: 0
-        width: 40
+        width: 32
         height: 32
       alignment: 9
       pivot: {x: 0.5, y: 0.3}
@@ -220,9 +220,9 @@ TextureImporter:
       name: Character_SlashDownRight_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 40
+        width: 32
         height: 32
       alignment: 9
       pivot: {x: 0.5, y: 0.3}
@@ -241,9 +241,9 @@ TextureImporter:
       name: Character_SlashDownRight_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 96
         y: 0
-        width: 40
+        width: 32
         height: 32
       alignment: 9
       pivot: {x: 0.5, y: 0.3}
@@ -254,6 +254,27 @@ TextureImporter:
       bones: []
       spriteID: 306e1ea7a73d1634daaad01b74cb371b
       internalID: -1772664765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_SlashDownRight_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559c1d215f8407046835b83bbc5d8863
+      internalID: -741312799
       vertices: []
       indices: 
       edges: []
@@ -273,6 +294,7 @@ TextureImporter:
       Character_SlashDownRight_1: 918564329
       Character_SlashDownRight_2: 566832552
       Character_SlashDownRight_3: -1772664765
+      Character_SlashDownRight_4: -741312799
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
