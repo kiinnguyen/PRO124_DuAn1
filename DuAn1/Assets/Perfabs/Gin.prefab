@@ -304,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c23ab088b286344a6c02939fd8d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _swordAnimator: {fileID: 0}
 --- !u!1 &5997194703372804750
 GameObject:
   m_ObjectHideFlags: 0

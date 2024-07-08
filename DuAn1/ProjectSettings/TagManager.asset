@@ -13,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Minimap
   - 
   - 
   - 
@@ -43,8 +43,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Water
-    uniqueID: 728027123
+  - name: Player
+    uniqueID: 1835266487
     locked: 0
   - name: Ground
     uniqueID: 567090025
@@ -55,6 +55,6 @@ TagManager:
   - name: Village
     uniqueID: 3181568671
     locked: 0
-  - name: player
-    uniqueID: 1835266487
+  - name: Water
+    uniqueID: 728027123
     locked: 0
