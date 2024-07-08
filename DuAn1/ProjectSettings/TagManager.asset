@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Valley
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -11,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Minimap
   - 
   - 
   - 
@@ -40,4 +42,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1835266487
+    locked: 0
+  - name: Ground
+    uniqueID: 567090025
+    locked: 0
+  - name: Valley
+    uniqueID: 1891048357
+    locked: 0
+  - name: Village
+    uniqueID: 3181568671
+    locked: 0
+  - name: Water
+    uniqueID: 728027123
     locked: 0
