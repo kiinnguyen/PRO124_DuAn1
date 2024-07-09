@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private AnimationController animation_Controller;
     //
     // values
-    private float speedMove = 2f;
+    private float speedMove = 3f;
 
     private float xInput;
     private float yInput;
