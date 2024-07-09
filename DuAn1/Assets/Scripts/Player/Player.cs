@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private AnimationController animation_Controller;
     //
     // values
-    private float speedMove = 2f;
+    private float speedMove = 3f;
 
     private float xInput;
     private float yInput;
@@ -136,6 +136,12 @@ public class Player : MonoBehaviour
 
 
     private bool isAction() => isActing;
+
+    private bool isPause()
+    {
+        // get bool value in systems script
+        return true;
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
