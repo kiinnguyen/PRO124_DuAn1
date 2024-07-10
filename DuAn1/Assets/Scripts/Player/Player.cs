@@ -6,18 +6,15 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     // Children
-
     [SerializeField] private GameObject meleeArea;
-
 
     // Components
     private Animator _animator;
     private Rigidbody2D _rigidbody;
 
-
     // Classes
     private AnimationController animation_Controller;
-    //
+
     // values
     private float speedMove = 3f;
 
@@ -27,24 +24,29 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float zRotate;
 
-    private bool isActing;
+    [Header("Attack Setting")]
+    [SerializeField] float attackDuration = 0.5f;
+    [SerializeField] float attackCooldown = 0.5f;
+    [SerializeField] float damage = 5f;
 
-    public float damage = 5f;
+    [Header("Dash Setting")]
+    [SerializeField] float dashSpeed = 5f;
+    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashCoolDown = 1f;
+
+    // bool
+    private bool isDashing = false;
+    private bool isAttacking = false;
+    private bool canAttack = true;
+    private bool canDash = true;
 
     void Start()
     {
-
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
 
-
         // Classes
         animation_Controller = GetComponent<AnimationController>();
-
-        // Values
-
-        // Children
-
     }
 
     private void FixedUpdate()
@@ -52,12 +54,9 @@ public class Player : MonoBehaviour
     }
 
     // Input Actions
-
-
-
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (isActing) return;
+        if (isAction()) return;
 
         vector2Input = context.ReadValue<Vector2>().normalized;
 
@@ -66,40 +65,59 @@ public class Player : MonoBehaviour
             RotateAttackArea(vector2Input);
         }
         _rigidbody.velocity = new Vector2(vector2Input.x, vector2Input.y) * speedMove;
-
     }
-
-    private float lastAttackTime;
-    public float attackCooldown = 0.5f;
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (isActing) return;
-
-        if (Time.time - lastAttackTime < attackCooldown)
-        {
-            return;
-        }
+        if (isAction() || !canAttack) return;
 
         if (context.performed)
         {
-            meleeArea.SetActive(true);
-            StartCoroutine(DisableMeleeAreaAfterDelay());
-            animation_Controller.Attack();
-
-            lastAttackTime = Time.time;
-
+            _rigidbody.velocity = Vector2.zero;
+            StartCoroutine(Attack());
         }
     }
 
-    private IEnumerator DisableMeleeAreaAfterDelay()
+    IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.5f);
+        isAttacking = true;
+        canAttack = false;
+
+        animation_Controller.Attack();
+        meleeArea.SetActive(true);
+
+        yield return new WaitForSeconds(attackDuration);
+
         meleeArea.SetActive(false);
+        isAttacking = false;
+        canAttack = true;
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (isAction() || !canDash) return;
+
+        if (context.performed)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            StartCoroutine(Dash());
+        }
+    }
+
+    IEnumerator Dash()
+    {
+        isDashing = true;
+        canDash = false;
+
+        _rigidbody.velocity = new Vector2(vector2Input.x * dashSpeed, vector2Input.y * dashSpeed);
+
+        yield return new WaitForSeconds(dashDuration);
+        _rigidbody.velocity = Vector2.zero;
+        isDashing = false;
+        canDash = true;
     }
 
     // Actions
-
     private void RotateAttackArea(Vector2 vector)
     {
         animation_Controller.SetAnimation(vector.x, vector.y);
@@ -126,16 +144,12 @@ public class Player : MonoBehaviour
     private void SetRotationAttackArea(float zValue)
     {
         Vector3 currentRotation = meleeArea.transform.rotation.eulerAngles;
-
         currentRotation.z = zValue;
-
         meleeArea.transform.rotation = Quaternion.Euler(currentRotation);
     }
 
     // Checking states
-
-
-    private bool isAction() => isActing;
+    private bool isAction() => isDashing || isAttacking;
 
     private bool isPause()
     {
