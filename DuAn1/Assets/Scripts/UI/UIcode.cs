@@ -17,10 +17,10 @@ public class UIcode : MonoBehaviour
     }
     public void QuitGame()
     {
-        
+        Application.Quit();
     }
     public void Setting()
     {
-        
+        SceneManager.LoadScene(4);
     }
 }
