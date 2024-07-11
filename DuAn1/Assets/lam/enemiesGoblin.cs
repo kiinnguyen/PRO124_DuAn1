@@ -55,4 +55,13 @@ public class enemiesGoblin : MonoBehaviour
             myAnim.SetBool("isMoving",false);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag =="") 
+        {
+             Vector2 difference = transform.position - other.transform.position;
+            transform.position = new Vector2(transform.position.x + difference.x, transform.position.y + difference.y);
+        }
+    }
 }

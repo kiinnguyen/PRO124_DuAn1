@@ -6,6 +6,8 @@ public class enemieshealth : MonoBehaviour
 {
     public int currenHealth;
     public   int maxhealth;
+    
+    
 
     private bool flashActive;
     [SerializeField]
