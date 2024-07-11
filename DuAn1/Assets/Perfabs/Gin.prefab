@@ -151,8 +151,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0180071, y: 0.3279708}
-  m_Size: {x: 1.003594, y: 1.3997549}
+  m_Offset: {x: -0.032899857, y: -0.25235176}
+  m_Size: {x: 0.6362457, y: 0.63624954}
   m_Direction: 0
 --- !u!114 &3212602515098866461
 MonoBehaviour:
@@ -270,8 +270,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeArea: {fileID: 5997194703372804750}
   zRotate: 0
-  damage: 5
+  attackDuration: 0.5
   attackCooldown: 0.5
+  damage: 5
+  dashSpeed: 5
+  dashDuration: 0.1
+  dashCoolDown: 1
 --- !u!95 &1310787539481052530
 Animator:
   serializedVersion: 5
@@ -456,7 +460,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 567090025
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 13091d239f92d03469d8ae554392cf02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
