@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     [Header("Dash Setting")]
     [SerializeField] float dashSpeed = 5f;
-    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashCoolDown = 1f;
 
     // bool
@@ -112,7 +112,6 @@ public class Player : MonoBehaviour
         _rigidbody.velocity = new Vector2(vector2Input.x * dashSpeed, vector2Input.y * dashSpeed);
 
         yield return new WaitForSeconds(dashDuration);
-        _rigidbody.velocity = Vector2.zero;
         isDashing = false;
         canDash = true;
     }
