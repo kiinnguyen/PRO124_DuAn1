@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Valley
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
