@@ -8,9 +8,13 @@ public class Player : MonoBehaviour
     // Children
     [SerializeField] private GameObject meleeArea;
 
+    [SerializeField] PlayerManager playerData;
+
     // Components
-    private Animator _animator;
-    private Rigidbody2D _rigidbody;
+    Animator _animator;
+    Rigidbody2D _rigidbody;
+    AudioSource _speaker;
+
 
     // Classes
     private AnimationController animation_Controller;
@@ -34,6 +38,10 @@ public class Player : MonoBehaviour
     [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashCoolDown = 1f;
 
+
+    [Header("Audio Setting")]
+    [SerializeField] AudioClip attack_Sfx;
+
     // bool
     private bool isDashing = false;
     private bool isAttacking = false;
@@ -44,6 +52,7 @@ public class Player : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _speaker = GetComponent<AudioSource>();
 
         // Classes
         animation_Controller = GetComponent<AnimationController>();
@@ -84,6 +93,7 @@ public class Player : MonoBehaviour
         canAttack = false;
 
         animation_Controller.Attack();
+        _speaker.PlayOneShot(attack_Sfx);
         meleeArea.SetActive(true);
 
         yield return new WaitForSeconds(attackDuration);
@@ -159,5 +169,13 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision detected with " + collision.gameObject.name);
+    }
+
+
+    // Data Manager
+
+    public void TakeDamage(int damage)
+    {
+
     }
 }
