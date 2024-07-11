@@ -12,9 +12,11 @@ public class NPC : MonoBehaviour
     private bool isWaiting = false;
     private float waitTimer = 0f;
     private NavMeshAgent agent;
+    private Animator animator;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -43,6 +45,8 @@ public class NPC : MonoBehaviour
                 }
             }
         }
+
+        UpdateAnimator();
     }
 
     void MoveToNextWaypoint()
@@ -51,5 +55,15 @@ public class NPC : MonoBehaviour
 
         Transform targetWaypoint = waypoints[currentWaypointIndex];
         agent.SetDestination(targetWaypoint.position);
+    }
+
+    void UpdateAnimator()
+    {
+        Vector2 velocity = agent.velocity;
+        Vector2 normalizedVelocity = velocity.normalized;
+
+        animator.SetFloat("xInput", normalizedVelocity.x);
+        animator.SetFloat("yInput", normalizedVelocity.y);
+        animator.SetBool("isMoving", velocity.sqrMagnitude > 0.1f);
     }
 }
