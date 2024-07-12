@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,868 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: special houses_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 722
+        width: 181
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d35afcfa95b2144a8ef2d894d7d4c4
+      internalID: 827908143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_1
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 722
+        width: 71
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9092aefb186aea641a7b880ad8ed0850
+      internalID: -741759604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_2
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 722
+        width: 70
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7e04187dba3a54eb87ea0a834ecc5e
+      internalID: -1295375372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_3
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 738
+        width: 102
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf7d34f7b2afdb45a125531f1fd0c3f
+      internalID: 655109175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_4
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 738
+        width: 102
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed2fb166876c2b43a02f567072c3a7f
+      internalID: 216951554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 722
+        width: 181
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1a1a5e909fab71479991aa49fec327a
+      internalID: 1871223459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_6
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 594
+        width: 144
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a3ea4c67c8a6e4db80c917bcd7d11d
+      internalID: 760704281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_7
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 594
+        width: 175
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9825e79a21fd1b48850d5232be632dd
+      internalID: 1992604540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_8
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 594
+        width: 144
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf1417c25e7ef349af46fb1981ee34d
+      internalID: 1992079069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_9
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 594
+        width: 175
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53215f66aa4e45d489a846e76120504d
+      internalID: 1997286541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_10
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 434
+        width: 160
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee3b7c7d7699764eb43c5efb06a375f
+      internalID: 744548987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_11
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 434
+        width: 151
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd2f7ad7678ace4f8ea89507dc5edff
+      internalID: 1811793997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_12
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 434
+        width: 160
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b77e682c5fab264fb41fec316b5e1f5
+      internalID: 1979567968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_13
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 434
+        width: 151
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328daecc59bea924ba5fa03199e7cb4f
+      internalID: 1300391444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_14
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 307
+        width: 48
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 405d31b0ec3d1c34990f888a5af804dc
+      internalID: 1585598986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_15
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 290
+        width: 181
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7462b86975433584cb44552b726f2e8e
+      internalID: 1408978887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_16
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 290
+        width: 71
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953f851b1193dee4080e20c547c2fbef
+      internalID: -1081574464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_17
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 258
+        width: 160
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9120a2f58bc06c24482ab567f5f5a8d2
+      internalID: -824566682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_18
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 258
+        width: 151
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653844b63e65a444b9bbaee0e9ae30a2
+      internalID: -138891516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_19
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 229
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd722cf7da22bd468fe617ee07151df
+      internalID: 1763537042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_20
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 229
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebe5505a653cf246ab7a8d32d68ecfd
+      internalID: 1363323783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_21
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 229
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0cf638cfea867409f9803e2d572786
+      internalID: -1555339110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_22
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 229
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b481a4c1a1ac2245abeb28ee46e9e7f
+      internalID: 538359765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_23
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 229
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe193ed5da99f3f42849b0d91c76c596
+      internalID: 436628581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_24
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 146
+        width: 150
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ea24b0a430ea140ba53cb2558d9e13
+      internalID: 2147277893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_25
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 114
+        width: 150
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db1846227dc8ae4d8eb23f2ca93ccc2
+      internalID: 1348916066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_26
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 197
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3157f89e9fe748a4c9748df947528e5b
+      internalID: 1112699862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_27
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 197
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b5ce6508d20df44b959aabfc2dddec
+      internalID: -1234647083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_28
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 197
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2854349c81ea4a2468e13e6308433334
+      internalID: -53238036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_29
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 197
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5ce55b50b360b49a82a3e774fcd7f4
+      internalID: 2016257911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_30
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 197
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4b1e7a026b66249b3378a36b5fa4d6
+      internalID: 1448378529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_31
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 146
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7b68eb545c20a458be56566182c17f
+      internalID: 379806395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_32
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 164
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e361a6419a5d7dd4da53a17addca9e83
+      internalID: 739353419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_33
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 146
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006c025218d7bd44bbafd78f51d9a35d
+      internalID: -894917077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_34
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 146
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc451d5e0acd32f48b20bf06a7de07ea
+      internalID: -1315860525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_35
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 146
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56bd1d016758b90488baea28ac796fcf
+      internalID: -898478131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_36
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 98
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40eb8dc222676c94086c498196c9e907
+      internalID: 2116068207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_37
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 130
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfee7c07d42bd9449a9ec8787bc501a6
+      internalID: 1483147568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_38
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 98
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17401e2f22c73a04dacdd641555b5dfd
+      internalID: -2030727949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_39
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 98
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12629ba1aa135bd468f326c8b9816dff
+      internalID: -1672985566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special houses_40
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 98
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3019e714d68ad4da2a71ffad94beff
+      internalID: -191289415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +967,48 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      special houses_0: 827908143
+      special houses_1: -741759604
+      special houses_10: 744548987
+      special houses_11: 1811793997
+      special houses_12: 1979567968
+      special houses_13: 1300391444
+      special houses_14: 1585598986
+      special houses_15: 1408978887
+      special houses_16: -1081574464
+      special houses_17: -824566682
+      special houses_18: -138891516
+      special houses_19: 1763537042
+      special houses_2: -1295375372
+      special houses_20: 1363323783
+      special houses_21: -1555339110
+      special houses_22: 538359765
+      special houses_23: 436628581
+      special houses_24: 2147277893
+      special houses_25: 1348916066
+      special houses_26: 1112699862
+      special houses_27: -1234647083
+      special houses_28: -53238036
+      special houses_29: 2016257911
+      special houses_3: 655109175
+      special houses_30: 1448378529
+      special houses_31: 379806395
+      special houses_32: 739353419
+      special houses_33: -894917077
+      special houses_34: -1315860525
+      special houses_35: -898478131
+      special houses_36: 2116068207
+      special houses_37: 1483147568
+      special houses_38: -2030727949
+      special houses_39: -1672985566
+      special houses_4: 216951554
+      special houses_40: -191289415
+      special houses_5: 1871223459
+      special houses_6: 760704281
+      special houses_7: 1992604540
+      special houses_8: 1992079069
+      special houses_9: 1997286541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

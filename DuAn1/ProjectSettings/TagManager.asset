@@ -43,9 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 1835266487
-    locked: 0
   - name: Water
     uniqueID: 728027123
     locked: 0
@@ -69,4 +66,13 @@ TagManager:
     locked: 0
   - name: Rock
     uniqueID: 2542287501
+    locked: 0
+  - name: Player
+    uniqueID: 1835266487
+    locked: 0
+  - name: House
+    uniqueID: 3326889455
+    locked: 0
+  - name: light
+    uniqueID: 2418212425
     locked: 0
