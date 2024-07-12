@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     // Children
     [SerializeField] private GameObject meleeArea;
 
-    [SerializeField] PlayerManager playerData;
+    [SerializeField] GameManager gameManager;
+    [SerializeField] PlayerInput playerInput;
 
     // Components
     Animator _animator;
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
     private bool isAttacking = false;
     private bool canAttack = true;
     private bool canDash = true;
-
+    private bool isDead = false;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -56,7 +57,25 @@ public class Player : MonoBehaviour
 
         // Classes
         animation_Controller = GetComponent<AnimationController>();
+        gameManager = FindObjectOfType<GameManager>();
+        playerInput = FindObjectOfType<PlayerInput>();
     }
+
+    private void Update()
+    {
+        if (isDead) return;
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            _animator.SetTrigger("Hurt");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _animator.SetTrigger("Death");
+            Death();
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -119,7 +138,8 @@ public class Player : MonoBehaviour
         isDashing = true;
         canDash = false;
 
-        _rigidbody.velocity = new Vector2(vector2Input.x * dashSpeed, vector2Input.y * dashSpeed);
+        _animator.SetTrigger("Dash");
+        _rigidbody.AddForce(vector2Input * dashSpeed, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -176,6 +196,13 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        gameManager.TakeDamage(damage);
+    }
 
+    public void Death()
+    {
+        isDead = true;
+        playerInput.enabled = false;
+        // Show dead
     }
 }
