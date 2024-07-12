@@ -8,9 +8,14 @@ public class Player : MonoBehaviour
     // Children
     [SerializeField] private GameObject meleeArea;
 
+    [SerializeField] GameManager gameManager;
+    [SerializeField] PlayerInput playerInput;
+
     // Components
-    private Animator _animator;
-    private Rigidbody2D _rigidbody;
+    Animator _animator;
+    Rigidbody2D _rigidbody;
+    AudioSource _speaker;
+
 
     // Classes
     private AnimationController animation_Controller;
@@ -34,20 +39,43 @@ public class Player : MonoBehaviour
     [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashCoolDown = 1f;
 
+
+    [Header("Audio Setting")]
+    [SerializeField] AudioClip attack_Sfx;
+
     // bool
     private bool isDashing = false;
     private bool isAttacking = false;
     private bool canAttack = true;
     private bool canDash = true;
-
+    private bool isDead = false;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _speaker = GetComponent<AudioSource>();
 
         // Classes
         animation_Controller = GetComponent<AnimationController>();
+        gameManager = FindObjectOfType<GameManager>();
+        playerInput = FindObjectOfType<PlayerInput>();
     }
+
+    private void Update()
+    {
+        if (isDead) return;
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            _animator.SetTrigger("Hurt");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _animator.SetTrigger("Death");
+            Death();
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -84,6 +112,7 @@ public class Player : MonoBehaviour
         canAttack = false;
 
         animation_Controller.Attack();
+        _speaker.PlayOneShot(attack_Sfx);
         meleeArea.SetActive(true);
 
         yield return new WaitForSeconds(attackDuration);
@@ -109,7 +138,8 @@ public class Player : MonoBehaviour
         isDashing = true;
         canDash = false;
 
-        _rigidbody.velocity = new Vector2(vector2Input.x * dashSpeed, vector2Input.y * dashSpeed);
+        _animator.SetTrigger("Dash");
+        _rigidbody.AddForce(vector2Input * dashSpeed, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -159,5 +189,20 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision detected with " + collision.gameObject.name);
+    }
+
+
+    // Data Manager
+
+    public void TakeDamage(int damage)
+    {
+        gameManager.TakeDamage(damage);
+    }
+
+    public void Death()
+    {
+        isDead = true;
+        playerInput.enabled = false;
+        // Show dead
     }
 }
