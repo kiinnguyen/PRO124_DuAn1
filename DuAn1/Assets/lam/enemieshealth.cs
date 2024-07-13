@@ -63,9 +63,9 @@ public class enemieshealth : MonoBehaviour
         }
     }
 
-    public void HurtEnemies(int damageToGive)
+    public void HurtEnemies(int damage)
     {
-        currenHealth -= damageToGive;
+        currenHealth -= damage;
         flashActive = true;
         flashCounter = flashLength;
         if (currenHealth <= 0)
