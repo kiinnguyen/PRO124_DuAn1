@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] Slider foodBar;
     [SerializeField] Slider waterBar;
 
+
+    [Header("Life Data")]
+    [SerializeField] bool startBlood;
 
 
     string dataPath = "Assets/Data/playerData.json";
@@ -33,10 +37,14 @@ public class GameManager : Singleton<GameManager>
                 foodBar.value = playerManager.GetFood();
                 waterBar.value = playerManager.GetWater();
             }
+
+
         }
+        StartCoroutine(LifeCoroutine());
+
     }
 
-    
+
     // save data
 
     public void UpdatePlayerData(int healInput, TextMeshProUGUI goldInput, int foodInput, int waterInput)
@@ -153,5 +161,53 @@ public class GameManager : Singleton<GameManager>
 
         goldText.text = playerManager.GetGold().ToString(); // cập nhật tiền lên UI
             
+    }
+
+
+    // UI Loading
+    private int sceneIndex;
+    
+    public void LoadScene(string sceneNameInput)
+    {
+        
+    }
+
+    public void CheckingProgessLoading(float progessValue)
+    {
+        if (progessValue >= 100)
+        {
+            Debug.Log("Done");
+            SceneManager.LoadScene(2);
+        }
+    }
+
+
+    // Interface 
+
+    IEnumerator LifeCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(20f);
+
+            float number = Mathf.Lerp(2, 5, 1);
+            Debug.Log("number:" + number);
+
+            foodBar.value -= number;
+            waterBar.value -= number;
+
+
+            yield return null;
+        }
+    }
+
+    IEnumerator HealthCoroutine()
+    {
+        while (startBlood)
+        {
+            healthBar.value -= 5;
+
+            yield return new WaitForSeconds(5f);
+        }
     }
 }

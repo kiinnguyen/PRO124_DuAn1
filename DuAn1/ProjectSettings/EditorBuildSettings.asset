@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending scene.unity
     guid: 472c4b8987030c14ca1de2079df87892
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Adio.unity
     guid: 55f2072bbe161784c910e9dbcccd8b24
   m_configObjects: {}

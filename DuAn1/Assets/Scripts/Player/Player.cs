@@ -205,4 +205,9 @@ public class Player : MonoBehaviour
         playerInput.enabled = false;
         // Show dead
     }
+
+    public bool isDeadState()
+    {
+        return isDead;
+    }
 }

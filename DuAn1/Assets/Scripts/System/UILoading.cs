@@ -9,8 +9,12 @@ public class UILoading : MonoBehaviour
     [SerializeField] Slider progressLoading;
     [SerializeField] float loadingDuration = 10f;
 
+    [Header("System")]
+    [SerializeField] GameManager gameManager;
+
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         if (progressLoading != null)
         {
             progressLoading.value = progressLoading.minValue;
@@ -37,5 +41,10 @@ public class UILoading : MonoBehaviour
     public void UpdateProgressText(TextMeshProUGUI progessText)
     {
         progessText.text = Mathf.RoundToInt(progressLoading.value).ToString() + "%";
+    }
+
+    public void UpdateProgessToSystem()
+    {
+        gameManager.CheckingProgessLoading(progressLoading.value);
     }
 }
