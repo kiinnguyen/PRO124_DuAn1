@@ -11,8 +11,6 @@ public class PlayerManager : MonoBehaviour
 
     int water { get; set; }
 
-    int damage { get; set; }
-
     public PlayerManager() { }
 
     public PlayerManager(int health, int gold, int food, int water)
@@ -61,8 +59,4 @@ public class PlayerManager : MonoBehaviour
         return water;
     }
 
-    public int GetDamage()
-    {
-        return damage;
-    }
 }

@@ -14,9 +14,7 @@ public class AttackCollision : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            //collision.SendMessage("TakeDamage", playerManager.GetDamage());
-            //collision.SendMessage("TakeDamage", 1);
-            Destroy(collision.gameObject);
+            collision.SendMessage("HurtEnemies", 1);
         }
     }
 }
