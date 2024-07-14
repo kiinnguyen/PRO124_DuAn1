@@ -42,11 +42,16 @@ public class Wanderer : MonoBehaviour
         // Move the object in the chosen direction at the set speed
         rb.velocity = moveDirections[currentMoveDirection] * moveSpeed;
 
-
-        animator.SetFloat("xInput", rb.velocity.x);
-        animator.SetFloat("yInput", rb.velocity.y);
-        animator.SetBool("isMoving", rb.velocity.sqrMagnitude > 0);
-
+        if (rb.velocity.x == 0 && rb.velocity.y == 0)
+        {
+            animator.SetBool("isMoving", false);
+        }
+        else
+        {
+            animator.SetFloat("xInput", rb.velocity.x);
+            animator.SetFloat("yInput", rb.velocity.y);
+            animator.SetBool("isMoving", rb.velocity.sqrMagnitude > 0);
+        }
 
 
         if (decisionTimeCount > 0)
