@@ -9,7 +9,12 @@ public class UIcode : MonoBehaviour
     }
     public void PauseGame()
     {
-        SceneManager.LoadScene(0);
+        
+    }
+
+    public void ReturnGameScene()
+    {
+
     }
     public void ContinueGame()
     {
