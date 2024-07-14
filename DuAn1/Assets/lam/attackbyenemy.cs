@@ -9,11 +9,12 @@ public class attackbyenemy : MonoBehaviour
     private float nextAttackTime = 0f;
     private Transform player;
     //private PlayerHealth playerHealth; // Script quản lý máu của người chơi
-
+    private Animator animator;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         //playerHealth = player.GetComponent<PlayerHealth>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -31,6 +32,8 @@ public class attackbyenemy : MonoBehaviour
 
     void Attack()
     {
+
+        animator.SetTrigger("Attack");
         // Giảm máu của người chơi
        // playerHealth.TakeDamage(10);
         Debug.Log("Enemy attacked the player!");
