@@ -53,11 +53,8 @@ TagManager:
   - name: waterfall
     uniqueID: 872734111
     locked: 0
-  - name: 
+  - name: Valley
     uniqueID: 1891048357
-    locked: 0
-  - name: Trees
-    uniqueID: 19971523
     locked: 0
   - name: Bridge
     uniqueID: 3181568671
@@ -65,6 +62,18 @@ TagManager:
   - name: Player
     uniqueID: 1835266487
     locked: 0
+  - name: Trees
+    uniqueID: 19971523
+    locked: 0
   - name: Bush
     uniqueID: 472032991
+    locked: 0
+  - name: Rock
+    uniqueID: 2542287501
+    locked: 0
+  - name: House
+    uniqueID: 3326889455
+    locked: 0
+  - name: light
+    uniqueID: 2418212425
     locked: 0
