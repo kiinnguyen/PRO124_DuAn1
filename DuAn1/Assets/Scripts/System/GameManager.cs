@@ -12,15 +12,6 @@ public class GameManager : Singleton<GameManager>
     [Header("Player")]
     [SerializeField] PlayerManager playerManager;
     [SerializeField] Player player;
-    [SerializeField] Slider healthBar;
-    [SerializeField] TextMeshProUGUI goldText;
-    [SerializeField] Slider foodBar;
-    [SerializeField] Slider waterBar;
-
-
-    [Header("Life Data")]
-    [SerializeField] bool startBlood;
-
 
     [Header("Font")]
     [SerializeField] Font newFont;
@@ -42,18 +33,8 @@ public class GameManager : Singleton<GameManager>
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
             playerManager = FindObjectOfType<PlayerManager>();
-            player = FindObjectOfType<Player>();
-            if (playerManager != null)
-            {
-                healthBar.value = playerManager.GetHealth();
-                goldText.text = playerManager.GetGold().ToString();
-                foodBar.value = playerManager.GetFood();
-                waterBar.value = playerManager.GetWater();
-            }
-
-
+            player = FindObjectOfType<Player>();         
         }
-        StartCoroutine(LifeCoroutine());
 
     }
 
@@ -150,7 +131,7 @@ public class GameManager : Singleton<GameManager>
             int currentHealth = playerManager.GetHealth(); // lấy máu hiện tại
             currentHealth -= damage; // trừ máu
             playerManager.SetHealth(currentHealth); // cập nhật máu hiện tại
-            healthBar.value = playerManager.GetHealth(); // cập nhật máu lên UI
+            //healthBar.value = playerManager.GetHealth(); // cập nhật máu lên UI
         }
     }
 
@@ -172,7 +153,7 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
 
-        goldText.text = playerManager.GetGold().ToString(); // cập nhật tiền lên UI
+        //goldText.text = playerManager.GetGold().ToString(); // cập nhật tiền lên UI
             
     }
 
@@ -194,33 +175,4 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-
-    // Interface 
-
-    IEnumerator LifeCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(20f);
-
-            float number = Mathf.Lerp(2, 5, 1);
-            Debug.Log("number:" + number);
-
-            foodBar.value -= number;
-            waterBar.value -= number;
-
-
-            yield return null;
-        }
-    }
-
-    IEnumerator HealthCoroutine()
-    {
-        while (startBlood)
-        {
-            healthBar.value -= 5;
-
-            yield return new WaitForSeconds(5f);
-        }
-    }
 }
