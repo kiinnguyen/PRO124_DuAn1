@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,11 +22,23 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] bool startBlood;
 
 
+    [Header("Font")]
+    [SerializeField] Font newFont;
+
+
     string dataPath = "Assets/Data/playerData.json";
 
 
     private void Start()
     {
+        Text[] texts = FindObjectsOfType<Text>();
+        foreach (Text text in texts)
+        {
+            text.font = newFont;
+            text.fontStyle = FontStyle.Normal;
+        }
+
+
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
             playerManager = FindObjectOfType<PlayerManager>();

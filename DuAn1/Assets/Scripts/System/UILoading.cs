@@ -38,7 +38,7 @@ public class UILoading : MonoBehaviour
     }
 
 
-    public void UpdateProgressText(TextMeshProUGUI progessText)
+    public void UpdateProgressText(Text progessText)
     {
         progessText.text = Mathf.RoundToInt(progressLoading.value).ToString() + "%";
     }
