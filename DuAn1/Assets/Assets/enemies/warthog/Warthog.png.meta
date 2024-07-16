@@ -1,0 +1,906 @@
+fileFormatVersion: 2
+guid: 3751036904c36fd4fbff59876212d6e5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Warthog_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b2ead4854f21e43a225799ce72c886
+      internalID: -1432518365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ff8f82e22ba264e8342d3c63e96569
+      internalID: -477181488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5aa61bb624912848ac18eb798d518e6
+      internalID: 90150955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5dc6d05bbe05e4bbfa8e9cd760559a
+      internalID: -1722165654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc8c1c520432314ab5be2fbbebf21ac
+      internalID: 1482884219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f580e1f0aea0ba34cb11a2e7d9c5ffd7
+      internalID: -1844866920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f696f2ec16280a9479282f5ef1399c07
+      internalID: 1269142518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a3ed48c989b504d83758539cffd62a
+      internalID: 637584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 190.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dae3e9e28e3c88499cc6ee710844c1e
+      internalID: 487018288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb7b52f895325a479a11ac78849bcc4
+      internalID: -567187025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0637b5f6676215e44980218c1c23f964
+      internalID: -342645181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82bc2ea91664a7459e21b01ee8164c2
+      internalID: 299505333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed508dff55bfb4f4288049a1ce64db09
+      internalID: 1671514141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b28a4f2f5967084ba2553c8cdad8e0b
+      internalID: -1749053567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_14
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2158d64d33e57f419541e072c0c3d9f
+      internalID: -1891273475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d32999e227e54409b05df690cd5359
+      internalID: -1764369096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_16
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3777e38cbdbfb7642a0961e7e85ab521
+      internalID: -489876440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 127.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc6e7cb6f4fa18f43b6b4b5c996b5f38
+      internalID: 1365445408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf263f0e3a0dd98429b61c0120bc8912
+      internalID: 1272624767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7c75b681aa4e8d43a7918e4e8c5a32e
+      internalID: 953863254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4097bd3215c889c458fa5037c3db0506
+      internalID: -329829656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b15ffacffacf04594a9af781757e01
+      internalID: -1195756200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914f8903ffbb96642938069e9db8b4df
+      internalID: -1374523847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01e9ff841e9158b46a986acba20865f7
+      internalID: -338726859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e021572431ffabc46a923d5cc6d2cd6c
+      internalID: -611753609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_25
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e234b8be5bf17e439c603453e4c516b
+      internalID: -1585400963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3b914f6bc7eda4bbfc8aa37d5e02a2
+      internalID: 1464708080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6cb99ec378ca7f46a95f14670eaf37f
+      internalID: -1995810248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_28
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fdaceed2114df24093cd014986d0c87
+      internalID: -1888785291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8334601a513b102418a20c6bf58ba4a3
+      internalID: 1704467991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce8c6591cb18d248ab204252239ba43
+      internalID: 1837626320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde8032496df9f5429dfb1adb57c1de4
+      internalID: 1031250092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_32
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef3f84cb7eda43545a2cc3d9ac24b7b5
+      internalID: 377619650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_33
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 735ac09517ab4ac479e67d17782ddc0e
+      internalID: 1620420902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_34
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d461d42f87b1749b7aaab66c512d5b
+      internalID: -1912326026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warthog_35
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1.5
+        width: 64.22222
+        height: 63.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39193353fe430c54db62401bf032fe66
+      internalID: -1467936178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Warthog_0: -1432518365
+      Warthog_1: -477181488
+      Warthog_10: -342645181
+      Warthog_11: 299505333
+      Warthog_12: 1671514141
+      Warthog_13: -1749053567
+      Warthog_14: -1891273475
+      Warthog_15: -1764369096
+      Warthog_16: -489876440
+      Warthog_17: 1365445408
+      Warthog_18: 1272624767
+      Warthog_19: 953863254
+      Warthog_2: 90150955
+      Warthog_20: -329829656
+      Warthog_21: -1195756200
+      Warthog_22: -1374523847
+      Warthog_23: -338726859
+      Warthog_24: -611753609
+      Warthog_25: -1585400963
+      Warthog_26: 1464708080
+      Warthog_27: -1995810248
+      Warthog_28: -1888785291
+      Warthog_29: 1704467991
+      Warthog_3: -1722165654
+      Warthog_30: 1837626320
+      Warthog_31: 1031250092
+      Warthog_32: 377619650
+      Warthog_33: 1620420902
+      Warthog_34: -1912326026
+      Warthog_35: -1467936178
+      Warthog_4: 1482884219
+      Warthog_5: -1844866920
+      Warthog_6: 1269142518
+      Warthog_7: 637584
+      Warthog_8: 487018288
+      Warthog_9: -567187025
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
