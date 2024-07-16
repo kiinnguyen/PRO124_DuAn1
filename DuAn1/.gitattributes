@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Explicitly set the line ending for specific types of files.
+*.png binary
+*.jpg binary
+*.meta text eol=lf
