@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject meleeArea;
 
     [SerializeField] GameManager gameManager;
+    [SerializeField] PlayerManager playerManager;
     [SerializeField] PlayerInput playerInput;
 
     // Components
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
 
     // Classes
     private AnimationController animation_Controller;
+    private KnockFeedBack knowFeedBack;
 
     // values
     private float speedMove = 3f;
@@ -58,18 +60,21 @@ public class Player : MonoBehaviour
         // Classes
         animation_Controller = GetComponent<AnimationController>();
         gameManager = FindObjectOfType<GameManager>();
+        playerManager = GetComponent<PlayerManager>();
         playerInput = FindObjectOfType<PlayerInput>();
+        knowFeedBack = GetComponent<KnockFeedBack>();
     }
 
     private void Update()
     {
         if (isDead) return;
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKey(KeyCode.H))
         {
             _animator.SetTrigger("Hurt");
+            TakeDamage(10);
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKey(KeyCode.L))
         {
             _animator.SetTrigger("Death");
             Death();
@@ -196,7 +201,14 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        gameManager.TakeDamage(damage);
+        if (playerManager.TakeDamage(damage))
+        {
+            _animator.SetTrigger("Hurt");
+        }
+        else
+        {
+            Death();
+        }
     }
 
     public void Death()

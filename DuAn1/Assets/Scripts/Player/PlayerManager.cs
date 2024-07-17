@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,14 @@ public class PlayerManager : MonoBehaviour
 {
     int health { get; set; }
     int gold { get; set; }
-
     int food { get; set; }
-
     int water { get; set; }
 
-    public PlayerManager() { }
+    private GameManager gameManager;
+    private UIGameScene uiGameScene;
 
-    public PlayerManager(int health, int gold, int food, int water)
+
+    public void SetPlayerData(int health, int gold, int food, int water)
     {
         this.health = health;
         this.gold = gold;
@@ -21,12 +22,23 @@ public class PlayerManager : MonoBehaviour
         this.water = water;
     }
 
-    public void SetPlayerData(int healthInput, int goldInput, int foodInput, int waterInput)
+    public bool TakeDamage(int damage)
     {
-        health = healthInput;
-        gold = goldInput;
-        food = foodInput;
-        water = waterInput;
+        /*int health = playerData.GetHealth();
+        health -= damage;
+
+        if (health <= 0)
+        {
+            return false;
+            // Die
+        }
+        else
+        {
+            playerData.SetHealth(health);
+            uiGameScene.UpdateHealthBar(playerData.GetHealth());
+            return true;
+        }*/
+        return true;
     }
 
     public int GetHealth()
@@ -58,5 +70,5 @@ public class PlayerManager : MonoBehaviour
     {
         return water;
     }
-
 }
+

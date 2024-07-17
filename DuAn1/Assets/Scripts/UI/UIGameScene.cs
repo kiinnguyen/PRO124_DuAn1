@@ -8,6 +8,7 @@ public class UIGameScene : MonoBehaviour
 {
     [Header("Classes")]
     [SerializeField] PlayerManager playerManager;
+    [SerializeField] GameManager gameManager;
 
 
     [Header("Speaker")]
@@ -26,27 +27,35 @@ public class UIGameScene : MonoBehaviour
     [SerializeField] Slider waterBar;
     [SerializeField] Text   waterValueText;
 
+    [SerializeField] Text userName;
+
 
     [Header("Life Data")]
     [SerializeField] bool startBlood;
 
-    private void Awake()
+    private void Start()
     {
         playerManager = FindObjectOfType<PlayerManager>();
-
-        if (playerManager != null)
+        gameManager = FindObjectOfType<GameManager>();
+        if (playerManager != null && gameManager != null)
         {
-            /*healthBar.value = playerManager.GetHealth();
+
+            healthBar.value = 100f;
+            foodBar.value = 33;
+            waterBar.value = 15;
+            goldText.text = "999999";
+
+            healthBar.value = playerManager.GetHealth();
             foodBar.value = playerManager.GetFood();
             waterBar.value = playerManager.GetWater();
-            goldText.text = playerManager.GetGold().ToString();*/
+            goldText.text = playerManager.GetGold().ToString();
 
-            healthBar.value = 53;
-            foodBar.value = 55;
-            waterBar.value = 23;
-            goldText.text = "10";
 
         }
+
+        userName.text = gameManager.GetUserName();
+
+
         StartCoroutine(LifeCoroutine());
     }
 
@@ -85,6 +94,13 @@ public class UIGameScene : MonoBehaviour
             waterValueText.text = waterBar.value.ToString();
         }
     }
+
+    public void UpdateHealthBar(int value)
+    {
+        healthBar.value = value;
+    }
+
+
 
     // Interface 
 
