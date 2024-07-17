@@ -1,41 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-
-public class enemieshealth : MonoBehaviour
+public class orchealth : MonoBehaviour
 {
     public float currenHealth = 0f;
-    public   float maxhealth = 0f;
-    
-    
-    
+    public float maxhealth = 0f;
 
+   
     private bool flashActive;
     [SerializeField]
     private float flashLength = 0f;
     private float flashCounter = 0f;
     private SpriteRenderer enemypSprite;
+
     [SerializeField]
     floatingHealthBar healthBar;
-
-    // Start is called before the first frame update
     private void Awake()
     {
         healthBar = GetComponentInChildren<floatingHealthBar>();
     }
+
+    // Start is called before the first frame update
     void Start()
     {
         enemypSprite = GetComponent<SpriteRenderer>();
         healthBar.UpdateHeathBar(currenHealth, maxhealth);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         if (flashActive)
         {
             if (flashCounter > flashLength * .99)
@@ -81,7 +76,6 @@ public class enemieshealth : MonoBehaviour
         healthBar.UpdateHeathBar(currenHealth, maxhealth);
         flashActive = true;
         flashCounter = flashLength;
-        
         if (currenHealth <= 0)
         {
             Destroy(gameObject);
