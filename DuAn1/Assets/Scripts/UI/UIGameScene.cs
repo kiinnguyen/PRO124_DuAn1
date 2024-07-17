@@ -45,10 +45,10 @@ public class UIGameScene : MonoBehaviour
             waterBar.value = 15;
             goldText.text = "999999";
 
-            healthBar.value = playerManager.GetHealth();
+            /*healthBar.value = playerManager.GetHealth();
             foodBar.value = playerManager.GetFood();
             waterBar.value = playerManager.GetWater();
-            goldText.text = playerManager.GetGold().ToString();
+            goldText.text = playerManager.GetGold().ToString();*/
 
 
         }

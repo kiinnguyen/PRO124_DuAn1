@@ -1,10 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Information")]
+    [SerializeField] public string userName;
+    [SerializeField] public int gold;
+    [SerializeField] public int health;
+    [SerializeField] public int food;
+    [SerializeField] public int water;
+    [SerializeField] public int damage;
+
+    [SerializeField] public List<Item> inventory;
+
+
     // Children
     [SerializeField] private GameObject meleeArea;
 
@@ -34,7 +46,6 @@ public class Player : MonoBehaviour
     [Header("Attack Setting")]
     [SerializeField] float attackDuration = 0.5f;
     [SerializeField] float attackCooldown = 0.5f;
-    [SerializeField] float damage = 5f;
 
     [Header("Dash Setting")]
     [SerializeField] float dashSpeed = 5f;
@@ -67,18 +78,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (isDead) return;
-        if (Input.GetKey(KeyCode.H))
-        {
-            _animator.SetTrigger("Hurt");
-            TakeDamage(10);
-        }
 
-        if (Input.GetKey(KeyCode.L))
-        {
-            _animator.SetTrigger("Death");
-            Death();
-        }
     }
 
 
@@ -199,17 +199,6 @@ public class Player : MonoBehaviour
 
     // Data Manager
 
-    public void TakeDamage(int damage)
-    {
-        if (playerManager.TakeDamage(damage))
-        {
-            _animator.SetTrigger("Hurt");
-        }
-        else
-        {
-            Death();
-        }
-    }
 
     public void Death()
     {
@@ -218,8 +207,49 @@ public class Player : MonoBehaviour
         // Show dead
     }
 
+
+    public void IncreaseDamage(int amount)
+    {
+        damage += amount;
+    }
+
+
     public bool isDeadState()
     {
         return isDead;
     }
+
+
+
+    public PlayerData ToPlayerData()
+    {
+        PlayerData data = new PlayerData();
+        data.playerName = userName;
+        data.health = health;
+        data.food = food;
+        data.water = water;
+        data.damage = damage;
+        data.inventory = new List<string>();
+        foreach (Item item in inventory)
+        {
+            data.inventory.Add(item.itemName);
+        }
+        return data;
+    }
+
+    public void LoadFromPlayerData(PlayerData data)
+    {
+        userName = data.playerName;
+        health = data.health;
+        food = data.food;
+        water = data.water;
+        damage = data.damage;
+        inventory = new List<Item>();
+        foreach (string itemName in data.inventory)
+        {
+            Item item = new Item { itemName = itemName }; // Khởi tạo Item từ tên
+            inventory.Add(item);
+        }
+    }
+
 }

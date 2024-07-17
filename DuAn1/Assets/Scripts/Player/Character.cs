@@ -46,7 +46,7 @@ public class Character
     }
 }
 
-[System.Serializable]
+/*[System.Serializable]
 public class Item
 {
     public string itemName;
@@ -58,3 +58,4 @@ public class Item
         this.itemID = id;
     }
 }
+*/

@@ -1,74 +1,84 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    int health { get; set; }
-    int gold { get; set; }
-    int food { get; set; }
-    int water { get; set; }
 
     private GameManager gameManager;
     private UIGameScene uiGameScene;
+    private Player player;
+    private string saveFilePath;
 
 
-    public void SetPlayerData(int health, int gold, int food, int water)
+    private void Start()
     {
-        this.health = health;
-        this.gold = gold;
-        this.food = food;
-        this.water = water;
+        InitializePlayer();
     }
 
-    public bool TakeDamage(int damage)
+
+    public void InitializePlayer()
     {
-        /*int health = playerData.GetHealth();
-        health -= damage;
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
+
+        player.health = 100;
+        player.food = 100;
+        player.water = 100;
+        player.gold = 0;
+        player.inventory = new List<Item>();
+
+        Debug.Log("Player Initialized");
+    }
+
+
+
+    public void TakeDamage(int damage)
+    {
+        int health = player.health - damage;
 
         if (health <= 0)
         {
-            return false;
             // Die
         }
         else
         {
-            playerData.SetHealth(health);
-            uiGameScene.UpdateHealthBar(playerData.GetHealth());
-            return true;
-        }*/
-        return true;
+            player.health = health;
+            uiGameScene.UpdateHealthBar(player.health);
+        }
     }
 
-    public int GetHealth()
+    public void Heal(int value)
     {
-        return health;
+        int health = player.health + value;
+
+        if (health >= 100) health = 100;
+        if (player.health >= 100)
+        uiGameScene.UpdateHealthBar(player.health);
     }
 
-    public void SetHealth(int healthInput)
+    public void Eat(int value)
     {
-        health = healthInput;
+        if (player.food <= 100)
+        {
+
+        }
     }
 
-    public int GetGold()
-    {
-        return gold;
-    }
-
-    public void SetGold(int goldInput)
-    {
-        gold = goldInput;
-    }
-
-    public int GetFood()
-    {
-        return food;
-    }
-
-    public int GetWater()
-    {
-        return water;
-    }
 }
 
+
+[System.Serializable]
+public class PlayerData
+{
+    public string playerName;
+    public int health;
+    public int food;
+    public int water;
+    public int damage;
+    public List<string> inventory;
+}
