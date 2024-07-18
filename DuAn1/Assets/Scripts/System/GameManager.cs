@@ -35,21 +35,10 @@ public class GameManager : Singleton<GameManager>
 
     string dataPath = "Assets/Data/playerData.json";
 
-
-    private void Start()
-    {
-        Text[] texts = FindObjectsOfType<Text>();
-        foreach (Text text in texts)
-        {
-            text.font = newFont;
-            text.fontStyle = FontStyle.Normal;
-        }
-
-    }
-
     public void SetUserName(Text name)
     {
         userName = name.text;
+        Debug.Log("Get UserName Successfully");
     }
 
     public string GetUserName()
@@ -61,7 +50,7 @@ public class GameManager : Singleton<GameManager>
     
     public void LoadScene(string sceneNameInput)
     {
-        
+        SceneManager.LoadScene(sceneNameInput);
     }
 
     public void RestartLevel()

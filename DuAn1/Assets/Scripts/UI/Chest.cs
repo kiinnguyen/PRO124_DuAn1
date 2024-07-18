@@ -4,26 +4,39 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
-    public List<GameObject> items; // Danh sách các vật phẩm trong rương
-    private bool isOpen = false; // Trạng thái của rương
+    public List<GameObject> items;
+    private bool isOpen = false;
 
-    void OnMouseDown()
+    [SerializeField] GameObject pressDialog;
+
+    [SerializeField] GameObject chestBanner;
+
+    private void Start()
     {
-        if (!isOpen)
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
         {
-            OpenChest();
+            pressDialog.SetActive(true);
         }
     }
 
-    void OpenChest()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        isOpen = true;
-        Debug.Log("Chest is opened!");
 
-        // Hiển thị các vật phẩm
-        foreach (GameObject item in items)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(item, transform.position, Quaternion.identity);
+            Debug.Log("Open chest");
+            chestBanner.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            pressDialog.SetActive(false);
         }
     }
 }
