@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+
 public class HinMovement : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] float followDistance = 5f;
-    [SerializeField] float attackRange = 5f;
-    [SerializeField] float returnToPlayerDistance = 3f;
+    [SerializeField] float followDistance;
+    [SerializeField] float attackRange;
+    [SerializeField] float returnToPlayerDistance;
 
     private NavMeshAgent agent;
     private Animator animator;
     private GameObject targetEnemy;
     private Vector2 lastDirection;
+
+    public bool isDead;
 
     void Awake()
     {
@@ -23,6 +28,8 @@ public class HinMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDead) { return; }
+
         if (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= attackRange)
         {
             MoveToTarget(targetEnemy.transform);
@@ -35,22 +42,18 @@ public class HinMovement : MonoBehaviour
         {
             MoveToTarget(player);
         }
-        else
-        {
-            StopMovement();
-        }
 
         UpdateAnimator();
+
+        if (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= 2f)
+        {
+            StartCoroutine(Attack());
+        }
     }
 
     void MoveToTarget(Transform target)
     {
         agent.SetDestination(target.position);
-    }
-
-    void StopMovement()
-    {
-        agent.ResetPath();
     }
 
     void UpdateAnimator()
@@ -68,6 +71,22 @@ public class HinMovement : MonoBehaviour
         animator.SetBool("isMoving", velocity.sqrMagnitude > 0.1f);
     }
 
+    private bool isAttacking = false;
+    IEnumerator Attack()
+    {
+        if (isAttacking) yield break;
+        isAttacking = true;
+
+        while (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= 2f)
+        {
+            agent.ResetPath();
+            animator.SetTrigger("Attack");
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        isAttacking = false;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -81,6 +100,16 @@ public class HinMovement : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             targetEnemy = null;
+        }
+    }
+
+    public void CheckingLive(Slider slider)
+    {
+        isDead = slider.value == 0;
+
+        if (isDead)
+        {
+            agent.ResetPath();
         }
     }
 }

@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class AttackCollision : MonoBehaviour
 {
-    [SerializeField] PlayerManager playerManager;
+    [SerializeField] Player player;
 
+    private float damage;
     private void Awake()
     {
-        playerManager = FindObjectOfType<PlayerManager>();
+        player = FindObjectOfType<Player>();
+
+        damage = player.damage;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.SendMessage("HurtEnemies", 1);
+            collision.SendMessage("HurtEnemies", damage);
         }
     }
 }

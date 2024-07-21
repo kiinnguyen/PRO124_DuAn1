@@ -10,6 +10,7 @@ public class Wanderer : MonoBehaviour
     private Transform thisTransform;
     private Rigidbody2D rb;
     private Animator animator;
+    private AudioSource speaker;
 
     [Header("Movement Settings")]
     public float moveSpeed = 0.2f;
@@ -30,11 +31,14 @@ public class Wanderer : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        speaker = GetComponent<AudioSource>();
         // Set a random time delay for taking a decision (changing direction, or standing in place for a while)
         decisionTimeCount = Random.Range(decisionTime.x, decisionTime.y);
 
         // Choose a movement direction, or stay in place
         ChooseMoveDirection();
+
+        StartCoroutine(MakeSfx());
     }
 
     void Update()
@@ -86,5 +90,17 @@ public class Wanderer : MonoBehaviour
     {
         // Change direction when hitting an obstacle
         ChooseMoveDirection();
+    }
+
+    IEnumerator MakeSfx()
+    {
+        while (true)
+        {
+            float numberRandom = UnityEngine.Random.Range(1,20);
+
+            yield return new WaitForSeconds(numberRandom);
+
+            speaker.Play();
+        }
     }
 }

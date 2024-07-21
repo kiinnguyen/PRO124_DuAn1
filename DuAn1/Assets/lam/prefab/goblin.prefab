@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homePositon: {fileID: 0}
   speed: 1
-  maxrange: 2
+  maxrange: 5
   minrange: 0.5
 --- !u!114 &5543740376911223134
 MonoBehaviour:
