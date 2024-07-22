@@ -16,7 +16,6 @@ public class UIGameScene : MonoBehaviour
     [SerializeField] AudioSource musicSpeaker;
 
     [Header("UI Container")]
-    [SerializeField] GameObject inventoryBar;
     bool isInventoryBarActive;
     bool isOpenningInventory;
 
@@ -129,8 +128,6 @@ public class UIGameScene : MonoBehaviour
     IEnumerator OpenInventory()
     {
         isOpenningInventory = true;
-        isInventoryBarActive = inventoryBar.active ? false : true;
-        inventoryBar.SetActive(isInventoryBarActive);
         yield return new WaitForSeconds(1f);
         isOpenningInventory = false;
     }
