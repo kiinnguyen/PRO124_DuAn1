@@ -59,6 +59,7 @@ public class UIGameScene : MonoBehaviour
             if (!isOpenningInventory)
             StartCoroutine(OpenInventory());
         }
+
     }
 
 

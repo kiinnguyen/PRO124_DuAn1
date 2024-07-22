@@ -14,7 +14,7 @@ public class NPC : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
