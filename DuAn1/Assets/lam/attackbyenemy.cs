@@ -13,9 +13,16 @@ public class attackbyenemy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerManager = player.GetComponent<PlayerManager>();
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+            playerManager = playerObject.GetComponent<PlayerManager>();
+        }
+        //playerManager = player.GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
+
+        
     }
 
     void Update()
@@ -33,11 +40,12 @@ public class attackbyenemy : MonoBehaviour
 
     void Attack()
     {
+        
         // Kích hoạt animation tấn công
         animator.SetTrigger("Attack");
 
         // Giảm máu của người chơi
         playerManager.TakeDamage(10); // Giảm 10 máu của người chơi
-        Debug.Log("Enemy attacked the player!");
+
     }
 }

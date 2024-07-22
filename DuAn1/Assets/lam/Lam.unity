@@ -191,17 +191,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &159607564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8064302272626755849, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
-  m_PrefabInstance: {fileID: 4188969583485021484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 843a8f1d6f1ef0f429089c625cf97747, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &162237271
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +969,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1, y: 0.13}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.1, y: 0.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1384,18 +1373,6 @@ PrefabInstance:
     - target: {fileID: 5160204365201120659, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
       propertyPath: m_Name
       value: goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543740376911223134, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 159607564}
-    - target: {fileID: 5543740376911223134, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
-      propertyPath: maxhealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543740376911223134, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
-      propertyPath: currenHealth
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9207216712135720105, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
       propertyPath: homePositon
