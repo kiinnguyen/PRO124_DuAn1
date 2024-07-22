@@ -34,11 +34,7 @@ public class HinMovement : MonoBehaviour
         {
             MoveToTarget(targetEnemy.transform);
         }
-        else if (Vector2.Distance(transform.position, player.position) > returnToPlayerDistance)
-        {
-            MoveToTarget(player);
-        }
-        else if (Vector2.Distance(transform.position, player.position) > followDistance)
+        if (Vector2.Distance(transform.position, player.position) > returnToPlayerDistance)
         {
             MoveToTarget(player);
         }
@@ -74,7 +70,9 @@ public class HinMovement : MonoBehaviour
     private bool isAttacking = false;
     IEnumerator Attack()
     {
+        if (isDead) yield break;
         if (isAttacking) yield break;
+
         isAttacking = true;
 
         while (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= 2f)
@@ -107,9 +105,12 @@ public class HinMovement : MonoBehaviour
     {
         isDead = slider.value == 0;
 
-        if (isDead)
-        {
-            agent.ResetPath();
-        }
+        if (isDead) Die();
+    }
+
+
+    private void Die()
+    {
+        this.enabled = false;
     }
 }

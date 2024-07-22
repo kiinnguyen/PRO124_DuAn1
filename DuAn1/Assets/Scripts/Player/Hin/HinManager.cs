@@ -15,6 +15,9 @@ public class HinManager : MonoBehaviour
     public bool isDead;
 
     private Animator anim;
+
+    private bool isCounting;
+
     void Start()
     {
         anim = GetComponent<Animator>(); 
@@ -22,6 +25,8 @@ public class HinManager : MonoBehaviour
 
         health = 100;
         if (healthBar != null) healthBar.value = health;
+
+        StartCoroutine(HealAfterCombat());
     }
 
     private void Update()
@@ -64,4 +69,32 @@ public class HinManager : MonoBehaviour
         isDead = slider.value == 0;
     }
 
+    IEnumerator HealAfterCombat()
+    {
+        while (true)
+        {
+            isCounting = true;
+
+            float timer = 0;
+
+            while (timer < 5f)
+            {
+                if (isHurting)
+                {
+                    timer = 0f;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            health += 5;
+            if (health >= 100)
+            {
+                healthBar.value = 100;
+            }
+            else healthBar.value = health;
+            isCounting = false;
+        }
+    }
 }
