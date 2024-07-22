@@ -9,6 +9,7 @@ public class UIGameScene : MonoBehaviour
     [Header("Classes")]
     [SerializeField] PlayerManager playerManager;
     [SerializeField] GameManager gameManager;
+    [SerializeField] Player player;
 
 
     [Header("Speaker")]
@@ -37,24 +38,15 @@ public class UIGameScene : MonoBehaviour
     {
         playerManager = FindObjectOfType<PlayerManager>();
         gameManager = FindObjectOfType<GameManager>();
-        if (playerManager != null && gameManager != null)
+        player = FindObjectOfType<Player>();
+        if (playerManager != null && gameManager != null && player != null)
         {
-
-            healthBar.value = 100f;
-            foodBar.value = 33;
-            waterBar.value = 15;
-            goldText.text = "999999";
-
-            /*healthBar.value = playerManager.GetHealth();
-            foodBar.value = playerManager.GetFood();
-            waterBar.value = playerManager.GetWater();
-            goldText.text = playerManager.GetGold().ToString();*/
-
-
+            healthBar.value = player.health;
+            foodBar.value = player.food;
+            waterBar.value = player.water;
+            goldText.text = player.gold.ToString();
+            userName.text = player.userName;
         }
-
-        userName.text = gameManager.GetUserName();
-
 
         StartCoroutine(LifeCoroutine());
     }
