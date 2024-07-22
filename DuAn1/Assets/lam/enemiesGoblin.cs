@@ -62,6 +62,8 @@ public class enemiesGoblin : MonoBehaviour
         {
              Vector2 difference = transform.position - other.transform.position;
             transform.position = new Vector2(transform.position.x + difference.x, transform.position.y + difference.y);
+            
         }
+        
     }
 }
