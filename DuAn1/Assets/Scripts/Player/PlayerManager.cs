@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
     private GameManager gameManager;
     private UIGameScene uiGameScene;
     private Player player;
@@ -17,7 +16,6 @@ public class PlayerManager : MonoBehaviour
     {
         InitializePlayer();
     }
-
 
     public void InitializePlayer()
     {
@@ -51,6 +49,7 @@ public class PlayerManager : MonoBehaviour
             player.health = health;
             uiGameScene.UpdateHealthBar(player.health);
         }
+      
     }
 
     public void Heal(int value)
