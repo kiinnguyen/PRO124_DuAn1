@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (isAction() || !canAttack) return;
+        if (isAction() ||!canAttack) return;
 
         if (context.performed)
         {
