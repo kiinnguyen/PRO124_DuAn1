@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -33,8 +35,12 @@ public class UIGameScene : MonoBehaviour
     [Header("Life Data")]
     [SerializeField] bool startBlood;
 
+    public bool isPaused;
+
     private void Start()
     {
+        isPaused = false;
+
         playerManager = FindObjectOfType<PlayerManager>();
         gameManager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
@@ -46,7 +52,6 @@ public class UIGameScene : MonoBehaviour
             goldText.text = player.gold.ToString();
             userName.text = player.userName;
         }
-
         StartCoroutine(LifeCoroutine());
     }
 
@@ -131,4 +136,23 @@ public class UIGameScene : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isOpenningInventory = false;
     }
+
+    public void Pause_ResumeGame(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!isPaused)
+            {
+                isPaused = true;
+                gameManager.PauseGame();
+            }
+            else
+            {
+                isPaused = false;
+                gameManager.ResumeGame();
+            }
+        }
+        
+    }
+
 }

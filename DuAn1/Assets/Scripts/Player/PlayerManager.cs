@@ -27,12 +27,39 @@ public class PlayerManager : MonoBehaviour
         player.food = 88;
         player.water = 77;
         player.gold = 66;
-        player.userName = gameManager.GetUserName();    
+        if (gameManager != null)
+        {
+            player.userName = gameManager.GetUserName();
+        }   
         player.inventory = new List<Item>();
 
         Debug.Log("Player Initialized");
     }
 
+
+    private void OnEnable()
+    {
+        GameManager.Instance.OnPause += HandlePause;
+        GameManager.Instance.OnResume += HandleResume;
+    }
+
+    private void OnDisable()
+    {   
+        GameManager.Instance.OnPause -= HandlePause;
+        GameManager.Instance.OnResume -= HandleResume;
+    }
+
+    private void HandlePause()
+    {
+        // Logic to handle pause, e.g., disable components or stop animations
+        Debug.Log("Game Paused - Handling in SomeGameComponent");
+    }
+
+    private void HandleResume()
+    {
+        // Logic to handle resume, e.g., enable components or start animations
+        Debug.Log("Game Resumed - Handling in SomeGameComponent");
+    }
 
 
     public void TakeDamage(int damage)

@@ -76,7 +76,7 @@ public class SlimeManager : MonoBehaviour
     {
         //slimeMovement.enabled = false;
         agent.enabled = false;
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 
