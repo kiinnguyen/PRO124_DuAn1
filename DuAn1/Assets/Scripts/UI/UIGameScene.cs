@@ -53,7 +53,7 @@ public class UIGameScene : MonoBehaviour
 
         }
 
-        userName.text = gameManager.GetUserName();
+        //userName.text = gameManager.GetUserName();
 
 
         StartCoroutine(LifeCoroutine());
