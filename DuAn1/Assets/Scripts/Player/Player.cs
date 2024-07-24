@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (isAction() || !canAttack) return;
+        if (isAction() ||!canAttack) return;
 
         if (context.performed)
         {
@@ -245,11 +245,11 @@ public class Player : MonoBehaviour
         water = data.water;
         damage = data.damage;
         inventory = new List<Item>();
-        foreach (string itemName in data.inventory)
+/*        foreach (string itemName in data.inventory)
         {
             Item item = new Item { itemName = itemName }; // Khởi tạo Item từ tên
             inventory.Add(item);
-        }
+        }*/
     }
 
 }

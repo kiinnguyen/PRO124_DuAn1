@@ -1,23 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace WorldTime
 {
-    [RequireComponent(typeof(TMP_Text))]
+    [RequireComponent(typeof(Text))]
     public class TimeLine : MonoBehaviour
     {
         [SerializeField]
         private WorldTime _WorldTime;
 
-        private TMP_Text _text;
+        private Text _text;
 
         private void Awake()
         {
-            _text = GetComponent<TMP_Text>();
+            _text = GetComponent<Text>();
             _WorldTime.WorldTimeChanged += OnWorldTimeChanged;
         }
 
@@ -28,7 +25,7 @@ namespace WorldTime
 
         private void OnWorldTimeChanged(object sender, TimeSpan e)
         {
-            _text.SetText(e.ToString(@"hh\:mm"));
+            _text.text = e.ToString(@"hh\:mm");
         }
 
     }

@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class attackbyenemy : MonoBehaviour
 {
-    public float attackRange = 1.5f;
-    public float attackCooldown = 1f;
-    private float nextAttackTime = 0f;
-    private Transform player;
-    //private PlayerHealth playerHealth; // Script quản lý máu của người chơi
-    private Animator animator;
+    public float attackRange = 1.5f; // Phạm vi tấn công của quái vật
+    public float attackCooldown = 1f; // Thời gian chờ giữa các đợt tấn công
+    private float nextAttackTime = 0f; // Thời gian có thể tấn công tiếp theo
+    private Transform player; // Vị trí của người chơi
+    private PlayerManager playerManager; // Script quản lý người chơi
+    private Animator animator; // Animator của quái vật
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        //playerHealth = player.GetComponent<PlayerHealth>();
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+            playerManager = playerObject.GetComponent<PlayerManager>();
+        }
+        //playerManager = player.GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
+
+        
     }
 
     void Update()
     {
-        //if (player != null && playerHealth != null)
+        if (player != null && playerManager != null)
         {
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance <= attackRange && Time.time >= nextAttackTime)
@@ -32,10 +40,12 @@ public class attackbyenemy : MonoBehaviour
 
     void Attack()
     {
-
+        
+        // Kích hoạt animation tấn công
         animator.SetTrigger("Attack");
+
         // Giảm máu của người chơi
-       // playerHealth.TakeDamage(10);
-        Debug.Log("Enemy attacked the player!");
+        playerManager.TakeDamage(10); // Giảm 10 máu của người chơi
+
     }
 }
