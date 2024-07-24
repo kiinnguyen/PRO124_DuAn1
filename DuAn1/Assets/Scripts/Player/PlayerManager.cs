@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         if (gameManager != null)
         {
             player.userName = gameManager.GetUserName();
-        }   
+        }       
         player.inventory = new List<Item>();
 
         Debug.Log("Player Initialized");
