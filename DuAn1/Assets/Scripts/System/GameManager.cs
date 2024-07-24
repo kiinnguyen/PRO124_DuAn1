@@ -35,6 +35,11 @@ public class GameManager : Singleton<GameManager>
 
     string dataPath = "Assets/Data/playerData.json";
 
+    public bool isPaused;
+    public event Action OnPause;
+    public event Action OnResume;
+
+
     public void SetUserName(Text name)
     {
         userName = name.text;
@@ -68,23 +73,29 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        Debug.Log("Game Paused");
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-        Debug.Log("Game Resumed");
-    }
-
     public void OnPlayerDeath()
     {
         Debug.Log("Player has died!");
         RestartLevel();
     }
 
+
+    public void PauseGame()
+    {
+        if (isPaused) return;
+        isPaused = true;
+        OnPause?.Invoke();
+        Time.timeScale = 0f;
+        Debug.Log("Game Paused");
+    }
+
+    public void ResumeGame()
+    {
+        if (!isPaused) return;
+        isPaused = false;
+        OnResume?.Invoke();
+        Time.timeScale = 1f;
+        Debug.Log("Game Resumed");
+    }
 
 }
