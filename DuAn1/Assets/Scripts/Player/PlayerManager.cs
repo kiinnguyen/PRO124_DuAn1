@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    private void OnEnable()
+  /*  private void OnEnable()
     {
         GameManager.Instance.OnPause += HandlePause;
         GameManager.Instance.OnResume += HandleResume;
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
     {   
         GameManager.Instance.OnPause -= HandlePause;
         GameManager.Instance.OnResume -= HandleResume;
-    }
+    } */
 
     private void HandlePause()
     {
