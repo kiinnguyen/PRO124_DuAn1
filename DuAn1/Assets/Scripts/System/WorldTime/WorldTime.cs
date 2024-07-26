@@ -10,7 +10,7 @@ namespace WorldTime
         public event EventHandler<TimeSpan> WorldTimeChanged;
 
         [SerializeField]
-        private float _dayLength = 660f;
+        private float _dayLength = 1440f;
 
         private TimeSpan _currentTime;
 
@@ -18,7 +18,9 @@ namespace WorldTime
 
         private void Start()
         {
+            _currentTime = new TimeSpan(7, 0, 0);
             StartCoroutine(AddMinute());
+
         }
 
         private IEnumerator AddMinute()
