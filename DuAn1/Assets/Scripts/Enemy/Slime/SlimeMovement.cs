@@ -94,10 +94,7 @@ public class SlimeMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(("Player")))
         {
-            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-            Vector2 knockback = knockbackDirection * 5f;
-
-            collision.gameObject.SendMessage("TakeDamage", new object[] { damage, knockback });
+            collision.gameObject.SendMessage("TakeDamage",10);
             StartCoroutine(Attack());
         }
     }

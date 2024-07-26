@@ -37,18 +37,24 @@ public class HinMovement : MonoBehaviour
     {
         if (isDead) { return; }
 
-        if (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= attackRange)
+        if (targetEnemy != null)
         {
-            MoveToTarget(targetEnemy.transform);
-        }
-        if (Vector2.Distance(transform.position, player.position) > returnToPlayerDistance)
-        {
-            MoveToTarget(player);
-        }
+            if (Vector2.Distance(transform.position, targetEnemy.transform.position) < followDistance)
+            {
+                agent.SetDestination(targetEnemy.transform.position);
+            }
+            else
+            {
 
+            }
+        }
+        else
+        {
+            agent.SetDestination(player.position);
+        }
         UpdateAnimator();
 
-        if (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= 2f)
+        if (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= attackRange)
         {
             StartCoroutine(Attack());
         }
@@ -56,7 +62,14 @@ public class HinMovement : MonoBehaviour
 
     void MoveToTarget(Transform target)
     {
-        agent.SetDestination(target.position);
+        if (agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            agent.SetDestination(target.position);
+        }
+        else
+        {
+            Debug.LogError("NavMeshAgent is not active or not on a NavMesh.");
+        }
     }
 
     void UpdateAnimator()
@@ -122,22 +135,21 @@ public class HinMovement : MonoBehaviour
         meleeArea.transform.rotation = Quaternion.Euler(currentRotation);
     }
 
-
-
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
-            targetEnemy = other.gameObject;
+            targetEnemy = collision.gameObject;
+            Debug.Log($"Enemy detected: {targetEnemy.name}");
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
             targetEnemy = null;
+            Debug.Log("Enemy lost.");
         }
     }
 
@@ -147,7 +159,6 @@ public class HinMovement : MonoBehaviour
 
         if (isDead) Die();
     }
-
 
     private void Die()
     {

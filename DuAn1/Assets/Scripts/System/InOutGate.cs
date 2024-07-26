@@ -21,7 +21,7 @@ public class InOutGate : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canTeleport)
         {
             if (locate == "island")
             {

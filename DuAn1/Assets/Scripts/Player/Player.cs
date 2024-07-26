@@ -163,11 +163,6 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision detected with " + collision.gameObject.name);
-    }
-
 
     // Data Manager
 
