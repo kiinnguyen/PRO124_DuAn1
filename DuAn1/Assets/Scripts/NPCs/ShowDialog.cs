@@ -1,45 +1,49 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class ShowDialog : MonoBehaviour
 {
-    [Header("Dialog Settings")]
-    public List<string> dialogLines; // Danh sách các đoạn hội thoại
-    public float minTime = 5f; // Thời gian tối thiểu giữa các đoạn hội thoại
-    public float maxTime = 10f; // Thời gian tối đa giữa các đoạn hội thoại
+    private bool isPlayerInRange = false;
+    [SerializeField] GameObject dialogBanner;
 
-    [Header("UI Settings")]
-    [SerializeField] TextMeshProUGUI dialogText; // TextMeshProUGUI để hiển thị đoạn hội thoại
-    [SerializeField] GameObject dialogContainer;
+    private DialogText dialogText;
+
+    private List<string> listTalk;
+
+
     private void Start()
     {
-        // Bắt đầu coroutine để hiển thị đoạn hội thoại ngẫu nhiên
-        StartCoroutine(ShowRandomDialog());
+        listTalk.Add("Hello bạn");
+        listTalk.Add("Chúc ngủ ngon");
+        listTalk.Add("Ngày mai khỏe nhen");
     }
 
-    IEnumerator ShowRandomDialog()
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        while (true)
+        if (other.CompareTag("Player"))
         {
-            // Chờ một khoảng thời gian ngẫu nhiên
-            float waitTime = Random.Range(minTime, maxTime);
-            yield return new WaitForSeconds(waitTime);
+            isPlayerInRange = true;
+        }
+    }
 
-            // Chọn một đoạn hội thoại ngẫu nhiên từ danh sách
-            string randomDialog = dialogLines[Random.Range(0, dialogLines.Count)];
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
+        }
+    }
 
-            // Hiển thị đoạn hội thoại lên UI
-            dialogContainer.SetActive(true);
-            dialogText.text = randomDialog;
-
-            // Bạn có thể thêm thời gian hiển thị hội thoại, ví dụ: 3 giây
-            yield return new WaitForSeconds(3f);
-
-            // Xóa đoạn hội thoại
-            dialogContainer.SetActive(false);
-            dialogText.text = "";
+    void Update()
+    {
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
+        {
+            dialogBanner.SetActive(true);
+            dialogBanner.GetComponent<DialogText>().AddNewText(listTalk);
         }
     }
 }

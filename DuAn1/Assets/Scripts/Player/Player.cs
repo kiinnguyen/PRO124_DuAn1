@@ -89,8 +89,6 @@ public class Player : MonoBehaviour
     // Input Actions
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (isAction()) return;
-
         vector2Input = context.ReadValue<Vector2>().normalized;
 
         if (vector2Input != Vector2.zero)
@@ -102,11 +100,10 @@ public class Player : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (isAction() ||!canAttack) return;
+        if (!canAttack) return;
 
         if (context.performed)
         {
-            _rigidbody.velocity = Vector2.zero;
             StartCoroutine(Attack());
         }
     }
@@ -125,30 +122,6 @@ public class Player : MonoBehaviour
         meleeArea.SetActive(false);
         isAttacking = false;
         canAttack = true;
-    }
-
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        if (isAction() || !canDash) return;
-
-        if (context.performed)
-        {
-            _rigidbody.velocity = Vector2.zero;
-            StartCoroutine(Dash());
-        }
-    }
-
-    IEnumerator Dash()
-    {
-        isDashing = true;
-        canDash = false;
-
-        _animator.SetTrigger("Dash");
-        _rigidbody.AddForce(vector2Input * dashSpeed, ForceMode2D.Impulse);
-
-        yield return new WaitForSeconds(dashDuration);
-        isDashing = false;
-        canDash = true;
     }
 
     // Actions
@@ -183,7 +156,6 @@ public class Player : MonoBehaviour
     }
 
     // Checking states
-    private bool isAction() => isDashing || isAttacking;
 
     private bool isPause()
     {
@@ -217,39 +189,6 @@ public class Player : MonoBehaviour
     public bool isDeadState()
     {
         return isDead;
-    }
-
-
-
-    public PlayerData ToPlayerData()
-    {
-        PlayerData data = new PlayerData();
-        data.playerName = userName;
-        data.health = health;
-        data.food = food;
-        data.water = water;
-        data.damage = damage;
-        data.inventory = new List<string>();
-        foreach (Item item in inventory)
-        {
-            data.inventory.Add(item.itemName);
-        }
-        return data;
-    }
-
-    public void LoadFromPlayerData(PlayerData data)
-    {
-        userName = data.playerName;
-        health = data.health;
-        food = data.food;
-        water = data.water;
-        damage = data.damage;
-        inventory = new List<Item>();
-/*        foreach (string itemName in data.inventory)
-        {
-            Item item = new Item { itemName = itemName }; // Khởi tạo Item từ tên
-            inventory.Add(item);
-        }*/
     }
 
 }
