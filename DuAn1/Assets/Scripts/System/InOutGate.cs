@@ -4,15 +4,51 @@ using UnityEngine;
 
 public class InOutGate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject gin;
+    [SerializeField] GameObject hin;
 
-    // Update is called once per frame
+
+    [SerializeField] Transform cave;
+    [SerializeField] Transform island;
+    private bool canTeleport;
+    private string locate;
+    private void Start()
+    {
+        gin = GameObject.Find("Gin");
+        hin = GameObject.Find("Hin");
+
+        locate = "island";
+    }
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (locate == "island")
+            {
+                locate = "cave";
+                gin.transform.position = cave.position;
+            }
+            else
+            {
+                locate = "island";
+                gin.transform.position = island.position;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            canTeleport = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            canTeleport = false;
+        }
     }
 }

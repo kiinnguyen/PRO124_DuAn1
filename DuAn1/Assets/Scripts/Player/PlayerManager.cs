@@ -31,10 +31,7 @@ public class PlayerManager : MonoBehaviour
         player.food = 100;
         player.water = 100;
         player.gold = 100;
-        if (gameManager != null)
-        {
-            player.userName = gameManager.GetUserName();
-        }       
+        
         player.inventory = new List<Item>();
 
         Debug.Log("Player Initialized");
@@ -66,7 +63,7 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage, Vector2 knockBack)
+    public void TakeDamage(int damage)
     {
         int health = player.health - damage;    
 
@@ -79,7 +76,6 @@ public class PlayerManager : MonoBehaviour
         {
             player.health = health;
             uiGameScene.UpdateHealthBar(player.health);
-            rb.AddForce(knockBack, ForceMode2D.Impulse);
         }
       
     }
