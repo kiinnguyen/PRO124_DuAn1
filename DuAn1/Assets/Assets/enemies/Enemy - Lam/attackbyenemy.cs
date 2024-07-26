@@ -45,7 +45,7 @@ public class attackbyenemy : MonoBehaviour
         animator.SetTrigger("Attack");
 
         // Giảm máu của người chơi
-        playerManager.TakeDamage(10); // Giảm 10 máu của người chơi
+        //playerManager.TakeDamage(new Object[] { 10, Vector2.zero); // Giảm 10 máu của người chơi
 
     }
 }

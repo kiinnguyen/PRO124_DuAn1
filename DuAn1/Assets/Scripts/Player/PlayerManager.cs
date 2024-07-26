@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerManager : MonoBehaviour
     private UIGameScene uiGameScene;
     private Player player;
     private string saveFilePath;
+
+    private Rigidbody2D rb;
 
 
     private void Start()
@@ -22,11 +25,12 @@ public class PlayerManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
         uiGameScene = FindObjectOfType<UIGameScene>();
+        rb = GetComponent<Rigidbody2D>();
 
-        player.health = 34;
-        player.food = 88;
-        player.water = 77;
-        player.gold = 66;
+        player.health = 100;
+        player.food = 100;
+        player.water = 100;
+        player.gold = 100;
         if (gameManager != null)
         {
             player.userName = gameManager.GetUserName();
@@ -62,9 +66,9 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector2 knockBack)
     {
-        int health = player.health - damage;
+        int health = player.health - damage;    
 
         if (health <= 0)
         {
@@ -75,6 +79,7 @@ public class PlayerManager : MonoBehaviour
         {
             player.health = health;
             uiGameScene.UpdateHealthBar(player.health);
+            rb.AddForce(knockBack, ForceMode2D.Impulse);
         }
       
     }
@@ -99,16 +104,23 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-}
+    public void UpdateHealth(Text value)
+    {
+        int newValue = int.Parse(value.text);
 
+        player.health = newValue;
+    }
 
-[System.Serializable]
-public class PlayerData
-{
-    public string playerName;
-    public int health;
-    public int food;
-    public int water;
-    public int damage;
-    public List<string> inventory;
+    public void UpdateFood(Text value)
+    {
+        int newValue = int.Parse(value.text);
+
+        player.food = newValue;
+    }
+    public void UpdateWater(Text value)
+    {
+        int newValue = int.Parse(value.text);
+
+        player.water = newValue;
+    }
 }

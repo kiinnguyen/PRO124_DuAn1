@@ -14,12 +14,19 @@ public class HinMovement : MonoBehaviour
     private Animator animator;
     private GameObject targetEnemy;
     private Vector2 lastDirection;
+    [SerializeField] GameObject meleeArea;
 
     public bool isDead;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        if (agent != null)
+        {
+            Debug.Log("Get NavMesh Done!");
+        }
+
         animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>().transform;
         agent.updateRotation = false;
@@ -62,6 +69,8 @@ public class HinMovement : MonoBehaviour
             lastDirection = normalizedVelocity;
         }
 
+        RotateAttackArea(normalizedVelocity);
+
         animator.SetFloat("xInput", normalizedVelocity.x);
         animator.SetFloat("yInput", normalizedVelocity.y);
         animator.SetBool("isMoving", velocity.sqrMagnitude > 0.1f);
@@ -84,6 +93,37 @@ public class HinMovement : MonoBehaviour
 
         isAttacking = false;
     }
+
+    private void RotateAttackArea(Vector2 vector)
+    {
+        switch (vector)
+        {
+            case var v when v == new Vector2(0f, 1f):
+                SetRotationAttackArea(90f);
+                break;
+            case var v when v == new Vector2(0f, -1f):
+                SetRotationAttackArea(270f);
+                break;
+            case var v when v == new Vector2(1f, 0f):
+                SetRotationAttackArea(0f);
+                break;
+            case var v when v == new Vector2(-1f, 0f):
+                SetRotationAttackArea(180f);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void SetRotationAttackArea(float zValue)
+    {
+        Vector3 currentRotation = meleeArea.transform.rotation.eulerAngles;
+        currentRotation.z = zValue;
+        meleeArea.transform.rotation = Quaternion.Euler(currentRotation);
+    }
+
+
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
