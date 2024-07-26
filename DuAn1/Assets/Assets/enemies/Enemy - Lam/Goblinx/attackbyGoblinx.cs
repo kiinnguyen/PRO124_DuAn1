@@ -54,7 +54,7 @@ public class attackbyGoblinx : MonoBehaviour
             Vector2 knockBack = knockBackDirection * knockBackForce;
 
             // Giảm máu của người chơi và áp dụng knockBack
-            playerManager.TakeDamage(10, knockBack);
+            playerManager.TakeDamage(10);
             Debug.Log("Enemy attacked the player!");
         }
 

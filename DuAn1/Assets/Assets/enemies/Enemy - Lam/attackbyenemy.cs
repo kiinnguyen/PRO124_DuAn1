@@ -66,7 +66,7 @@ public class attackbyenemy : MonoBehaviour
             Vector2 knockBack = knockBackDirection * knockBackForce;
 
             // Giảm máu của người chơi và áp dụng knockback
-            playerManager.TakeDamage(10, knockBack);
+            playerManager.TakeDamage(10);
             Debug.Log("Quái vật đã tấn công người chơi!");
         }
     }
