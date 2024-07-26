@@ -34,7 +34,6 @@ public class PlayerManager : MonoBehaviour
         
         player.inventory = new List<Item>();
 
-        Debug.Log("Player Initialized");
     }
 
 

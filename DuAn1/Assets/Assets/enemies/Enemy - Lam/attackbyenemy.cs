@@ -10,7 +10,6 @@ public class attackbyenemy : MonoBehaviour
     private Transform player; // Vị trí của người chơi
     private PlayerManager playerManager; // Script quản lý người chơi
     private Animator animator; // Animator của quái vật
-    private float knockBackForce = 4f; // Độ lớn của lực đẩy
 
     void Start()
     {
@@ -61,14 +60,9 @@ public class attackbyenemy : MonoBehaviour
 
         if (playerManager != null)
         {
-            // Tính toán knockback
-            Vector2 knockBackDirection = (player.position - transform.position).normalized;
-            Vector2 knockBack = knockBackDirection * knockBackForce;
-
-            // Giảm máu của người chơi và áp dụng knockback
+            // Giảm máu của người chơi
             playerManager.TakeDamage(10);
             Debug.Log("Quái vật đã tấn công người chơi!");
         }
     }
-
 }
