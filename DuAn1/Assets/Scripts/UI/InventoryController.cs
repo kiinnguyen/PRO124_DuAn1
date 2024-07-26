@@ -14,11 +14,11 @@ public class InventoryController : MonoBehaviour
         inventoryUI.InitializeInventoryUI(inventorySize);
     }
 
-    public void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (inventoryUI.isActiveAndEnabled == false)
+            if (!inventoryUI.isActiveAndEnabled)
             {
                 inventoryUI.Show();
             }

@@ -18,34 +18,37 @@ public class UIInventoryItem : MonoBehaviour
     public event Action<UIInventoryItem> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnRightMouseBtnClick;
 
     private bool empty = true;
-    public void Awwake()
+
+    private void Awake()
     {
         ResetData();
         Deselect();
     }
+
     public void ResetData()
     {
         this.itemImage.gameObject.SetActive(false);
         empty = true;
     }
+
     public void Deselect()
     {
         borderImage.enabled = false;
     }
 
-
     public void SetData(Sprite sprite, int quantity)
     {
         this.itemImage.gameObject.SetActive(true);
-        this.itemImage.sprite = sprite; 
-        this.quantityTxt.text = quantity + "";
-        empty= false;
+        this.itemImage.sprite = sprite;
+        this.quantityTxt.text = quantity.ToString();
+        empty = false;
     }
 
     public void Select()
     {
-        borderImage.enabled= true;
+        borderImage.enabled = true;
     }
+
     public void OnBeginDrag()
     {
         if (empty)
@@ -62,6 +65,7 @@ public class UIInventoryItem : MonoBehaviour
     {
         OnItemEndDrag?.Invoke(this);
     }
+
     public void OnPointerClick(BaseEventData data)
     {
         if (empty)
