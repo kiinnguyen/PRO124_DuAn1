@@ -1,0 +1,419 @@
+fileFormatVersion: 2
+guid: c4e3dce32895ed74c9427697bbbbbc38
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: SkeletonKingLeftWalk_Frame_0
+    originalName: 
+    pivot: {x: 0.6774193, y: -0.24242425}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 168
+      width: 31
+      height: 33
+    spriteID: b365e45db0e2ede40ade2f6394a1bd33
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 168}
+  - name: SkeletonKingLeftWalk_Frame_1
+    originalName: 
+    pivot: {x: 0.6875, y: -0.25}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 128
+      width: 32
+      height: 32
+    spriteID: fa55a643af6224040a47b8e2fbd3cdd4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 128}
+  - name: SkeletonKingLeftWalk_Frame_2
+    originalName: 
+    pivot: {x: 0.6875, y: -0.18181819}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 46
+      width: 32
+      height: 33
+    spriteID: a311afe31f1fe14458c89e749dd5e111
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 46}
+  - name: SkeletonKingLeftWalk_Frame_3
+    originalName: 
+    pivot: {x: 0.6875, y: -0.14705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 32
+      height: 34
+    spriteID: a6d1f2620badb124fa3f3055aaf87d32
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: SkeletonKingLeftWalk_Frame_4
+    originalName: 
+    pivot: {x: 0.6875, y: -0.18181819}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 87
+      width: 32
+      height: 33
+    spriteID: ff478099e8e04f74a89fe2cfbff9b401
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 87}
+  - name: SkeletonKingLeftWalk_Frame_5
+    originalName: 
+    pivot: {x: 0.6774193, y: -0.24242425}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 209
+      width: 31
+      height: 33
+    spriteID: 310feba1fb84e4b4298098d7348692cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 209}
+  - name: SkeletonKingLeftWalk_Frame_6
+    originalName: 
+    pivot: {x: 0.65517247, y: -0.21212122}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 47
+      width: 29
+      height: 33
+    spriteID: 7cc207744bc94904399b2b13917a1a5b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 47}
+  - name: SkeletonKingLeftWalk_Frame_7
+    originalName: 
+    pivot: {x: 0.6206897, y: -0.18181819}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 88
+      width: 29
+      height: 33
+    spriteID: fdcf193c71cffcf4cbf6b1388b18387e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 88}
+  - name: SkeletonKingLeftWalk_Frame_8
+    originalName: 
+    pivot: {x: 0.6206897, y: -0.11428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 4
+      width: 29
+      height: 35
+    spriteID: 3903649db15a2d44c9d80fc66a82a722
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 4}
+  - name: SkeletonKingLeftWalk_Frame_9
+    originalName: 
+    pivot: {x: 0.6206897, y: -0.18181819}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 129
+      width: 29
+      height: 33
+    spriteID: 5143d4ed1c2775c49a01ea7c00585d66
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 129}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -853440106
+    name: SkeletonKingLeftWalk
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: SkeletonKingLeftWalk_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 3
+        y: 8
+        width: 31
+        height: 33
+      spriteId: b365e45db0e2ede40ade2f6394a1bd33
+    - name: SkeletonKingLeftWalk_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 2
+        y: 8
+        width: 32
+        height: 32
+      spriteId: fa55a643af6224040a47b8e2fbd3cdd4
+    - name: SkeletonKingLeftWalk_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 2
+        y: 6
+        width: 32
+        height: 33
+      spriteId: a311afe31f1fe14458c89e749dd5e111
+    - name: SkeletonKingLeftWalk_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 2
+        y: 5
+        width: 32
+        height: 34
+      spriteId: a6d1f2620badb124fa3f3055aaf87d32
+    - name: SkeletonKingLeftWalk_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 2
+        y: 6
+        width: 32
+        height: 33
+      spriteId: ff478099e8e04f74a89fe2cfbff9b401
+    - name: SkeletonKingLeftWalk_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 3
+        y: 8
+        width: 31
+        height: 33
+      spriteId: 310feba1fb84e4b4298098d7348692cc
+    - name: SkeletonKingLeftWalk_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 5
+        y: 7
+        width: 29
+        height: 33
+      spriteId: 7cc207744bc94904399b2b13917a1a5b
+    - name: SkeletonKingLeftWalk_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 6
+        y: 6
+        width: 29
+        height: 33
+      spriteId: fdcf193c71cffcf4cbf6b1388b18387e
+    - name: SkeletonKingLeftWalk_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 6
+        y: 4
+        width: 29
+        height: 35
+      spriteId: 3903649db15a2d44c9d80fc66a82a722
+    - name: SkeletonKingLeftWalk_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 6
+        y: 6
+        width: 29
+        height: 33
+      spriteId: 5143d4ed1c2775c49a01ea7c00585d66
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 48}

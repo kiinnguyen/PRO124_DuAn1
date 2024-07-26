@@ -16,8 +16,6 @@ public class SlimeMovement : MonoBehaviour
     private Animator animator;
     private Vector2 lastDirection;
 
-
-
     void Start()
     {
         playerPOS = FindObjectOfType<Player>().transform;
@@ -45,6 +43,7 @@ public class SlimeMovement : MonoBehaviour
     void UpdateAnimator()
     {
         Vector2 velocity = new Vector2(agent.velocity.x, agent.velocity.y);
+
         Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
 
         if (velocity.sqrMagnitude > 0.1f)
@@ -95,7 +94,10 @@ public class SlimeMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(("Player")))
         {
-            collision.gameObject.SendMessage("TakeDamage", damage);
+            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+            Vector2 knockback = knockbackDirection * 5f;
+
+            collision.gameObject.SendMessage("TakeDamage", new object[] { damage, knockback });
             StartCoroutine(Attack());
         }
     }

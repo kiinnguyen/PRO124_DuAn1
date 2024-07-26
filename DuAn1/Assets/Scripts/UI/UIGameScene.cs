@@ -50,7 +50,6 @@ public class UIGameScene : MonoBehaviour
             foodBar.value = player.food;
             waterBar.value = player.water;
             goldText.text = player.gold.ToString();
-            userName.text = player.userName;
         }
         StartCoroutine(LifeCoroutine());
     }
@@ -105,17 +104,19 @@ public class UIGameScene : MonoBehaviour
     {
         while (true)
         {
+            if (foodBar.value <= 0 && waterBar.value <= 0)
+            {
+                float health = UnityEngine.Random.Range(2, 5);
 
+                healthBar.value -= health;
+            }
 
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(10f);
 
-            float number = UnityEngine.Random.Range(2, 5);
-            Debug.Log("number:" + number);
-
-            foodBar.value -= number;
-            waterBar.value -= number;
-
-
+            float food = UnityEngine.Random.Range(2, 5);
+            float water = UnityEngine.Random.Range(2, 5);
+            foodBar.value -= food;
+            waterBar.value -= water;
             yield return null;
         }
     }
