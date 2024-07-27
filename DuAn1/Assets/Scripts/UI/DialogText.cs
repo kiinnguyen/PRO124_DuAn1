@@ -9,39 +9,29 @@ public class DialogText : MonoBehaviour
 
     private int indexText;
     private List<string> listText;
+
+
     private void Update()
     {
         if (Input.anyKeyDown)
         {
-            if (listText != null && indexText < listText.Count)
+            if (indexText == listText.Count - 1)
             {
-                dialogText.text = listText[indexText];
+                gameObject.SetActive(false);
+            }
+            else if 
+            (indexText < listText.Count)
+            {
                 indexText++;
-
-                if (indexText == listText.Count)
-                {
-                    gameObject.SetActive(false);
-                }
+                dialogText.text = listText[indexText];
             }
         }
     }
 
     public void AddNewText(List<string> newText)
     {
-        if (newText != null)
-        {
-            listText = newText;
-            indexText = 0;
-
-            if (listText.Count > 0)
-            {
-                dialogText.text = listText[indexText];
-                indexText++;
-            }
-        }
-        else
-        {
-            dialogText.text = string.Empty;
-        }
+        listText = newText;
+        indexText = 0;
+        dialogText.text = listText[indexText];
     }
 }
