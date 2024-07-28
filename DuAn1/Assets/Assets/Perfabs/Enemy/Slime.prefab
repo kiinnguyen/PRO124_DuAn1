@@ -143,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.004635811, y: -0.11589241}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -154,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.89670753, y: 0.80399704}
   m_EdgeRadius: 0
 --- !u!195 &9216131212732736110
 NavMeshAgent:
@@ -165,7 +165,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 708295594114132529}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -195,6 +195,7 @@ MonoBehaviour:
   slimeManager: {fileID: 0}
   targetPOS: {fileID: 0}
   damage: 10
+  player: {fileID: 0}
 --- !u!114 &5505677003458206231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +211,7 @@ MonoBehaviour:
   health: 0
   healthBar: {fileID: 3470899122126543920}
   isDead: 0
+  listObject: []
 --- !u!1 &990586521271798387
 GameObject:
   m_ObjectHideFlags: 0

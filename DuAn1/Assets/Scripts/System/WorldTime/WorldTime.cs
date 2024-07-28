@@ -26,7 +26,7 @@ namespace WorldTime
 
         private void Start()
         {
-            _currentTime = TimeSpan.FromHours(7);
+            _currentTime = TimeSpan.FromHours(20);
             StartCoroutine(AddMinute());
         }
 

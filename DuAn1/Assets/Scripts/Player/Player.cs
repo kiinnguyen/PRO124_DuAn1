@@ -176,7 +176,6 @@ public class Player : MonoBehaviour
         GameManager.OnPause.AddListener(HandlePause);
         GameManager.OnResume.AddListener(HandleResume);
 
-        playerInput.enabled = false;
     }
 
     void OnDisable()
@@ -184,7 +183,6 @@ public class Player : MonoBehaviour
         GameManager.OnPause.RemoveListener(HandlePause);
         GameManager.OnResume.RemoveListener(HandleResume);
 
-        playerInput.enabled = true;
     }
 
     void HandlePause()

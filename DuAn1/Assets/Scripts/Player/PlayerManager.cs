@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     private string saveFilePath;
 
     private Rigidbody2D rb;
+    private Animator anim;
 
 
     private void Start()
@@ -26,6 +27,7 @@ public class PlayerManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         uiGameScene = FindObjectOfType<UIGameScene>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
         player.health = 100;
         player.food = 100;
@@ -35,48 +37,30 @@ public class PlayerManager : MonoBehaviour
         player.inventory = new List<Item>();
 
     }
-
-
-  /*  private void OnEnable()
-    {
-        GameManager.Instance.OnPause += HandlePause;
-        GameManager.Instance.OnResume += HandleResume;
-    }
-
-    private void OnDisable()
-    {   
-        GameManager.Instance.OnPause -= HandlePause;
-        GameManager.Instance.OnResume -= HandleResume;
-    } */
-
-    private void HandlePause()
-    {
-        // Logic to handle pause, e.g., disable components or stop animations
-        Debug.Log("Game Paused - Handling in SomeGameComponent");
-    }
-
-    private void HandleResume()
-    {
-        // Logic to handle resume, e.g., enable components or start animations
-        Debug.Log("Game Resumed - Handling in SomeGameComponent");
-    }
-
-
+    private bool isTakingDamage = false;
     public void TakeDamage(int damage)
     {
-        int health = player.health - damage;    
+        if (isTakingDamage) { return; }
+
+        isTakingDamage = true;
+
+        int health = player.health - damage;
 
         if (health <= 0)
         {
-            // Die
+            anim.SetTrigger("Death");
+            player.Death();
             uiGameScene.UpdateHealthBar(0);
         }
         else
         {
+            anim.SetTrigger("Hurt");
             player.health = health;
             uiGameScene.UpdateHealthBar(player.health);
         }
-      
+
+        isTakingDamage = false;
+
     }
 
     public void Heal(int value)
@@ -111,11 +95,5 @@ public class PlayerManager : MonoBehaviour
         int newValue = int.Parse(value.text);
 
         player.food = newValue;
-    }
-    public void UpdateWater(Text value)
-    {
-        int newValue = int.Parse(value.text);
-
-        player.water = newValue;
     }
 }

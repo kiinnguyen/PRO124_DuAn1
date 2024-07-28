@@ -16,11 +16,18 @@ public class SlimeMovement : MonoBehaviour
     private Animator animator;
     private Vector2 lastDirection;
 
+    [Header("Player")]
+    [SerializeField] Player player;
+
     void Start()
     {
-        playerPOS = FindObjectOfType<Player>().transform;
+        player = FindObjectOfType<Player>();
 
-        if (playerPOS != null) targetPOS = playerPOS;
+        if (player != null)
+        {
+            playerPOS = player.transform;
+            targetPOS = playerPOS;
+        }
 
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -33,10 +40,17 @@ public class SlimeMovement : MonoBehaviour
     {
         if (IsDead()) { return; }
 
+        if (player.isDeadState()) agent.Stop();
+
         if (targetPOS != null)
         {
             MoveToTarget(targetPOS);
         }
+        else
+        {
+            agent.ResetPath();
+        }
+
         UpdateAnimator();
     }
 
