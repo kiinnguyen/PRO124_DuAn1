@@ -7,8 +7,15 @@ public class DialogText : MonoBehaviour
 {
     [SerializeField] Text dialogText;
 
+    private GameManager gameManager;
+
     private int indexText;
     private List<string> listText;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
 
     private void Update()
@@ -18,6 +25,7 @@ public class DialogText : MonoBehaviour
             if (indexText == listText.Count - 1)
             {
                 gameObject.SetActive(false);
+                gameManager.ResumeGame();
             }
             else if 
             (indexText < listText.Count)

@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         player.health = 100;
         player.food = 100;
         player.water = 100;
-        player.gold = 100;
+        player.gold = 0;
         
         player.inventory = new List<Item>();
 

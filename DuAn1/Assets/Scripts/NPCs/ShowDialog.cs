@@ -11,6 +11,14 @@ public class ShowDialog : MonoBehaviour
 
     private Coroutine iconEffectCoroutine;
 
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -45,6 +53,7 @@ public class ShowDialog : MonoBehaviour
         {
             if (listTalk.Count > 0)
             {
+                gameManager.PauseGame();
                 dialogBanner.SetActive(true);
                 dialogBanner.GetComponent<DialogText>().AddNewText(listTalk);
             }

@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
 
     // Children
     [SerializeField] private GameObject meleeArea;
-
     [SerializeField] GameManager gameManager;
     [SerializeField] PlayerManager playerManager;
     [SerializeField] PlayerInput playerInput;
@@ -62,23 +61,35 @@ public class Player : MonoBehaviour
     private bool canAttack = true;
     private bool canDash = true;
     private bool isDead = false;
-    void Start()
+
+
+    // Pause Game
+
+    private bool isPaused = false;
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _speaker = GetComponent<AudioSource>();
-
+    }
+    void Start()
+    {
         // Classes
         animation_Controller = GetComponent<AnimationController>();
         gameManager = FindObjectOfType<GameManager>();
         playerManager = GetComponent<PlayerManager>();
-        playerInput = FindObjectOfType<PlayerInput>();
+        playerInput = GetComponent<PlayerInput>();
         knowFeedBack = GetComponent<KnockFeedBack>();
     }
 
     private void Update()
     {
-
+        if (isPaused)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            _animator.SetBool("isMoving", false);
+            return;
+        }
     }
 
 
@@ -89,18 +100,21 @@ public class Player : MonoBehaviour
     // Input Actions
     public void OnMove(InputAction.CallbackContext context)
     {
-        vector2Input = context.ReadValue<Vector2>().normalized;
-
-        if (vector2Input != Vector2.zero)
+        if (!isPaused)
         {
-            RotateAttackArea(vector2Input);
+            vector2Input = context.ReadValue<Vector2>().normalized;
+
+            if (vector2Input != Vector2.zero)
+            {
+                RotateAttackArea(vector2Input);
+            }
+            _rigidbody.velocity = new Vector2(vector2Input.x, vector2Input.y) * speedMove;
         }
-        _rigidbody.velocity = new Vector2(vector2Input.x, vector2Input.y) * speedMove;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!canAttack) return;
+        if (!canAttack || isPaused) return;
 
         if (context.performed)
         {
@@ -155,14 +169,37 @@ public class Player : MonoBehaviour
         meleeArea.transform.rotation = Quaternion.Euler(currentRotation);
     }
 
-    // Checking states
+    // States
 
-    private bool isPause()
+    private void OnEnable()
     {
-        // get bool value in systems script
-        return true;
+        GameManager.OnPause.AddListener(HandlePause);
+        GameManager.OnResume.AddListener(HandleResume);
+
+        playerInput.enabled = false;
     }
 
+    void OnDisable()
+    {
+        GameManager.OnPause.RemoveListener(HandlePause);
+        GameManager.OnResume.RemoveListener(HandleResume);
+
+        playerInput.enabled = true;
+    }
+
+    void HandlePause()
+    {
+        isPaused = true;
+        _rigidbody.velocity = Vector2.zero;
+        _animator.SetBool("isMoving", false);
+        Debug.Log("Player Paused");
+    }
+
+    void HandleResume()
+    {
+        isPaused = false;
+        Debug.Log("Player Resumed");
+    }
 
     // Data Manager
 

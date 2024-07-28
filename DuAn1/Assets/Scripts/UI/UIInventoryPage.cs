@@ -14,6 +14,7 @@ public class UIInventoryPage : MonoBehaviour
     [SerializeField]
     private MouseFollower mouseFollower;
 
+    [SerializeField]
     List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
     public Sprite image;

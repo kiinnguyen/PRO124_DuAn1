@@ -48,7 +48,7 @@ public class UIGameScene : MonoBehaviour
         {
             healthBar.value = player.health;
             foodBar.value = player.food;
-            waterBar.value = player.water;
+            //waterBar.value = player.water;
             goldText.text = player.gold.ToString();
         }
         StartCoroutine(LifeCoroutine());
@@ -57,12 +57,12 @@ public class UIGameScene : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        /*if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (!isOpenningInventory)
             StartCoroutine(OpenInventory());
         }
-
+*/
     }
 
 
@@ -104,7 +104,7 @@ public class UIGameScene : MonoBehaviour
     {
         while (true)
         {
-            if (foodBar.value <= 0 && waterBar.value <= 0)
+            if (foodBar.value <= 0)
             {
                 float health = UnityEngine.Random.Range(2, 5);
 
@@ -114,9 +114,7 @@ public class UIGameScene : MonoBehaviour
             yield return new WaitForSeconds(10f);
 
             float food = UnityEngine.Random.Range(2, 5);
-            float water = UnityEngine.Random.Range(2, 5);
             foodBar.value -= food;
-            waterBar.value -= water;
             yield return null;
         }
     }
@@ -136,24 +134,6 @@ public class UIGameScene : MonoBehaviour
         isOpenningInventory = true;
         yield return new WaitForSeconds(1f);
         isOpenningInventory = false;
-    }
-
-    public void Pause_ResumeGame(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (!isPaused)
-            {
-                isPaused = true;
-                gameManager.PauseGame();
-            }
-            else
-            {
-                isPaused = false;
-                gameManager.ResumeGame();
-            }
-        }
-        
     }
 
 }
