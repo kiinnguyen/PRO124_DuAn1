@@ -8,6 +8,7 @@ public class BossGoblinMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     NavMeshAgent agent;
+    SpriteRenderer spriteRenderer;
 
     [Header("Information")]
     [SerializeField] bool isDead;
@@ -21,6 +22,7 @@ public class BossGoblinMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -34,20 +36,21 @@ public class BossGoblinMovement : MonoBehaviour
 
     IEnumerator BossGoOn()
     {
-        TargetObject(player.transform);
         while (!isDead)
         {
-            yield return null;
+            TargetObject(player.transform);
+            UpdateAnimator();
+            yield return new WaitForSeconds(1f);
         }
 
         StopMoving();
-        
+        yield return null;
     }
 
     public void UpdateAnimator()
     {
-        Vector2 velocity = new Vector2(agent.velocity.x, agent.velocity.y);
-        Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
+        float x = transform.position.x - player.transform.position.x;
+        spriteRenderer.flipX =  x > 0 ? true : false;
     }
 
     void TargetObject(Transform gameobject)
@@ -83,5 +86,11 @@ public class BossGoblinMovement : MonoBehaviour
 
             yield return null;
         }
+    }
+
+
+    public void isDeadState()
+    {
+        isDead = true;
     }
 }
