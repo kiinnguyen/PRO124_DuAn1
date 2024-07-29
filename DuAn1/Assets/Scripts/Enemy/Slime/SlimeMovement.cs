@@ -16,11 +16,18 @@ public class SlimeMovement : MonoBehaviour
     private Animator animator;
     private Vector2 lastDirection;
 
+    [Header("Player")]
+    [SerializeField] Player player;
+
     void Start()
     {
-        playerPOS = FindObjectOfType<Player>().transform;
+        player = FindObjectOfType<Player>();
 
-        if (playerPOS != null) targetPOS = playerPOS;
+        if (player != null)
+        {
+            playerPOS = player.transform;
+            targetPOS = playerPOS;
+        }
 
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -33,10 +40,17 @@ public class SlimeMovement : MonoBehaviour
     {
         if (IsDead()) { return; }
 
+        if (player.isDeadState()) agent.ResetPath();
+
         if (targetPOS != null)
         {
             MoveToTarget(targetPOS);
         }
+        else
+        {
+            agent.ResetPath();
+        }
+
         UpdateAnimator();
     }
 
@@ -82,7 +96,6 @@ public class SlimeMovement : MonoBehaviour
         while (targetPOS != null && Vector2.Distance(transform.position, targetPOS.transform.position) <= 1f)
         {
             agent.ResetPath();
-            animator.SetTrigger("Attack");
             yield return new WaitForSeconds(1.5f);
         }
 
@@ -94,10 +107,7 @@ public class SlimeMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(("Player")))
         {
-            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-            Vector2 knockback = knockbackDirection * 5f;
-
-            collision.gameObject.SendMessage("TakeDamage", new object[] { damage, knockback });
+            collision.gameObject.SendMessage("TakeDamage",10);
             StartCoroutine(Attack());
         }
     }

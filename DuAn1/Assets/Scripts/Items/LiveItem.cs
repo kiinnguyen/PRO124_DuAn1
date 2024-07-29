@@ -8,25 +8,11 @@ public class LiveItem : Item
 
     private void Start()
     {
-        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     public override void Use()
     {
-        Debug.Log("Heal: " + itemName);
-        switch (itemType)
-        {   
-            case "Health":
-                playerManager.Heal(healAmount);
-                break;
-            case "Food":
-                break;
-            case "Water":
-                break;
-            default:
-                break;
-        }
-        Destroy(this);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

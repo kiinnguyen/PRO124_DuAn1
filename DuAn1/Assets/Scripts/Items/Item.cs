@@ -6,7 +6,5 @@ public abstract class Item : MonoBehaviour
 {
     public string itemName;
     public string itemType;
-
-    public PlayerManager playerManager;
     public abstract void Use();
 }

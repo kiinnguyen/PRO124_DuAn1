@@ -13,16 +13,28 @@ public class attackbyenemy : MonoBehaviour
 
     void Start()
     {
+        // Tìm người chơi bằng tag và lấy các tham chiếu
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
             player = playerObject.transform;
             playerManager = playerObject.GetComponent<PlayerManager>();
-        }
-        //playerManager = player.GetComponent<PlayerManager>();
-        animator = GetComponent<Animator>();
 
-        
+            if (playerManager == null)
+            {
+                Debug.LogError("Không tìm thấy PlayerManager trên đối tượng người chơi!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Không tìm thấy đối tượng người chơi với tag 'Player'!");
+        }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("Không tìm thấy Animator trên đối tượng quái vật!");
+        }
     }
 
     void Update()
@@ -40,12 +52,17 @@ public class attackbyenemy : MonoBehaviour
 
     void Attack()
     {
-        
-        // Kích hoạt animation tấn công
-        animator.SetTrigger("Attack");
+        if (animator != null)
+        {
+            // Kích hoạt animation tấn công
+            animator.SetTrigger("Attack");
+        }
 
-        // Giảm máu của người chơi
-        //playerManager.TakeDamage(new Object[] { 10, Vector2.zero); // Giảm 10 máu của người chơi
-
+        if (playerManager != null)
+        {
+            // Giảm máu của người chơi
+            playerManager.TakeDamage(10);
+            Debug.Log("Quái vật đã tấn công người chơi!");
+        }
     }
 }

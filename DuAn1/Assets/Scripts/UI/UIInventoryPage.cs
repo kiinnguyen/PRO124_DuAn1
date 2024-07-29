@@ -1,8 +1,7 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public class UIInventoryPage : MonoBehaviour
 {
@@ -12,28 +11,32 @@ public class UIInventoryPage : MonoBehaviour
     private RectTransform contentPanel;
     [SerializeField]
     private UIInventoryDescription itemDescription;
+    [SerializeField]
+    private MouseFollower mouseFollower;
 
+    [SerializeField]
     List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
     public Sprite image;
     public int quantity;
     public string title, description;
+
     private void Awake()
     {
         Hide();
+        mouseFollower.Toggle(false);
         itemDescription.ResetDescription();
     }
 
-    public void InitializeInventoryUI(int inventorysize)
+    public void InitializeInventoryUI(int inventorySize)
     {
-        
-        for (int i = 0; i < inventorysize; i++)
+        for (int i = 0; i < inventorySize; i++)
         {
-            UIInventoryItem uiItem = 
-                Instantiate(itemPrefab , Vector3.zero, Quaternion.identity);
+            UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
             uiItem.transform.SetParent(contentPanel);
+            uiItem.transform.localScale = Vector3.one;  // Đảm bảo tỷ lệ đúng
             listOfUIItems.Add(uiItem);
-            uiItem.OnItemClicked += HandleItemSeclection;
+            uiItem.OnItemClicked += HandleItemSelection;
             uiItem.OnItemBeginDrag += HandleBeginDrag;
             uiItem.OnItemDroppedOn += HandleSwap;
             uiItem.OnItemEndDrag += HandleEndDrag;
@@ -43,27 +46,29 @@ public class UIInventoryPage : MonoBehaviour
 
     private void HandleShowItemActions(UIInventoryItem obj)
     {
-
+        // Xử lý hành động khi nhấp chuột phải vào item
     }
 
     private void HandleEndDrag(UIInventoryItem obj)
     {
-
+        mouseFollower.Toggle(false );
     }
 
     private void HandleSwap(UIInventoryItem obj)
     {
-
+        // Xử lý khi thả item vào vị trí mới
     }
 
     private void HandleBeginDrag(UIInventoryItem obj)
     {
+        mouseFollower.Toggle(true);
+        mouseFollower.SetData(image, quantity);
     }
 
-    private void HandleItemSeclection(UIInventoryItem obj)
+    private void HandleItemSelection(UIInventoryItem obj)
     {
         itemDescription.SetDescription(image, title, description);
-        listOfUIItems[0].Select();
+        obj.Select();
     }
 
     public void Show()
@@ -71,7 +76,10 @@ public class UIInventoryPage : MonoBehaviour
         gameObject.SetActive(true);
         itemDescription.ResetDescription();
 
-        listOfUIItems[0].SetData(image, quantity);
+        if (listOfUIItems.Count > 0)
+        {
+            listOfUIItems[0].SetData(image, quantity);
+        }
     }
 
     public void Hide()

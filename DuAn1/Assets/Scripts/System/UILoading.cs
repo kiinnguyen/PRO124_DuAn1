@@ -7,7 +7,7 @@ public class UILoading : MonoBehaviour
 {
     [Header("UI Loading")]
     [SerializeField] Slider progressLoading;
-    [SerializeField] float loadingDuration = 10f;
+    [SerializeField] float loadingDuration;
 
     [Header("System")]
     [SerializeField] GameManager gameManager;

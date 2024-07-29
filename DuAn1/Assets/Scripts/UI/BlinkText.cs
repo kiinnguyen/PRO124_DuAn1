@@ -10,12 +10,8 @@ public class BlinkAndZoomText : MonoBehaviour
     public float zoomInterval = 0.5f; // Thời gian giữa các lần zoom
     public float zoomFactor = 1.2f; // Hệ số zoom
     private Vector3 originalScale;
-
-    [SerializeField] GameObject dialogBanner;
-
     void Start()
     {
-        dialogBanner = GameObject.Find("Dialog Talk");
         textToAnimate = GetComponent<Text>();
         if (textToAnimate != null)
         {
