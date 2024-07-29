@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 324959679275721306}
   - component: {fileID: 3561760464450388219}
   - component: {fileID: 5787748410462083083}
+  - component: {fileID: 3946865796947422918}
   m_Layer: 7
   m_Name: Hin
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,8 +156,8 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723515705860518347}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -181,8 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58055b5319af0c342802949ffce1b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHurting: 0
-  isDead: 0
 --- !u!114 &5787748410462083083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,11 +195,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  followDistance: 5
-  attackRange: 5
-  returnToPlayerDistance: 3
+  attackRange: 1
+  targetEnemy: {fileID: 0}
   meleeArea: {fileID: 3674115438081849567}
   isDead: 0
+--- !u!50 &3946865796947422918
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723515705860518347}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &3674115438081849567
 GameObject:
   m_ObjectHideFlags: 0
