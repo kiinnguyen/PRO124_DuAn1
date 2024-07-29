@@ -14,16 +14,18 @@ public class BossGoblinMovement : MonoBehaviour
 
     [SerializeField] GameObject player;
 
+    private Vector2 lastDirection;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
 
-        agent.updatePosition = false;
+        agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        player = GameObject.Find("Player");
+        player = FindObjectOfType<Player>().gameObject;
 
         if (player != null) StartCoroutine(BossGoOn());
 
@@ -42,6 +44,12 @@ public class BossGoblinMovement : MonoBehaviour
         
     }
 
+    public void UpdateAnimator()
+    {
+        Vector2 velocity = new Vector2(agent.velocity.x, agent.velocity.y);
+        Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
+    }
+
     void TargetObject(Transform gameobject)
     {
         agent.SetDestination(gameobject.position);
@@ -50,5 +58,30 @@ public class BossGoblinMovement : MonoBehaviour
     void StopMoving()
     {
         agent.ResetPath();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            StartCoroutine(Attack());
+        }
+    }
+    bool isAttacking = false;
+    IEnumerator Attack()
+    {
+        if (isAttacking) yield return null;
+        else
+        {
+            isAttacking = true;
+
+            anim.SetTrigger("Attack");
+
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+            isAttacking = false;
+
+            yield return null;
+        }
     }
 }
