@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] public int gold;
     [SerializeField] public int health;
     [SerializeField] public int food;
-    [SerializeField] public int water;
     [SerializeField] public int damage;
 
     [SerializeField] public List<Item> inventory;
@@ -44,13 +43,6 @@ public class Player : MonoBehaviour
 
     [Header("Attack Setting")]
     [SerializeField] float attackDuration = 0.5f;
-    [SerializeField] float attackCooldown = 0.5f;
-
-    [Header("Dash Setting")]
-    [SerializeField] float dashSpeed = 5f;
-    [SerializeField] float dashDuration = 0.1f;
-    [SerializeField] float dashCoolDown = 1f;
-
 
     [Header("Audio Setting")]
     [SerializeField] AudioClip attack_Sfx;
@@ -59,7 +51,6 @@ public class Player : MonoBehaviour
     private bool isDashing = false;
     private bool isAttacking = false;
     private bool canAttack = true;
-    private bool canDash = true;
     private bool isDead = false;
 
 

@@ -11,41 +11,57 @@ public class GoblinMovement : MonoBehaviour
     private NavMeshAgent navAgent;
 
     [SerializeField]
-    private float maxRange = 10f;
+    private float maxRange = 5f;
     [SerializeField]
     private float minRange = 1f;
+
+
+    private Vector2 lastDirection;
+
+    public bool isDead = false;
+
+    private float distanceToTarget;
+
 
     void Start()
     {
         myAnim = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
-        target = FindAnyObjectByType<Player>().transform;
+        target = FindObjectOfType<Player>().transform;
         navAgent.updateRotation = false;
         navAgent.updateUpAxis = false;
     }
 
     void Update()
     {
-        float distanceToTarget = Vector3.Distance(target.position, transform.position);
+        if (isDead) return;
+        distanceToTarget = Vector3.Distance(target.position, transform.position);
 
         if (distanceToTarget <= maxRange && distanceToTarget >= minRange)
         {
-            FollowPlayer();
+            navAgent.SetDestination(target.position);
         }
         else if (distanceToTarget > maxRange)
         {
-            GoHome();
+            navAgent.ResetPath();
+            //GoHome();
         }
+        UpdateAnimator();
     }
 
-    public void FollowPlayer()
+    public void UpdateAnimator()
     {
-        myAnim.SetBool("isMoving", true);
-        navAgent.SetDestination(target.position);
+        Vector2 velocity = new Vector2(navAgent.velocity.x, navAgent.velocity.y);
+        Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
 
-        Vector3 direction = target.position - transform.position;
-        myAnim.SetFloat("moveX", direction.x);
-        myAnim.SetFloat("moveY", direction.y);
+        if (velocity.sqrMagnitude > 0.1f)
+        {
+            lastDirection = normalizedVelocity;
+        }
+
+        myAnim.SetFloat("moveX", normalizedVelocity.x);
+        myAnim.SetFloat("moveY", normalizedVelocity.y);
+        myAnim.SetBool("isMoving", velocity.sqrMagnitude > 0.1f);
     }
 
     public void GoHome()
@@ -62,8 +78,41 @@ public class GoblinMovement : MonoBehaviour
         }
     }
 
+
     public void NavAgentWarp(Vector3 position)
     {
         navAgent.Warp(position);
+    }
+    
+    public void StopMoving()
+    {
+        navAgent.ResetPath();
+        target = null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            StartCoroutine(Attack());
+        }
+    }
+
+    bool isAttacking = false;
+    IEnumerator Attack()
+    {
+        if (isAttacking) yield return null;
+        else
+        {
+            isAttacking = true;
+
+            myAnim.SetTrigger("Attack");
+
+            yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
+
+            isAttacking = false;
+
+            yield return null;
+        }
     }
 }

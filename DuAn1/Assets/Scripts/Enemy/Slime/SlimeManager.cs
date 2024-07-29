@@ -8,8 +8,6 @@ public class SlimeManager : MonoBehaviour
 {
     [Header("Information")]
     [SerializeField] float health;
-    [SerializeField] Slider healthBar;
-
 
     public bool isDead;
     private Animator animator;
@@ -24,11 +22,9 @@ public class SlimeManager : MonoBehaviour
     void Start()
     {
         health = 100;
-        if (healthBar != null)
-        {
-            healthBar.value = health;
-            isDead = false;
-        }
+
+        isDead = false;
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -50,12 +46,7 @@ public class SlimeManager : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger("Death");
-            healthBar.value = 0;
             StartCoroutine(DestroyAfterDeathAnimation());
-        }
-        else
-        {
-            healthBar.value = health;
         }
         isTakingDamage = false;
     }
