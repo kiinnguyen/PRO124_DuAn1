@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,7 +14,8 @@ public class BossGoblinMovement : MonoBehaviour
 
     [SerializeField] GameObject player;
 
-    private Vector2 lastDirection;
+    private bool isAttacking = false;
+    private bool isUsingSkill = false;
 
     void Start()
     {
@@ -38,8 +38,11 @@ public class BossGoblinMovement : MonoBehaviour
     {
         while (!isDead)
         {
-            TargetObject(player.transform);
-            UpdateAnimator();
+            if (!isAttacking && !isUsingSkill)
+            {
+                TargetObject(player.transform);
+                UpdateAnimator();
+            }
             yield return new WaitForSeconds(1f);
         }
 
@@ -50,12 +53,15 @@ public class BossGoblinMovement : MonoBehaviour
     public void UpdateAnimator()
     {
         float x = transform.position.x - player.transform.position.x;
-        spriteRenderer.flipX =  x > 0 ? true : false;
+        spriteRenderer.flipX = x > 0;
     }
 
-    void TargetObject(Transform gameobject)
+    void TargetObject(Transform target)
     {
-        agent.SetDestination(gameobject.position);
+        if (!isAttacking && !isUsingSkill)
+        {
+            agent.SetDestination(target.position);
+        }
     }
 
     void StopMoving()
@@ -63,34 +69,38 @@ public class BossGoblinMovement : MonoBehaviour
         agent.ResetPath();
     }
 
+    public void SetAttacking(bool attacking)
+    {
+        isAttacking = attacking;
+        if (attacking)
+        {
+            StopMoving();
+        }
+    }
+
+    public void SetUsingSkill(bool usingSkill)
+    {
+        isUsingSkill = usingSkill;
+        if (usingSkill)
+        {
+            StopMoving();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(Attack());
-        }
-    }
-    bool isAttacking = false;
-    IEnumerator Attack()
-    {
-        if (isAttacking) yield return null;
-        else
-        {
-            isAttacking = true;
-
-            anim.SetTrigger("Attack");
-
-            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-            isAttacking = false;
-
-            yield return null;
+            if (!isUsingSkill)
+            {
+                GetComponent<BossGoblinSkills>().PerformMeleeAttack();
+            }
         }
     }
 
-
-    public void isDeadState()
+    public void IsDeadState()
     {
         isDead = true;
+        StopMoving();
     }
 }
