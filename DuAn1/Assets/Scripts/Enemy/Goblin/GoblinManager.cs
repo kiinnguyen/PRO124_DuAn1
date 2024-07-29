@@ -30,17 +30,25 @@ public class GoblinManager : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            goblinMovement.isDead = true;
+            goblinMovement.StopMoving();
             Die();
         }
         else
         {
-            myAnim.SetTrigger("Hit");
+            myAnim.SetTrigger("Hurt");
         }
     }
 
     private void Die()
     {
-        myAnim.SetBool("isDead", true);
-        // Add additional death logic here (e.g., remove enemy, play sound, etc.)
+        myAnim.SetTrigger("Death");
+        StartCoroutine(DestroyAfterDeathAnimation());
+    }
+
+    private IEnumerator DestroyAfterDeathAnimation()
+    {
+        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
     }
 }

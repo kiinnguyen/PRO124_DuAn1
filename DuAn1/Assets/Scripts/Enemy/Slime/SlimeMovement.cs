@@ -40,7 +40,7 @@ public class SlimeMovement : MonoBehaviour
     {
         if (IsDead()) { return; }
 
-        if (player.isDeadState()) agent.Stop();
+        if (player.isDeadState()) agent.ResetPath();
 
         if (targetPOS != null)
         {
@@ -96,7 +96,6 @@ public class SlimeMovement : MonoBehaviour
         while (targetPOS != null && Vector2.Distance(transform.position, targetPOS.transform.position) <= 1f)
         {
             agent.ResetPath();
-            animator.SetTrigger("Attack");
             yield return new WaitForSeconds(1.5f);
         }
 

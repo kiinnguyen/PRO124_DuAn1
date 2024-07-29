@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class HinMovement : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] float followDistance;
+    //[SerializeField] float followDistance;
     [SerializeField] float attackRange;
-    [SerializeField] float returnToPlayerDistance;
+    //[SerializeField] float returnToPlayerDistance;
 
     private NavMeshAgent agent;
     private Animator animator;
-    private GameObject targetEnemy;
+    [SerializeField] 
+    GameObject targetEnemy;
     private Vector2 lastDirection;
     [SerializeField] GameObject meleeArea;
 
@@ -39,14 +40,7 @@ public class HinMovement : MonoBehaviour
 
         if (targetEnemy != null)
         {
-            if (Vector2.Distance(transform.position, targetEnemy.transform.position) < followDistance)
-            {
-                agent.SetDestination(targetEnemy.transform.position);
-            }
-            else
-            {
-
-            }
+           agent.SetDestination(targetEnemy.transform.position);    
         }
         else
         {
@@ -97,11 +91,13 @@ public class HinMovement : MonoBehaviour
 
         isAttacking = true;
 
-        while (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= 2f)
+        while (targetEnemy != null && Vector2.Distance(transform.position, targetEnemy.transform.position) <= attackRange)
         {
             agent.ResetPath();
+            meleeArea.SetActive(true);
             animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+            meleeArea.SetActive(false);
         }
 
         isAttacking = false;
@@ -149,19 +145,7 @@ public class HinMovement : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             targetEnemy = null;
-            Debug.Log("Enemy lost.");
         }
     }
 
-    public void CheckingLive(Slider slider)
-    {
-        isDead = slider.value == 0;
-
-        if (isDead) Die();
-    }
-
-    private void Die()
-    {
-        this.enabled = false;
-    }
 }
