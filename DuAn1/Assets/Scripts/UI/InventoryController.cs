@@ -32,12 +32,12 @@ public class InventoryController : MonoBehaviour
         {
             if (!inventoryUI.isActiveAndEnabled)
             {
-                gameManager.PauseGame();
+                //gameManager.PauseGame();
                 inventoryUI.Show();
             }
             else
             {
-                gameManager.ResumeGame();
+                //gameManager.ResumeGame();
                 inventoryUI.Hide();
             }
         }

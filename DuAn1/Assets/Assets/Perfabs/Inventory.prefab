@@ -1537,8 +1537,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1836,7 +1836,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 6390176056759670944, guid: ca349d147ddddd4478ca1109683f5154, type: 3}
   contentPanel: {fileID: 5283398279073431307}
   itemDescription: {fileID: 6280838495806360736}
+  mouseFollower: {fileID: 0}
+  listOfUIItems: []
   image: {fileID: 977923682, guid: 57b26d53150ee824fa86f0153697badc, type: 3}
+  image2: {fileID: 0}
   quantity: 1
   title: Fish
   description: eat it

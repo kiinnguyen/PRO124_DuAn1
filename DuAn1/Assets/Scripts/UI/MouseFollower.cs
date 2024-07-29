@@ -6,8 +6,6 @@ public class MouseFollower : MonoBehaviour
 {
     [SerializeField]
     private Canvas canvas;
-    [SerializeField]
-    private Camera mainCam;
 
     [SerializeField]
     private UIInventoryItem item;
@@ -15,7 +13,6 @@ public class MouseFollower : MonoBehaviour
     public void Awake()
     {
         canvas = transform.root.GetComponent<Canvas>();
-        mainCam = Camera.main;
         item = GetComponentInChildren<UIInventoryItem>();
     }
 
