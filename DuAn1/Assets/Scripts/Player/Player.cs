@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
+//using UnityEditor.Experimental.RestService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -210,6 +210,16 @@ public class Player : MonoBehaviour
     public bool isDeadState()
     {
         return isDead;
+    }
+
+
+    public void Die()
+    {
+        // Hiển thị thông báo chết
+        Debug.Log("Player đã chết!");
+
+        // Xử lý logic chết như làm cho nhân vật biến mất hoặc tải lại scene
+        // Ví dụ: Destroy(gameObject); hoặc SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Adio.unity
     guid: 55f2072bbe161784c910e9dbcccd8b24
+  - enabled: 1
+    path: Assets/Main Scenes/KK.unity
+    guid: 212669f3328bdde4393aea5961309f6f
+  - enabled: 1
+    path: Assets/Main Scenes/Cave.unity
+    guid: 2cffba9da6272bb4bb5bdb3f9842f633
   m_configObjects: {}
