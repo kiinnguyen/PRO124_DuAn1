@@ -1696,7 +1696,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2023140534748457633, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.6
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 2023140534748457633, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5877,7 +5877,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6527,7 +6527,7 @@ Transform:
   m_GameObject: {fileID: 1201031506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.6, y: 99.1, z: -10}
+  m_LocalPosition: {x: 37.6, y: 99.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6646,7 +6646,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 339033559}
+  m_LookAt: {fileID: 2139821095}
   m_Follow: {fileID: 339033559}
   m_Lens:
     FieldOfView: 60
@@ -6676,7 +6676,7 @@ Transform:
   m_GameObject: {fileID: 1337473809}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.6, y: 99.1, z: -10}
+  m_LocalPosition: {x: 37.6, y: 99.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
