@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d679fc9f8cbf35342bb495adbfa71321, type: 3}
   m_Name: HPPotion
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 0
+  <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 64
   <Name>k__BackingField: HP Potion
   <Description>k__BackingField: Heal

@@ -13,6 +13,8 @@ public class InventorySO : ScriptableObject
     [field: SerializeField]
     public int Size { get; private set; } = 10;
 
+    
+
     public void Initialize()
     {
         inventoryItems = new List<InventoryItem>();
@@ -48,6 +50,18 @@ public class InventorySO : ScriptableObject
         }
         return returnValue;
     }
+
+    public InventoryItem GetItemAt(int itemIndex)
+    {
+        if (itemIndex < 0 || itemIndex >= inventoryItems.Count)
+        {
+            Debug.LogWarning($"Item index {itemIndex} is out of range.");
+            return InventoryItem.GetEmptyItem();
+        }
+
+        return inventoryItems[itemIndex];
+    }
+
 }
 [Serializable]
 

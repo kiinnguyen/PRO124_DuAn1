@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-[CreateAssetMenu]
-public class ItemSO : ScriptableObject
-{
-    [field: SerializeField]
+    [CreateAssetMenu]
+    public class ItemSO : ScriptableObject
+    {
 
-    public bool IsStackable {  get; set; }
+        [field: SerializeField]
 
-    public int ID => GetInstanceID();
+        public bool IsStackable {  get; set; }
 
-    [field: SerializeField]
+        public int ID => GetInstanceID();
 
-    public int MaxStackSize { get; set; } = 1;
-    [field: SerializeField]
+        [field: SerializeField]
 
-    public string  Name { get; set; }
-    [field: SerializeField]
-    [field: TextArea]
+        public int MaxStackSize { get; set; } = 1;
+        [field: SerializeField]
 
-    public string Description { get; set; }
-    [field: SerializeField]
+        public string  Name { get; set; }
+        [field: SerializeField]
+        [field: TextArea]
 
-    public Sprite ItemImage { get; set; }
-}
+        public string Description { get; set; }
+        [field: SerializeField]
+
+        public Sprite ItemImage { get; set; }
+    }
