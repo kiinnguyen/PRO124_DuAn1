@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.Experimental.RestService;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -197,7 +197,8 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         playerInput.enabled = false;
-        // Show dead
+        Time.timeScale = 0.3f;
+        // Show dead     
     }
 
 

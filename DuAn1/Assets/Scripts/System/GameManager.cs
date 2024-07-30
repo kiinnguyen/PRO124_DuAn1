@@ -6,25 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("Player")]
-    [SerializeField] PlayerManager playerManager;
-    [SerializeField] Player player;
-
-    [SerializeField] string userName;
-    [Header("Font")]
-    [SerializeField] Font newFont;
-
     string dataPath = "Assets/Data/playerData.json";
 
     public static UnityEvent OnPause = new UnityEvent();
     public static UnityEvent OnResume = new UnityEvent();
 
     private bool isPaused = false;
-
-    public string GetUserName()
-    {
-        return userName;
-    }
 
     // UI Loading
     public void LoadScene(string sceneNameInput)

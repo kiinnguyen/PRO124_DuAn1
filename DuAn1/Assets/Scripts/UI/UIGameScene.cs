@@ -31,6 +31,7 @@ public class UIGameScene : MonoBehaviour
 
     [SerializeField] Text userName;
 
+    [SerializeField] GameObject deathDialog;
 
     [Header("Life Data")]
     [SerializeField] bool startBlood;
@@ -39,6 +40,8 @@ public class UIGameScene : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
+
         isPaused = false;
 
         playerManager = FindObjectOfType<PlayerManager>();
@@ -57,23 +60,18 @@ public class UIGameScene : MonoBehaviour
 
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (!isOpenningInventory)
             StartCoroutine(OpenInventory());
         }
-*/
     }
-
-
-
 
     public void ReturnMenuScene()
     {
         SceneManager.LoadScene(0);
 
     }
-
 
     public void UpdateValueToSlider(string sliderName)
     {
@@ -96,9 +94,22 @@ public class UIGameScene : MonoBehaviour
         healthBar.value = value;
     }
 
-
+    public void DeathShow()
+    {
+        if (player.isDeadState())
+        {
+            StartCoroutine(Death());
+        }
+    }
 
     // Interface 
+
+    IEnumerator Death()
+    {
+        deathDialog.SetActive(true);
+
+        yield return null;
+    }
 
     IEnumerator LifeCoroutine()
     {

@@ -17,7 +17,9 @@ GameObject:
   - component: {fileID: 3212602515098866461}
   - component: {fileID: 5324947256192083657}
   - component: {fileID: 8882122045124304959}
-  - component: {fileID: 2878678590604878842}
+  - component: {fileID: 5621032036043211433}
+  - component: {fileID: 5979876996143144504}
+  - component: {fileID: 5181868508306563759}
   m_Layer: 0
   m_Name: Gin
   m_TagString: Untagged
@@ -407,7 +409,6 @@ MonoBehaviour:
   gold: 0
   health: 0
   food: 0
-  water: 0
   damage: 5
   inventory: []
   meleeArea: {fileID: 5997194703372804750}
@@ -416,10 +417,6 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   zRotate: 0
   attackDuration: 0.5
-  attackCooldown: 0.5
-  dashSpeed: 5
-  dashDuration: 0.1
-  dashCoolDown: 1
   attack_Sfx: {fileID: 8300000, guid: cad135e36cc09de42b56d1ea6d5ef673, type: 3}
 --- !u!114 &8882122045124304959
 MonoBehaviour:
@@ -433,7 +430,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c23ab088b286344a6c02939fd8d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2878678590604878842
+--- !u!114 &5621032036043211433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747014262174486363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ca5961441a493418c16cb886fb923e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  inventorySize: 8
+--- !u!114 &5979876996143144504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,6 +456,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837f9d810f414544bb38d4ca3d1299be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5181868508306563759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747014262174486363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b3f212f826f004483fd64e5fee59e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackForce: 10
+  knockbackDuration: 0.2
 --- !u!1 &5997194703372804750
 GameObject:
   m_ObjectHideFlags: 0

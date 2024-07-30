@@ -10,14 +10,12 @@ public class PlayerManager : MonoBehaviour
     private GameManager gameManager;
     private UIGameScene uiGameScene;
     private Player player;
-    private string saveFilePath;
 
     private Rigidbody2D rb;
     private Animator anim;
 
     private float knockbackForce = 10f;
     private float knockbackDuration = 0.2f;
-
 
     private void Start()
     {
@@ -32,13 +30,14 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        player.health = 100;
-        player.food = 100;
-        player.gold = 0;
-        
-        player.inventory = new List<Item>();
-
+        if (player != null)
+        {
+            Debug.Log("Start Load Data For Player");
+            PlayerData.Instance.LoadPlayerData();
+        }
     }
+
+
     private bool isTakingDamage = false;
     public void TakeDamage(int damage)
     {
@@ -64,7 +63,6 @@ public class PlayerManager : MonoBehaviour
         isTakingDamage = false;
 
     }
-
     public void Heal(int value)
     {
         int health = player.health + value;
@@ -84,7 +82,6 @@ public class PlayerManager : MonoBehaviour
 
         }
     }
-
     public void UpdateHealth(Text value)
     {
         int newValue = int.Parse(value.text);

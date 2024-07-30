@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 public class SlimeMovement : MonoBehaviour
 {
     [Header("Component")]
     [SerializeField] Transform playerPOS;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] SlimeManager slimeManager;
-
-
 
     [Header("Information")]
     [SerializeField] Transform targetPOS;
@@ -21,9 +20,10 @@ public class SlimeMovement : MonoBehaviour
     [Header("Player")]
     [SerializeField] Player player;
 
-
     [Header("Systems")]
     [SerializeField] bool isPaused;
+    private bool isAttacking = false;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -48,11 +48,15 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
-        if (IsDead()) { return; }
+        if (IsDead()) return;
 
-        if (player.isDeadState()) agent.ResetPath();
+        if (player.isDeadState())
+        {
+            agent.ResetPath();
+            return;
+        }
 
-        if (targetPOS != null || !isPaused)
+        if (targetPOS != null && !isPaused)
         {
             MoveToTarget(targetPOS);
         }
@@ -67,7 +71,6 @@ public class SlimeMovement : MonoBehaviour
     void UpdateAnimator()
     {
         Vector2 velocity = new Vector2(agent.velocity.x, agent.velocity.y);
-
         Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
 
         if (velocity.sqrMagnitude > 0.1f)
@@ -104,15 +107,13 @@ public class SlimeMovement : MonoBehaviour
         return slimeManager.isDead;
     }
 
-    private bool isAttacking = false;
     IEnumerator Attack()
     {
-        if (IsDead()) yield break;
-        if (isAttacking) yield break;
+        if (IsDead() || isAttacking) yield break;
 
         isAttacking = true;
 
-        while (targetPOS != null && Vector2.Distance(transform.position, targetPOS.transform.position) <= 1f)
+        while (targetPOS != null && Vector2.Distance(transform.position, targetPOS.position) <= 1f)
         {
             agent.ResetPath();
             yield return new WaitForSeconds(1.5f);
@@ -121,11 +122,11 @@ public class SlimeMovement : MonoBehaviour
         isAttacking = false;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Attack by Slime");
             KnockBack knockBack = collision.GetComponent<KnockBack>();
 
             if (knockBack != null)
@@ -138,20 +139,17 @@ public class SlimeMovement : MonoBehaviour
         }
     }
 
-
     // Pause - Resume
     private void OnEnable()
     {
         GameManager.OnPause.AddListener(HandlePause);
         GameManager.OnResume.AddListener(HandleResume);
-
     }
 
     void OnDisable()
     {
         GameManager.OnPause.RemoveListener(HandlePause);
         GameManager.OnResume.RemoveListener(HandleResume);
-
     }
 
     void HandlePause()
@@ -167,5 +165,4 @@ public class SlimeMovement : MonoBehaviour
         isPaused = false;
         Debug.Log("Slime Resumed");
     }
-
 }
