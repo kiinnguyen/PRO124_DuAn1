@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : Singleton<PlayerData>
+public class PlayerData : MonoBehaviour
 {
     private Player player;
 
@@ -14,6 +14,11 @@ public class PlayerData : Singleton<PlayerData>
     private void InitializePlayer()
     {
         player = FindObjectOfType<Player>();
+
+        if (player != null)
+        {
+            LoadPlayerData();
+        }
     }
     public void SavePlayerData()
     {

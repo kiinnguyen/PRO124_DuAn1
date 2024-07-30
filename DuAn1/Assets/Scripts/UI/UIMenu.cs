@@ -9,6 +9,7 @@ public class UIMenu : MonoBehaviour
     {
         // create character 
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
 }

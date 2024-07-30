@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     private GameManager gameManager;
     private UIGameScene uiGameScene;
     private Player player;
+    private PlayerData playerData;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -27,13 +28,14 @@ public class PlayerManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
         uiGameScene = FindObjectOfType<UIGameScene>();
+        playerData = FindObjectOfType<PlayerData>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        if (player != null)
+        if (player != null && playerData)
         {
             Debug.Log("Start Load Data For Player");
-            PlayerData.Instance.LoadPlayerData();
+            playerData.LoadPlayerData();
         }
     }
 
