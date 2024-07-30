@@ -48,14 +48,16 @@ public class SlimeManager : MonoBehaviour
         if (isTakingDamage) return;
         isTakingDamage = true;
         health -= damage;
-        StartCoroutine(HurtEffect());
-
         if (health <= 0)
         {
             animator.SetTrigger("Death");
             StartCoroutine(DestroyAfterDeathAnimation());
         }
-        isTakingDamage = false;
+        else
+        {
+            StartCoroutine(HurtEffect());
+            isTakingDamage = false;
+        }
     }
 
     IEnumerator HurtEffect()

@@ -14,8 +14,11 @@ public class KnockBack : MonoBehaviour
 
     public void ApplyKnockback(Vector2 direction)
     {
-        StopAllCoroutines();
-        StartCoroutine(KnockbackCoroutine(direction));
+        if (rb != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(KnockbackCoroutine(direction));
+        }
     }
 
     private IEnumerator KnockbackCoroutine(Vector2 direction)
