@@ -10,15 +10,20 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField] SlimeManager slimeManager;
 
 
+
     [Header("Information")]
     [SerializeField] Transform targetPOS;
     [SerializeField] float damage = 10f;
     private Animator animator;
+    private Rigidbody2D rb;
     private Vector2 lastDirection;
 
     [Header("Player")]
     [SerializeField] Player player;
 
+
+    [Header("Systems")]
+    [SerializeField] bool isPaused;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -37,6 +42,7 @@ public class SlimeMovement : MonoBehaviour
             agent.updateUpAxis = false;
         }
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         slimeManager = GetComponent<SlimeManager>();
     }
 
@@ -46,7 +52,7 @@ public class SlimeMovement : MonoBehaviour
 
         if (player.isDeadState()) agent.ResetPath();
 
-        if (targetPOS != null)
+        if (targetPOS != null || !isPaused)
         {
             MoveToTarget(targetPOS);
         }
@@ -130,6 +136,36 @@ public class SlimeMovement : MonoBehaviour
                 StartCoroutine(Attack());
             }
         }
+    }
+
+
+    // Pause - Resume
+    private void OnEnable()
+    {
+        GameManager.OnPause.AddListener(HandlePause);
+        GameManager.OnResume.AddListener(HandleResume);
+
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnPause.RemoveListener(HandlePause);
+        GameManager.OnResume.RemoveListener(HandleResume);
+
+    }
+
+    void HandlePause()
+    {
+        isPaused = true;
+        rb.velocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+        Debug.Log("Slime Paused");
+    }
+
+    void HandleResume()
+    {
+        isPaused = false;
+        Debug.Log("Slime Resumed");
     }
 
 }

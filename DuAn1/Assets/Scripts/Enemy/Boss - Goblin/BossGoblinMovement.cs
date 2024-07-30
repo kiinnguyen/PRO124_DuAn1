@@ -95,6 +95,7 @@ public class BossGoblinMovement : MonoBehaviour
             {
                 GetComponent<BossGoblinSkills>().PerformMeleeAttack();
             }
+            anim.SetTrigger("Attack 1");
         }
     }
 
