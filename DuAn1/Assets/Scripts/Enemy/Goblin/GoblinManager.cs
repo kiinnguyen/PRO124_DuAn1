@@ -6,7 +6,12 @@ public class GoblinManager : MonoBehaviour
 {
     private GoblinMovement goblinMovement;
     private Animator myAnim;
-    private int health = 100;
+    [SerializeField] int health = 250;
+
+    [Header("Items when drop")]
+    [SerializeField]
+    List<GameObject> listObject;
+    [SerializeField] private float percentToDropItem;
 
     void Start()
     {
@@ -14,14 +19,18 @@ public class GoblinManager : MonoBehaviour
         myAnim = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.tag == "Attack")
+        if (collision.CompareTag("Player"))
         {
-            TakeDamage(20);
-            Vector2 difference = transform.position - other.transform.position;
-            transform.position = new Vector2(transform.position.x + difference.x, transform.position.y + difference.y);
-            goblinMovement.NavAgentWarp(transform.position);
+            KnockBack knockBack = collision.GetComponent<KnockBack>();
+
+            if (knockBack != null)
+            {
+                Vector2 knockback = (collision.transform.position - transform.position).normalized;
+                knockBack.ApplyKnockback(knockback);
+                collision.SendMessage("TakeDamage", 20);
+            }
         }
     }
 
@@ -50,5 +59,20 @@ public class GoblinManager : MonoBehaviour
     {
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        float randomNumber = UnityEngine.Random.Range(0f, 1f);
+
+        if (randomNumber <= percentToDropItem)
+        {
+            if (listObject.Count > 0)
+            {
+                GameObject newObject = listObject[UnityEngine.Random.Range(0, listObject.Count)];
+
+                Instantiate(newObject, transform.position, Quaternion.identity);
+            }
+        }
     }
 }

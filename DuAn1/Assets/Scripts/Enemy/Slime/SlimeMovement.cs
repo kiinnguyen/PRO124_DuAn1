@@ -76,7 +76,16 @@ public class SlimeMovement : MonoBehaviour
 
     void MoveToTarget(Transform target)
     {
-        agent.SetDestination(target.position);
+        if (agent == null || !agent.isOnNavMesh) return;
+
+        try
+        {
+            agent.SetDestination(target.position);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("Failed to set destination: " + ex.Message);
+        }
     }
 
     public void StopTarget()
