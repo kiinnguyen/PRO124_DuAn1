@@ -30,10 +30,14 @@ public class SlimeMovement : MonoBehaviour
         }
 
         agent = GetComponent<NavMeshAgent>();
+
+        if (agent != null)
+        {
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
+        }
         animator = GetComponent<Animator>();
         slimeManager = GetComponent<SlimeManager>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
     }
 
     void Update()
@@ -72,7 +76,16 @@ public class SlimeMovement : MonoBehaviour
 
     void MoveToTarget(Transform target)
     {
-        agent.SetDestination(target.position);
+        if (agent == null || !agent.isOnNavMesh) return;
+
+        try
+        {
+            agent.SetDestination(target.position);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("Failed to set destination: " + ex.Message);
+        }
     }
 
     public void StopTarget()
@@ -103,12 +116,19 @@ public class SlimeMovement : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(("Player")))
+        if (collision.CompareTag("Player"))
         {
-            collision.gameObject.SendMessage("TakeDamage",10);
-            StartCoroutine(Attack());
+            KnockBack knockBack = collision.GetComponent<KnockBack>();
+
+            if (knockBack != null)
+            {
+                Vector2 knockback = (collision.transform.position - transform.position).normalized;
+                knockBack.ApplyKnockback(knockback);
+                collision.SendMessage("TakeDamage", 10);
+                StartCoroutine(Attack());
+            }
         }
     }
 

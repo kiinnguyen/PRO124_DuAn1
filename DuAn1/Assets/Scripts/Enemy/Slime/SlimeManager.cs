@@ -14,11 +14,17 @@ public class SlimeManager : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SlimeMovement slimeMovement;
     private NavMeshAgent agent;
+    private Rigidbody2D rb;
 
     [Header("Items when drop")]
     [SerializeField]
     List<GameObject> listObject;
     [SerializeField] private float percentToDropItem;
+
+
+    private float knockbackForce = 10f;
+    private float knockbackDuration = 0.2f;
+
     void Start()
     {
         health = 100;
@@ -28,6 +34,7 @@ public class SlimeManager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         slimeMovement = GetComponent<SlimeMovement>();
     }
     void Update()

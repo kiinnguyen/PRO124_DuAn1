@@ -13,7 +13,14 @@ public class AttackCollision : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.SendMessage("TakeDamage", player.damage);
+            KnockBack knockBack = collision.GetComponent<KnockBack>();
+
+            if (knockBack != null)
+            {
+                Vector2 knockback = (collision.transform.position - transform.position).normalized;
+                knockBack.ApplyKnockback(knockback);
+                collision.SendMessage("TakeDamage", player.damage);
+            }
         }
     }
 }
