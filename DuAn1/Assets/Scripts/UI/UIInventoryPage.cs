@@ -23,6 +23,13 @@ public class UIInventoryPage : MonoBehaviour
 
     public event Action<int, int> OnSwapItems;
 
+    void Start()
+    {
+        InitializeInventoryUI(8); // Khởi tạo với kích thước inventory bạn muốn
+        Show();
+    }
+
+
     private void Awake()
     {
         Hide();
@@ -46,6 +53,12 @@ public class UIInventoryPage : MonoBehaviour
         }
     }
 
+    internal void UpdateDescription(int itemIndex, Sprite itemImage, string name, string description)
+    {
+        itemDescription.SetDescription(itemImage, name, description);
+        DeselectAllItems();
+        listOfUIItems[itemIndex].Select();
+    }
     public void UpdateData(int itemIndex, Sprite itemImage, int ItemQuantity)
     {
         if(listOfUIItems.Count > itemIndex)
@@ -99,27 +112,45 @@ public class UIInventoryPage : MonoBehaviour
     private void HandleItemSelection(UIInventoryItem inventoryItemUI)
     {
         int index = listOfUIItems.IndexOf(inventoryItemUI);
-        if (index == -1)
+        if (index == -1 || index >= listOfUIItems.Count)
+        {
+            Debug.LogWarning($"UIInventoryItem index {index} is out of range.");
             return;
-        OnDescriptionRequested?.Invoke(index); 
+        }
+        OnDescriptionRequested?.Invoke(index);
     }
+
 
     public void Show()
     {
+        Debug.Log("Calling Show()");
         gameObject.SetActive(true);
         ResetSelection();
     }
 
-    private void ResetSelection()
+    public void ResetSelection()
     {
+        Debug.Log("Calling ResetSelection()");
         itemDescription.ResetDescription();
         DeselectAllItems();
     }
 
     private void DeselectAllItems()
     {
+        if (listOfUIItems == null)
+        {
+            Debug.LogError("listOfUIItems is null");
+            return;
+        }
+
         foreach (UIInventoryItem item in listOfUIItems)
         {
+            if (item == null)
+            {
+                Debug.LogError("An item in listOfUIItems is null");
+                continue;
+            }
+
             item.Deselect();
         }
     }
@@ -129,4 +160,6 @@ public class UIInventoryPage : MonoBehaviour
         gameObject.SetActive(false);
         ResetDraggedItem();
     }
+
+    
 }
