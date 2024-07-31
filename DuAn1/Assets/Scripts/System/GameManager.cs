@@ -45,29 +45,10 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Game Resumed");
     }
 
-    public void TogglePauseGame()
-    {
-        if (isPaused)
-        {
-            ResumeGame();
-        }
-        else
-        {
-            PauseGame();
-        }
-    }
-
     public void OnPlayerDeath()
     {
         Debug.Log("Player has died!");
         RestartLevel();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePauseGame();
-        }
-    }
 }

@@ -69,8 +69,8 @@ public class UIGameScene : MonoBehaviour
 
     public void ReturnMenuScene()
     {
+        PlayerData.Instance.SavePlayerData();
         SceneManager.LoadScene(0);
-
     }
 
     public void ReturnGameScene()
@@ -152,4 +152,9 @@ public class UIGameScene : MonoBehaviour
         isOpenningInventory = false;
     }
 
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.ResumeGame();  
+    }
 }
