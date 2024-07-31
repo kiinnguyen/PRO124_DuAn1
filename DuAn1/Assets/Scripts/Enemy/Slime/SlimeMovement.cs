@@ -41,6 +41,10 @@ public class SlimeMovement : MonoBehaviour
             agent.updateRotation = false;
             agent.updateUpAxis = false;
         }
+        else
+        {
+            Debug.Log("Cant get navmesh");
+        }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         slimeManager = GetComponent<SlimeManager>();
