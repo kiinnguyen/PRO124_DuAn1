@@ -7,9 +7,13 @@ public class UIMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        // create character 
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
+        SceneManager.LoadScene(1);
+    }
+
+    public void ContinueGame()
+    {
         SceneManager.LoadScene(1);
     }
 }

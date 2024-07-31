@@ -39,7 +39,6 @@ public class HinMovement : MonoBehaviour
 
     void Update()
     {
-        UpdateAnimator();
         if (isDead) { return; }
 
         if (currentTargetEnemy != null)

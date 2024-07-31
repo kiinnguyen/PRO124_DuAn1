@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    string dataPath = "Assets/Data/playerData.json";
-
     public static UnityEvent OnPause = new UnityEvent();
     public static UnityEvent OnResume = new UnityEvent();
 
@@ -47,29 +45,10 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Game Resumed");
     }
 
-    public void TogglePauseGame()
-    {
-        if (isPaused)
-        {
-            ResumeGame();
-        }
-        else
-        {
-            PauseGame();
-        }
-    }
-
     public void OnPlayerDeath()
     {
         Debug.Log("Player has died!");
         RestartLevel();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePauseGame();
-        }
-    }
 }

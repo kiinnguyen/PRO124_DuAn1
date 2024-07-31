@@ -69,8 +69,13 @@ public class UIGameScene : MonoBehaviour
 
     public void ReturnMenuScene()
     {
+        PlayerData.Instance.SavePlayerData();
         SceneManager.LoadScene(0);
+    }
 
+    public void ReturnGameScene()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void UpdateValueToSlider(string sliderName)
@@ -147,4 +152,9 @@ public class UIGameScene : MonoBehaviour
         isOpenningInventory = false;
     }
 
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.ResumeGame();  
+    }
 }
