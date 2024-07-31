@@ -73,6 +73,11 @@ public class UIGameScene : MonoBehaviour
 
     }
 
+    public void ReturnGameScene()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void UpdateValueToSlider(string sliderName)
     {
         if (sliderName == "Health")
