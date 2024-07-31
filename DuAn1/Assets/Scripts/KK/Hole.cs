@@ -1,27 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-public class Hole : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+    public class Hole : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    // Kiểm tra xem va chạm với player
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        [SerializeField] Player player;
+        private void Start()
         {
-            // Gọi hàm xử lý cái chết của nhân vật
-            other.GetComponent<Player>().Die();
+            player = FindObjectOfType<Player>();
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                Transform parentTransform = collision.transform.parent;
+                if (parentTransform != null)
+                {
+                    // Lấy tọa độ của parent
+                    Vector3 parentPosition = parentTransform.position;
+
+                    // Dịch chuyển player đến tọa độ của parent
+                    collision.transform.position = parentPosition;
+
+                    // Gây sát thương cho player
+                    collision.SendMessage("TakeDamage", 30);
+
+                }
+                else
+                {
+                    Debug.LogWarning("Player does not have a parent transform!");
+                }
+            }
         }
     }
-}
