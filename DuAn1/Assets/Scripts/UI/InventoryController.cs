@@ -1,95 +1,114 @@
+using Inventory.Model;
+using Inventory.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryController : MonoBehaviour
+namespace inventory
 {
-    [SerializeField]
-    private UIInventoryPage inventoryUI;
-
-    [SerializeField]
-    private InventorySO inventoryData;
-
-    private GameManager gameManager;
-
-    public void Start()
+    public class InventoryController : MonoBehaviour
     {
-        gameManager = FindObjectOfType<GameManager>();
-        if (gameManager != null)
+        [SerializeField]
+        private UIInventoryPage inventoryUI;
+
+        [SerializeField]
+        private InventorySO inventoryData;
+
+        public List<InventoryItem> initialItems = new List<InventoryItem>();
+
+
+
+        private void Start()
         {
-            Debug.Log("Can Get Game Manager");
-        }
-        else
-        {
-            Debug.Log("Cant find Game Manager");
+            PrepareUI();
+            PrepareInventoryData();
         }
 
-        PrepareUI();
-        //inventoryData.Initialize();
-    }
-
-    private void PrepareUI()
-    {
-        inventoryUI.InitializeInventoryUI(inventoryData.Size);
-        this.inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
-        this.inventoryUI.OnSwapItems += HandleSwapItems;
-        this.inventoryUI.OnStartDragging += HandleDragging;
-        this.inventoryUI.OnItemActionRequested += HandleItemActionRequest;
-    }
-
-    private void HandleItemActionRequest(int itemIndex)
-    {
-
-    }
-
-    private void HandleDragging(int itemIndex)
-    {
-
-    }
-
-    private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
-    {
-        
-    }
-
-    private void HandleDescriptionRequest(int itemIndex)
-    {
-        if (itemIndex < 0 || itemIndex >= inventoryData.Size)
+        private void PrepareInventoryData()
         {
-            Debug.LogWarning($"Item index {itemIndex} is out of range.");
-            inventoryUI.ResetSelection();
-            return;
-        }
-
-        InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
-        if (inventoryItem.IsEmpty)
-        {
-            inventoryUI.ResetSelection();
-            return;
-        }
-
-        ItemSO item = inventoryItem.item;
-        inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (!inventoryUI.isActiveAndEnabled)
+            inventoryData.Initialize();
+            inventoryData.OnInventoryUpdated += UpdateInventoryUI;
+            foreach (InventoryItem item in initialItems)
             {
-                //gameManager.PauseGame();
-                inventoryUI.Show();
-                foreach (var item in inventoryData.GetCurrentInventoryState())
-                {
-                    inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-                }
+                if(item.IsEmpty) continue;
+                inventoryData.AddItem(item);
             }
-            else
+        }
+
+        private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
+        {
+            inventoryUI.ResetAllItems();
+            foreach (var item in inventoryState)
             {
-                //gameManager.ResumeGame();
-                inventoryUI.Hide();
+                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
+        }
+
+        private void PrepareUI()
+        {
+            inventoryUI.InitializeInventoryUI(inventoryData.Size);
+            inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
+            inventoryUI.OnSwapItems += HandleSwapItems;
+            inventoryUI.OnStartDragging += HandleDragging;
+            inventoryUI.OnItemActionRequested += HandleItemActionRequest;
+        }
+
+        private void HandleItemActionRequest(int itemIndex)
+        {
+
+        }
+
+        private void HandleDragging(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if(inventoryItem.IsEmpty) return;
+            inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+        }
+
+        private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
+        {
+            inventoryData.SwapItems(itemIndex_1, itemIndex_2);
+        }
+
+        private void HandleDescriptionRequest(int itemIndex)
+        {
+            if (itemIndex < 0 || itemIndex >= inventoryData.Size)
+            {
+                Debug.LogWarning($"Item index {itemIndex} is out of range.");
+                inventoryUI.ResetSelection();
+                return;
+            }
+
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+            {
+                inventoryUI.ResetSelection();
+                return;
+            }
+
+            ItemSO item = inventoryItem.item;
+            inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (!inventoryUI.isActiveAndEnabled)
+                {
+                    //gameManager.PauseGame();
+                    inventoryUI.Show();
+                    foreach (var item in inventoryData.GetCurrentInventoryState())
+                    {
+                        inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+                    }
+                }
+                else
+                {
+                    //gameManager.ResumeGame();
+                    inventoryUI.Hide();
+                }
             }
         }
     }
