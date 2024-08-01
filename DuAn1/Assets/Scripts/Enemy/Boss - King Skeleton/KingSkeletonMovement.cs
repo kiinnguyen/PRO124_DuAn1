@@ -10,7 +10,7 @@ public class KingSkeletonMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [Header("Settings")]
-    [SerializeField] private float attackRange = 2.0f;
+    [SerializeField] private float attackRange = 3.0f;
     [SerializeField] private float attackCooldown = 1.5f;
     [SerializeField] private float skillCooldown = 5.0f;
 
@@ -30,7 +30,7 @@ public class KingSkeletonMovement : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
 
         if (player != null)
         {
@@ -40,21 +40,26 @@ public class KingSkeletonMovement : MonoBehaviour
 
     IEnumerator BossBehavior()
     {
-        while (!isDead)
+        while (!isDead || player !=null)
         {
-            if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+            if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
             {
+                Debug.Log("Attack");
                 if (!isUsingSkill && !isAttacking)
                 {
-                    if (Random.value < 0.5f)
+                    if (Random.value < 0.3f)
                     {
                         StartCoroutine(Skill());
-
+                    }
+                    else
+                    {
+                        StartCoroutine(MeleeAttack());
                     }
                 }
             }
             else
             {
+                Debug.Log("Move to plauer");
                 agent.SetDestination(player.transform.position);
                 animator.SetBool("isMoving", true);
             }
@@ -63,17 +68,7 @@ public class KingSkeletonMovement : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            StartCoroutine(Skill());
-        }
-    }
-
-
-    IEnumerator Attack()
+    IEnumerator MeleeAttack()
     {
         if (!isAttacking)
         {
@@ -85,7 +80,7 @@ public class KingSkeletonMovement : MonoBehaviour
 
             if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
             {
-                player.SendMessage("TakeDamage", 50);
+                //player.SendMessage("TakeDamage", 30);
             }
 
             yield return new WaitForSeconds(attackCooldown);
@@ -95,19 +90,22 @@ public class KingSkeletonMovement : MonoBehaviour
 
     IEnumerator Skill()
     {
-        isUsingSkill = true;
-        agent.ResetPath();
-        animator.SetTrigger("Attack 1");
-
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        while (!isUsingSkill)
         {
-            player.SendMessage("TakeDamage", 100);
-        }
+            isUsingSkill = true;
+            agent.ResetPath();
+            animator.SetTrigger("Attack 1");
 
-        yield return new WaitForSeconds(skillCooldown);
-        isUsingSkill = false;
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+            if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+            {
+                player.SendMessage("TakeDamage", 80);
+            }
+
+            yield return new WaitForSeconds(skillCooldown);
+            isUsingSkill = false;
+        }
     }
 
     public void UpdateAnimator()
@@ -131,4 +129,13 @@ public class KingSkeletonMovement : MonoBehaviour
         agent.ResetPath();
         animator.SetTrigger("Die");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+
+        }
+    }
+
 }
