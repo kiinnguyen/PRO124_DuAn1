@@ -34,20 +34,18 @@ public class GameManager : Singleton<GameManager>
 
     public void PauseGame()
     {
-        PauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        //isPaused = true;
-        //OnPause.Invoke();
-        //Debug.Log("Game Paused");
+
+        isPaused = true;
+        OnPause.Invoke();
+        Debug.Log("Game Paused");
     }
 
     public void ResumeGame()
     {
-        PauseMenu.SetActive(false);
-        Time.timeScale = 1.0f;
-        //isPaused = false;
-        //OnResume.Invoke();
-        //Debug.Log("Game Resumed");
+
+        isPaused = false;
+        OnResume.Invoke();
+        Debug.Log("Game Resumed");
     }
 
     public void OnPlayerDeath()
