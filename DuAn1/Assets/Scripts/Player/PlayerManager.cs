@@ -95,4 +95,9 @@ public class PlayerManager : MonoBehaviour
 
         player.food = newValue;
     }
+
+    public void SetFood(Slider slider)
+    {
+        player.food = (int)slider.value;
+    }
 }
