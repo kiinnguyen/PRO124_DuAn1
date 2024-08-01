@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
-    public sceneManager transitionManager;
+    public SceneTransitionManager transitionManager;  
     private PlayerData playerData;
     public string targetSceneName = "Scene3";
 
@@ -13,7 +14,7 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")) 
         {
             playerData.SavePlayerData();
             transitionManager.TransitionToScene(targetSceneName);
