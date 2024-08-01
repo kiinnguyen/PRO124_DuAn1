@@ -8,7 +8,8 @@ public class GameManager : Singleton<GameManager>
 {
     public static UnityEvent OnPause = new UnityEvent();
     public static UnityEvent OnResume = new UnityEvent();
-
+    [SerializeField]
+    public GameObject PauseMenu;
     private bool isPaused = false;
 
     // UI Loading
@@ -33,16 +34,20 @@ public class GameManager : Singleton<GameManager>
 
     public void PauseGame()
     {
-        isPaused = true;
-        OnPause.Invoke();
-        Debug.Log("Game Paused");
+        PauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        //isPaused = true;
+        //OnPause.Invoke();
+        //Debug.Log("Game Paused");
     }
 
     public void ResumeGame()
     {
-        isPaused = false;
-        OnResume.Invoke();
-        Debug.Log("Game Resumed");
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1.0f;
+        //isPaused = false;
+        //OnResume.Invoke();
+        //Debug.Log("Game Resumed");
     }
 
     public void OnPlayerDeath()
