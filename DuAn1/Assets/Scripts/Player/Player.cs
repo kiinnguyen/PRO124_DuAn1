@@ -121,10 +121,9 @@ public class Player : MonoBehaviour
         animation_Controller.Attack();
         _speaker.PlayOneShot(attack_Sfx);
         meleeArea.SetActive(true);
-
-        yield return new WaitForSeconds(attackDuration);
-
+        yield return new WaitForSeconds(0.1f);
         meleeArea.SetActive(false);
+        yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
         canAttack = true;
     }

@@ -66,7 +66,10 @@ public class SlimeMovement : MonoBehaviour
         }
         else
         {
-            agent.ResetPath();
+            if (agent.hasPath)
+            {
+                agent.ResetPath();
+            }
         }
 
         UpdateAnimator();
@@ -89,15 +92,20 @@ public class SlimeMovement : MonoBehaviour
 
     void MoveToTarget(Transform target)
     {
-        if (agent == null || !agent.isOnNavMesh) return;
-
-        try
+        if (agent != null && agent.isOnNavMesh)
         {
-            agent.SetDestination(target.position);
+            try
+            {
+                agent.SetDestination(target.position);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning("Failed to set destination: " + ex.Message);
+            }
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogWarning("Failed to set destination: " + ex.Message);
+            Debug.LogWarning("NavMeshAgent is not properly initialized or not on a NavMesh.");
         }
     }
 
@@ -119,7 +127,10 @@ public class SlimeMovement : MonoBehaviour
 
         while (targetPOS != null && Vector2.Distance(transform.position, targetPOS.position) <= 1f)
         {
-            agent.ResetPath();
+            if (agent.isOnNavMesh)
+            {
+                agent.ResetPath();
+            }
             yield return new WaitForSeconds(1.5f);
         }
 
