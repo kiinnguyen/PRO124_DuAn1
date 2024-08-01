@@ -734,6 +734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   inventoryData: {fileID: 0}
+  initialItems: []
 --- !u!114 &5979876996143144504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +826,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.46, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -838,8 +839,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.018722534, y: -0.20594788}
-      - {x: 1.2995605, y: -0.8306221}
-      - {x: 1.2901993, y: 0.5591415}
+      - {x: 1.0323485, y: -1.3766578}
+      - {x: 1.0229874, y: 1.0935653}
   m_UseDelaunayMesh: 0
 --- !u!114 &2818168685014057490
 MonoBehaviour:
