@@ -5,7 +5,7 @@ public class Gate : MonoBehaviour
 {
     public SceneTransitionManager transitionManager;  
     private PlayerData playerData;
-    public string targetSceneName = "Scene3";
+    public string targetSceneName = "Cave";
 
     private void Start()
     {
