@@ -34,14 +34,14 @@ public class GameManager : Singleton<GameManager>
     public void PauseGame()
     {
         isPaused = true;
-        OnPause.Invoke();
+        OnPause?.Invoke();
         Debug.Log("Game Paused");
     }
 
     public void ResumeGame()
     {
         isPaused = false;
-        OnResume.Invoke();
+        OnResume?.Invoke();
         Debug.Log("Game Resumed");
     }
 
