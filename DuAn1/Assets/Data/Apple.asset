@@ -19,4 +19,4 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 1725698172, guid: 2cb77f0782a03954b90975cc70c5e675, type: 3}
   modifiersData:
   - statModifier: {fileID: 11400000, guid: 0db605a069c9539498fc3d17fd710d44, type: 2}
-    value: 1
+    value: 20
