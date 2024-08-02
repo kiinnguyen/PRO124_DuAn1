@@ -47,13 +47,9 @@ public class UIGameScene : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
         gameManager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
-        if (playerManager != null && gameManager != null && player != null)
-        {
-            healthBar.value = player.health;
-            foodBar.value = player.food;
-            //waterBar.value = player.water;
-            goldText.text = player.gold.ToString();
-        }
+
+
+        
         StartCoroutine(LifeCoroutine());
     }
 
@@ -65,6 +61,12 @@ public class UIGameScene : MonoBehaviour
             if (!isOpenningInventory)
             StartCoroutine(OpenInventory());
         }
+
+        healthBar.value = player.health;
+        foodBar.value = player.food;
+        //waterBar.value = player.water;
+        goldText.text = player.gold.ToString();
+
     }
 
     public void ReturnMenuScene()
