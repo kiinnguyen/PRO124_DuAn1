@@ -19,8 +19,8 @@ public class AttackCollision : MonoBehaviour
             {
                 Vector2 knockback = (collision.transform.position - transform.position).normalized;
                 knockBack.ApplyKnockback(knockback);
-                collision.SendMessage("TakeDamage", player.damage);
             }
+            collision.SendMessage("TakeDamage", player.damage);
         }
     }
 }
