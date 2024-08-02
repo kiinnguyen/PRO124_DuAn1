@@ -72,7 +72,12 @@ namespace Inventory.UI
 
         private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
         {
-            // Xử lý hành động khi nhấp chuột phải vào item
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+            if (index == -1)
+            {
+                return;
+            }
+            OnItemActionRequested?.Invoke(index);
         }
 
         private void HandleEndDrag(UIInventoryItem inventoryItemUI)
