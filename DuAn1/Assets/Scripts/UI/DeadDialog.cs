@@ -46,8 +46,6 @@ public class DeadDialog : MonoBehaviour
             isText = true;
         }
 
-
-        GameManager.Instance.RestartLevel();
         yield return null;
     }
 }

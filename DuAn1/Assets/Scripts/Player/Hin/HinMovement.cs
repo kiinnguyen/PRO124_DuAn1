@@ -2,203 +2,110 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class HinMovement : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    [SerializeField] float attackRange;
-    [SerializeField] GameObject meleeArea;
+    [Header("Component")]
+    [SerializeField] Transform playerPOS;
+    [SerializeField] NavMeshAgent agent;
 
-    private NavMeshAgent agent;
+    [Header("Information")]
+    [SerializeField] Transform targetPOS;
     private Animator animator;
-    private List<GameObject> enemiesInRange = new List<GameObject>();
-    private GameObject currentTargetEnemy;
+    private Rigidbody2D rb;
     private Vector2 lastDirection;
-    public bool isDead;
+
+    [Header("Systems")]
+    [SerializeField] bool isPaused;
 
 
-    // inscript
-
-    Vector2 normalizedVelocity;
-
-    void Awake()
+    void Start()
     {
+        playerPOS = FindObjectOfType<Player>().transform;
+
         agent = GetComponent<NavMeshAgent>();
 
         if (agent != null)
         {
-            Debug.Log("Get NavMesh Done!");
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
         }
-
+        else
+        {
+            Debug.Log("Cant get navmesh");
+        }
         animator = GetComponent<Animator>();
-        player = FindObjectOfType<Player>().transform;
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (isDead) { return; }
-
-        if (currentTargetEnemy != null)
+        if (isPaused) return;
+        if (targetPOS != null && !isPaused)
         {
-            if (Vector2.Distance(transform.position, currentTargetEnemy.transform.position) <= attackRange)
-            {
-                UpdateAnimator();
-                StartCoroutine(Attack());
-            }
-            else
-            {
-                MoveToTarget(currentTargetEnemy.transform);
-                UpdateAnimator();
-            }
+            MoveTo(targetPOS);
         }
         else
         {
-            if (enemiesInRange.Count > 0)
-            {
-                SelectClosestEnemy();
-                MoveToTarget(currentTargetEnemy.transform);
-                UpdateAnimator();
-            }
-            else
-            {
-                MoveToTarget(player);
-                UpdateAnimator();
-            }
+            MoveTo(playerPOS);
         }
-    }
 
-    void MoveToTarget(Transform target)
-    {
-        if (agent.isActiveAndEnabled && agent.isOnNavMesh)
-        {
-            agent.SetDestination(target.position);
-        }
-        else
-        {
-            Debug.LogError("NavMeshAgent is not active or not on a NavMesh.");
-        }
+        UpdateAnimator();
     }
 
     void UpdateAnimator()
     {
         Vector2 velocity = new Vector2(agent.velocity.x, agent.velocity.y);
-        normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
+        Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : lastDirection;
 
         if (velocity.sqrMagnitude > 0.1f)
         {
             lastDirection = normalizedVelocity;
         }
 
-        RotateAttackArea(normalizedVelocity);
-
         animator.SetFloat("xInput", normalizedVelocity.x);
         animator.SetFloat("yInput", normalizedVelocity.y);
         animator.SetBool("isMoving", velocity.sqrMagnitude > 0.1f);
     }
 
-    private bool isAttacking = false;
-    IEnumerator Attack()
+    public void MoveTo(Transform target)
     {
-        if (isDead) yield break;
+        if (agent == null || !agent.isOnNavMesh) return;
 
-        while (currentTargetEnemy != null && Vector2.Distance(transform.position, currentTargetEnemy.transform.position) <= attackRange)
+        try
         {
-            agent.ResetPath();
-            meleeArea.SetActive(true);
-            animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-            meleeArea.SetActive(false);
-
-            // Remove enemy if it is dead or out of range
-            if (currentTargetEnemy == null || !enemiesInRange.Contains(currentTargetEnemy))
-            {
-                currentTargetEnemy = null;
-                enemiesInRange.Remove(currentTargetEnemy);
-                SelectClosestEnemy();
-            }
+            agent.SetDestination(target.position);
         }
-
-    }
-
-    private void SelectClosestEnemy()
-    {
-        if (enemiesInRange.Count == 0) return;
-
-        GameObject closestEnemy = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (GameObject enemy in enemiesInRange)
+        catch (System.Exception ex)
         {
-            float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestEnemy = enemy;
-            }
-        }
-
-        currentTargetEnemy = closestEnemy;
-    }
-
-    private void RotateAttackArea(Vector2 vector)
-    {
-        switch (vector)
-        {
-            case var v when v == new Vector2(0f, 1f):
-                SetRotationAttackArea(90f);
-                break;
-            case var v when v == new Vector2(0f, -1f):
-                SetRotationAttackArea(270f);
-                break;
-            case var v when v == new Vector2(1f, 0f):
-                SetRotationAttackArea(0f);
-                break;
-            case var v when v == new Vector2(-1f, 0f):
-                SetRotationAttackArea(180f);
-                break;
-            default:
-                break;
+            Debug.LogWarning("Failed to set destination: " + ex.Message);
         }
     }
 
-    private void SetRotationAttackArea(float zValue)
+    private void OnEnable()
     {
-        Vector3 currentRotation = meleeArea.transform.rotation.eulerAngles;
-        currentRotation.z = zValue;
-        meleeArea.transform.rotation = Quaternion.Euler(currentRotation);
+        GameManager.OnPause.AddListener(HandlePause);
+        GameManager.OnResume.AddListener(HandleResume);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDisable()
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            if (!enemiesInRange.Contains(collision.gameObject))
-            {
-                enemiesInRange.Add(collision.gameObject);
-                if (currentTargetEnemy == null)
-                {
-                    SelectClosestEnemy();
-                }
-            }
-        }
+        GameManager.OnPause.RemoveListener(HandlePause);
+        GameManager.OnResume.RemoveListener(HandleResume);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void HandlePause()
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            if (enemiesInRange.Contains(collision.gameObject))
-            {
-                enemiesInRange.Remove(collision.gameObject);
-                if (currentTargetEnemy == collision.gameObject)
-                {
-                    currentTargetEnemy = null;
-                    SelectClosestEnemy();
-                }
-            }
-        }
+        isPaused = true;
+        agent.ResetPath();
+        animator.SetBool("isMoving", false);
+        Debug.Log("Hin Paused");
     }
+
+    void HandleResume()
+    {
+        isPaused = false;
+        Debug.Log("Hin Resumed");
+    }
+
 }

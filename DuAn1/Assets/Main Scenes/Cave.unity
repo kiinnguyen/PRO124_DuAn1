@@ -2262,7 +2262,7 @@ PrefabInstance:
     - target: {fileID: 2973479015585265746, guid: f417640634ebab54690449f115e53472, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6078973554765082817, guid: f417640634ebab54690449f115e53472, type: 3}
       propertyPath: m_LocalPosition.x
       value: 79.845894
@@ -4159,11 +4159,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 54792934407771431, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.8
+      value: 76.3
       objectReference: {fileID: 0}
     - target: {fileID: 54792934407771431, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 118.7
+      value: 115.7
       objectReference: {fileID: 0}
     - target: {fileID: 54792934407771431, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4200,38 +4200,6 @@ PrefabInstance:
     - target: {fileID: 1723515705860518347, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_Name
       value: Hin
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674115438081849567, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5787748410462083083, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: attackRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058592668266990718, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 9210567646759796252, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 9210567646759796252, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: 0.9901581
-      objectReference: {fileID: 0}
-    - target: {fileID: 9210567646759796252, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: -0.92172086
-      objectReference: {fileID: 0}
-    - target: {fileID: 9210567646759796252, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: 0.9901581
-      objectReference: {fileID: 0}
-    - target: {fileID: 9210567646759796252, guid: 44047652a5659f34b937492857115d0e, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: 0.8921875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6027,6 +5995,10 @@ PrefabInstance:
     - target: {fileID: 5324947256192083657, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: damage
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324947256192083657, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
+      propertyPath: health
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5747014262174486363, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: m_Name
@@ -12785,7 +12757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -590}
+  m_AnchoredPosition: {x: 968.43384, y: -585.29724}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948367195
@@ -20497,12 +20469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

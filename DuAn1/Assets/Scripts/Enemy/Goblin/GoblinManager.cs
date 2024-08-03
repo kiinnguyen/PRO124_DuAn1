@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 public class GoblinManager : MonoBehaviour
 {
+    public int goblinID;
+
     private GoblinMovement goblinMovement;
     private Animator myAnim;
     [SerializeField] int health = 250;

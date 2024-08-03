@@ -53,7 +53,7 @@ public class ShowDialog : MonoBehaviour
         {
             if (listTalk.Count > 0)
             {
-                gameManager.PauseGame();
+                GameManager.Instance.PauseGame();
                 dialogBanner.SetActive(true);
                 dialogBanner.GetComponent<DialogText>().AddNewText(listTalk);
             }

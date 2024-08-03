@@ -25,7 +25,7 @@ public class DialogText : MonoBehaviour
             if (indexText == listText.Count - 1)
             {
                 gameObject.SetActive(false);
-                gameManager.ResumeGame();
+                GameManager.Instance.ResumeGame();
             }
             else if 
             (indexText < listText.Count)
