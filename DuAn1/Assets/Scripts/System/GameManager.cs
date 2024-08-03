@@ -51,4 +51,8 @@ public class GameManager : Singleton<GameManager>
         RestartLevel();
     }
 
+
+    // Game Data
+
+    
 }
