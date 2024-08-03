@@ -185,10 +185,8 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
-  healthBar: {fileID: 0}
-  health: 500
-  attackCooldown: 2
-  skillDuration: 5
+  meleeArea: {fileID: 0}
+  attackCooldown: 3
 --- !u!114 &5787748410462083083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,10 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3704bb30d0224ca48a55e13b6b81a6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPOS: {fileID: 0}
   agent: {fileID: 0}
-  targetPOS: {fileID: 0}
-  isPaused: 0
+  animator: {fileID: 0}
 --- !u!50 &3946865796947422918
 Rigidbody2D:
   serializedVersion: 4
@@ -241,7 +237,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5430837151863532385}
-  - component: {fileID: 9210567646759796252}
   - component: {fileID: 2781679506975027095}
   m_Layer: 7
   m_Name: Melee Area
@@ -249,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5430837151863532385
 Transform:
   m_ObjectHideFlags: 0
@@ -265,54 +260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 54792934407771431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &9210567646759796252
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3674115438081849567}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.62, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0}
-      - {x: 0.9901581, y: -0.92172086}
-      - {x: 0.9901581, y: 0.8921875}
-  m_UseDelaunayMesh: 0
 --- !u!114 &2781679506975027095
 MonoBehaviour:
   m_ObjectHideFlags: 0

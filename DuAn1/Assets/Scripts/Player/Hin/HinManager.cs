@@ -1,137 +1,124 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class HinManager : MonoBehaviour
 {
-    [Header("Component")]
-    public Transform player;
+    [Header("Components")]
+    [SerializeField] GameObject player;
     public NavMeshAgent agent;
     public Animator animator;
-    private HinMovement movement;
-    [SerializeField] Slider healthBar;
+    public GameObject meleeArea;
+    private HinMovement hinMovement;
+    private Transform currentTarget;
+    private List<Collider2D> enemiesInRange = new List<Collider2D>();
 
-    [Header("Stats")]
-    public float health = 500f;
-    private float maxHealth;
-    public float attackCooldown = 2f;
-    private float nextAttackTime;
-    public float skillDuration = 5f;
-    private float skillCooldown = 15f;
-    private float nextSkillTime;
+    [Header("Combat")]
+    public float attackCooldown = 3f;
+    private float nextAttackTime = 3f;
     private bool isUsingSkill;
     private bool isDead;
 
-    private bool isAttacking = false;
-
-    [SerializeField] List<Collider2D> colliderInRange;
-
     void Start()
     {
-        animator = GetComponent<Animator>();
-        player = FindObjectOfType<Player>().transform;
+        player = GameObject.Find("Gin");
+        hinMovement = GetComponent<HinMovement>();
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        meleeArea = transform.Find("Melee Area").gameObject;
         if (agent != null)
         {
             agent.updateRotation = false;
             agent.updateUpAxis = false;
         }
-
-        maxHealth = health;
-        if (healthBar != null)
-        {
-            healthBar.maxValue = maxHealth;
-            healthBar.value = health;
-        }
-
-        nextAttackTime = Time.time;
-        nextSkillTime = Time.time + skillCooldown;
-        movement = GetComponent<HinMovement>();
     }
 
     void Update()
     {
         if (isDead) return;
 
-        if (isUsingSkill)
+        if (currentTarget != null)
         {
-            SkillAttack();
-            return;
-        }
-
-        if (Time.time >= nextSkillTime)
-        {
-            StartCoroutine(UseSkill());
-        }
-
-        movement.MoveTo(player);
-    }
-
-    IEnumerator UseSkill()
-    {
-        isUsingSkill = true;
-        nextSkillTime = Time.time + skillCooldown + skillDuration;
-        animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(skillDuration);
-        isUsingSkill = false;
-    }
-
-    void SkillAttack()
-    {
-        movement.MoveTo(player);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        if (isDead) return;
-
-        health -= damage;
-        agent.ResetPath();
-        animator.SetTrigger("Hurt");
-        if (health <= 0)
-        {
-            Die();
+            hinMovement.MoveTo(currentTarget);
         }
         else
         {
-            UpdateHealth(health);
+            hinMovement.MoveTo(player.transform);
+        }
+
+        if (Time.time >= nextAttackTime && currentTarget != null)
+        {
+            if (Vector2.Distance(transform.position, currentTarget.position) < 2f)
+            {
+                StartCoroutine(PerformAttack());
+            }
         }
     }
 
-    void Die()
+    IEnumerator PerformAttack()
     {
-        isDead = true;
-        animator.SetTrigger("Death");
-        agent.ResetPath();
-        agent.enabled = false;
-        this.enabled = false;
-    }
+        if (currentTarget == null) yield break;
 
-    public void UpdateHealth(float value)
-    {
-        healthBar.value = value;
+        nextAttackTime = Time.time + attackCooldown;
+        agent.ResetPath();
+        animator.SetTrigger("Attack");
+
+        // Điều chỉnh hướng nhìn của Hin
+        RotateTowardsTarget(currentTarget);
+
+        // Đợi animation tấn công thực hiện xong
+        yield return new WaitForSeconds(1f);
+
+        // Kiểm tra va chạm với quái vật trong vùng meleeArea
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(meleeArea.transform.position, meleeArea.GetComponent<BoxCollider2D>().size, 0);
+        foreach (Collider2D hitEnemy in hitEnemies)
+        {
+            if (hitEnemy.CompareTag("Enemy"))
+            {
+                KnockBack knockBack = hitEnemy.GetComponent<KnockBack>();
+
+                if (knockBack != null)
+                {
+                    Vector2 knockback = (hitEnemy.transform.position - transform.position).normalized;
+                    knockBack.ApplyKnockback(knockback);
+                }
+                hitEnemy.SendMessage("TakeDamage", 30);
+                Debug.Log("Hit Enemy: " + hitEnemy.name);
+            }
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isDead || isUsingSkill || Time.time < nextAttackTime) return;
-
         if (collision.CompareTag("Enemy"))
         {
-            nextAttackTime = Time.time + attackCooldown;
-            StartCoroutine(PerformMeleeAttack());
+            enemiesInRange.Add(collision);
+            if (currentTarget == null)
+            {
+                currentTarget = collision.transform;
+            }
         }
     }
 
-    IEnumerator PerformMeleeAttack()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        isAttacking = true;
-        agent.ResetPath();
-        animator.SetTrigger("Attack");
+        if (collision.CompareTag("Enemy"))
+        {
+            enemiesInRange.Remove(collision);
+            if (currentTarget == collision.transform)
+            {
+                currentTarget = enemiesInRange.Count > 0 ? enemiesInRange[0].transform : null;
+            }
+        }
+    }
 
-        yield return new WaitForSeconds(1f);
-        isAttacking = false;
+    private void RotateTowardsTarget(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        meleeArea.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }

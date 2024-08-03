@@ -9,6 +9,11 @@ public class AttackCollision : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
     }
+
+    private void Start()
+    {
+        StartCoroutine(UnActive());
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
@@ -22,5 +27,11 @@ public class AttackCollision : MonoBehaviour
             }
             collision.SendMessage("TakeDamage", player.damage);
         }
+    }
+
+    IEnumerator UnActive()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.SetActive(false);
     }
 }
