@@ -12,6 +12,7 @@ public class HinManager : MonoBehaviour
     public GameObject meleeArea;
     private HinMovement hinMovement;
     private Transform currentTarget;
+    private Rigidbody2D rb;
     private List<Collider2D> enemiesInRange = new List<Collider2D>();
 
     [Header("Combat")]
@@ -19,13 +20,19 @@ public class HinManager : MonoBehaviour
     private float nextAttackTime = 3f;
     private bool isUsingSkill;
     private bool isDead;
+    private bool isPaused;
+    public bool isTutorial;
 
     void Start()
     {
+        isTutorial = false;
+
+
         player = GameObject.Find("Gin");
         hinMovement = GetComponent<HinMovement>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         meleeArea = transform.Find("Melee Area").gameObject;
         if (agent != null)
         {
@@ -38,22 +45,31 @@ public class HinManager : MonoBehaviour
     {
         if (isDead) return;
 
-        if (currentTarget != null)
-        {
-            hinMovement.MoveTo(currentTarget);
-        }
-        else
+        if (isTutorial)
         {
             hinMovement.MoveTo(player.transform);
         }
-
-        if (Time.time >= nextAttackTime && currentTarget != null)
+        else
         {
-            if (Vector2.Distance(transform.position, currentTarget.position) < 2f)
+            if (currentTarget != null)
             {
-                StartCoroutine(PerformAttack());
+                hinMovement.MoveTo(currentTarget);
+            }
+            else
+            {
+                hinMovement.MoveTo(player.transform);
+            }
+
+            if (Time.time >= nextAttackTime && currentTarget != null)
+            {
+                if (Vector2.Distance(transform.position, currentTarget.position) < 2f)
+                {
+                    StartCoroutine(PerformAttack());
+                }
             }
         }
+
+        
     }
 
     IEnumerator PerformAttack()
@@ -120,5 +136,34 @@ public class HinManager : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         meleeArea.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
+
+    private void OnEnable()
+    {
+        GameManager.OnPause.AddListener(HandlePause);
+        GameManager.OnResume.AddListener(HandleResume);
+
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnPause.RemoveListener(HandlePause);
+        GameManager.OnResume.RemoveListener(HandleResume);
+
+    }
+
+    void HandlePause()
+    {
+        isPaused = true;
+        rb.velocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+        Debug.Log("Hin Paused");
+    }
+
+    void HandleResume()
+    {
+        isPaused = false;
+        Debug.Log("Hin Resumed");
     }
 }

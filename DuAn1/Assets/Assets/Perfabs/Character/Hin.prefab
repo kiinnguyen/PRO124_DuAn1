@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 54792934407771431}
   - component: {fileID: 7058592668266990718}
   - component: {fileID: 2888420931319218734}
+  - component: {fileID: 3946865796947422918}
   - component: {fileID: 3108398408124775692}
   - component: {fileID: 324959679275721306}
   - component: {fileID: 3561760464450388219}
   - component: {fileID: 5787748410462083083}
-  - component: {fileID: 3946865796947422918}
   m_Layer: 7
   m_Name: Hin
   m_TagString: Untagged
@@ -127,6 +127,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!50 &3946865796947422918
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723515705860518347}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!95 &3108398408124775692
 Animator:
   serializedVersion: 5
@@ -187,6 +214,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   meleeArea: {fileID: 0}
   attackCooldown: 3
+  isTutorial: 0
 --- !u!114 &5787748410462083083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,33 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   animator: {fileID: 0}
---- !u!50 &3946865796947422918
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723515705860518347}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1000
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &3674115438081849567
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,10 +5,12 @@ using UnityEngine.AI;
 
 public class GoblinMovement : MonoBehaviour
 {
+    [Header("Component")]
     private Animator myAnim;
     private Transform target;
     public Transform homePosition;
     private NavMeshAgent navAgent;
+    [SerializeField] Rigidbody2D rb;
 
     [SerializeField]
     private float maxRange = 5f;
@@ -19,12 +21,17 @@ public class GoblinMovement : MonoBehaviour
     private Vector2 lastDirection;
 
     public bool isDead = false;
-
+    [SerializeField] bool isPaused;
     private float distanceToTarget;
+
 
 
     void Start()
     {
+        isPaused = false;
+
+
+        rb = GetComponent<Rigidbody2D>(); 
         myAnim = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         target = FindObjectOfType<Player>().transform;
@@ -34,7 +41,7 @@ public class GoblinMovement : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || isPaused) return;
         distanceToTarget = Vector3.Distance(target.position, transform.position);
 
         if (distanceToTarget <= maxRange && distanceToTarget >= minRange)
@@ -44,7 +51,6 @@ public class GoblinMovement : MonoBehaviour
         else if (distanceToTarget > maxRange)
         {
             navAgent.ResetPath();
-            //GoHome();
         }
         UpdateAnimator();
     }
@@ -77,7 +83,6 @@ public class GoblinMovement : MonoBehaviour
             myAnim.SetBool("isMoving", false);
         }
     }
-
 
     public void NavAgentWarp(Vector3 position)
     {
@@ -114,5 +119,34 @@ public class GoblinMovement : MonoBehaviour
 
             yield return null;
         }
+    }
+
+
+    private void OnEnable()
+    {
+        GameManager.OnPause.AddListener(HandlePause);
+        GameManager.OnResume.AddListener(HandleResume);
+
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnPause.RemoveListener(HandlePause);
+        GameManager.OnResume.RemoveListener(HandleResume);
+
+    }
+
+    void HandlePause()
+    {
+        isPaused = true;
+        rb.velocity = Vector2.zero;
+        myAnim.SetBool("isMoving", false);
+        Debug.Log("Goblin Paused");
+    }
+
+    void HandleResume()
+    {
+        isPaused = false;
+        Debug.Log("Goblin Resumed");
     }
 }
