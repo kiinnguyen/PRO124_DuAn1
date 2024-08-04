@@ -105,7 +105,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,7 +126,7 @@ TextureImporter:
         width: 63
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,6 +134,90 @@ TextureImporter:
       bones: []
       spriteID: 0acbed8d9a57d9342a4f93c4a17b2172
       internalID: 753359217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram Border All_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd62065cec9fb64db3bc062d3db55f8
+      internalID: -213882551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram Border All_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd42886ae18db634180783ef735b9243
+      internalID: -1891315073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram Border All_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 384
+        width: 66
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c60f20a4b70584a84142dffe2eda8e
+      internalID: 771276700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram Border All_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6e4f86915601141ac2d87207c9c265
+      internalID: -2038227800
       vertices: []
       indices: 
       edges: []
@@ -151,6 +235,10 @@ TextureImporter:
     nameFileIdTable:
       Ram Border All_0: 2065641973
       Ram Border All_1: 753359217
+      Ram Border All_2: -213882551
+      Ram Border All_3: -1891315073
+      Ram Border All_4: 771276700
+      Ram Border All_5: -2038227800
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
