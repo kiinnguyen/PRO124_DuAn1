@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameManager gameManager;
     [SerializeField] PlayerManager playerManager;
     [SerializeField] PlayerInput playerInput;
-
+    [SerializeField] UIGameScene uiGameScene;
     // Components
     Animator _animator;
     Rigidbody2D _rigidbody;
@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         playerInput = GetComponent<PlayerInput>();
         knowFeedBack = GetComponent<KnockFeedBack>();
+        uiGameScene = FindObjectOfType<UIGameScene>();
     }
 
     private void Update()
@@ -127,6 +128,12 @@ public class Player : MonoBehaviour
         isAttacking = false;
         canAttack = true;
     }
+
+    public void OnOpenSetting(InputAction.CallbackContext context)
+    {
+
+    }
+
 
     // Actions
     private void RotateAttackArea(Vector2 vector)
@@ -196,8 +203,7 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         playerInput.enabled = false;
-        Time.timeScale = 0.3f;
-        // Show dead     
+        uiGameScene.DeathShow();
     }
 
 

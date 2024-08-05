@@ -21,6 +21,8 @@ public class UIGameScene : MonoBehaviour
     bool isInventoryBarActive;
     bool isOpenningInventory;
 
+    bool isSettingBarActive;
+    bool isOpenningSettingBar;
     [SerializeField] Slider healthBar;
     [SerializeField] Text   healthValueText;
     [SerializeField] Text   goldText;
@@ -50,7 +52,7 @@ public class UIGameScene : MonoBehaviour
 
 
         
-        StartCoroutine(LifeCoroutine());
+        //StartCoroutine(LifeCoroutine());
     }
 
 
@@ -61,6 +63,15 @@ public class UIGameScene : MonoBehaviour
             if (!isOpenningInventory)
             StartCoroutine(OpenInventory());
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isOpenningSettingBar)
+            {
+                StartCoroutine(OpenInventory());
+            }
+        }
+
 
         healthBar.value = player.health;
         foodBar.value = player.food;
@@ -152,6 +163,13 @@ public class UIGameScene : MonoBehaviour
         isOpenningInventory = true;
         yield return new WaitForSeconds(1f);
         isOpenningInventory = false;
+    }
+
+    IEnumerator OpenSetting()
+    {
+        isOpenningSettingBar = true;
+        yield return new WaitForSeconds(1f);
+        isOpenningSettingBar = false;
     }
 
 
