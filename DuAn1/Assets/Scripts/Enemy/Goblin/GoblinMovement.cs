@@ -140,6 +140,7 @@ public class GoblinMovement : MonoBehaviour
     {
         isPaused = true;
         rb.velocity = Vector2.zero;
+        navAgent.ResetPath();
         myAnim.SetBool("isMoving", false);
         Debug.Log("Goblin Paused");
     }

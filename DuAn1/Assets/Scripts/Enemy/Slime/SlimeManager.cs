@@ -15,6 +15,11 @@ public class SlimeManager : MonoBehaviour
     private SlimeMovement slimeMovement;
     private NavMeshAgent agent;
     private Rigidbody2D rb;
+    private AudioSource speaker;
+
+
+    [Header("Audio Clips")]
+    [SerializeField] AudioClip deathSFX;
 
     [Header("Items when drop")]
     [SerializeField]
@@ -36,6 +41,7 @@ public class SlimeManager : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         slimeMovement = GetComponent<SlimeMovement>();
+        speaker = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -51,6 +57,7 @@ public class SlimeManager : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger("Death");
+            speaker.PlayOneShot(deathSFX);
             StartCoroutine(DestroyAfterDeathAnimation());
         }
         else

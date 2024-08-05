@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -48,7 +47,7 @@ public class GameManager : Singleton<GameManager>
     public void OnPlayerDeath()
     {
         Debug.Log("Player has died!");
-        RestartLevel();
+        PauseGame();
     }
 
 

@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 public class GoblinManager : MonoBehaviour
 {
-    public int goblinID;
-
     private GoblinMovement goblinMovement;
+    private GameSceneData gameSceneData;
     private Animator myAnim;
-    [SerializeField] int health = 250;
+
+
+    public int id;
+    public int health;
+    public Vector3 POS;
 
     [Header("Items when drop")]
     [SerializeField]
@@ -17,6 +21,9 @@ public class GoblinManager : MonoBehaviour
 
     void Start()
     {
+        transform.position = POS;
+
+        gameSceneData = FindObjectOfType<GameSceneData>();
         goblinMovement = GetComponent<GoblinMovement>();
         myAnim = GetComponent<Animator>();
     }
@@ -60,9 +67,10 @@ public class GoblinManager : MonoBehaviour
     private IEnumerator DestroyAfterDeathAnimation()
     {
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
+        //gameSceneData.RemoveGoblin(this);
         Destroy(gameObject);
     }
-
+     
     private void OnDestroy()
     {
         float randomNumber = UnityEngine.Random.Range(0f, 1f);
@@ -77,4 +85,7 @@ public class GoblinManager : MonoBehaviour
             }
         }
     }
+
 }
+
+
