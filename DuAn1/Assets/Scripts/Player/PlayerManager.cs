@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Start Load Data For Player");
             PlayerData.Instance.LoadPlayerData();
+            transform.position = player.currentPOS;
         }
     }
 

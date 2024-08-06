@@ -53,5 +53,18 @@ public class GameManager : Singleton<GameManager>
 
     // Game Data
 
-    
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerData.Instance.SavePlayerData();
+            SceneManager.LoadScene(3);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            PlayerData.Instance.SavePlayerData();
+            SceneManager.LoadScene(2);
+        }
+    }
 }
