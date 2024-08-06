@@ -1,89 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3462482674438725880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4536680501213930983}
-  - component: {fileID: 9166404787573291304}
-  m_Layer: 8
-  m_Name: Minimap-Icon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4536680501213930983
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3462482674438725880}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2023140534748457633}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9166404787573291304
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3462482674438725880}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 567090025
-  m_SortingLayer: 2
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.03937912, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &3480148991982069784
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +73,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 337
+    m_Bits: 1783
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: f4848dde17568d94bafc2315aa7333e7, type: 2}
   m_TargetDisplay: 0
@@ -242,6 +158,8 @@ GameObject:
   - component: {fileID: 5621032036043211433}
   - component: {fileID: 5979876996143144504}
   - component: {fileID: 5181868508306563759}
+  - component: {fileID: 3480748532160790786}
+  - component: {fileID: 8730792203009412666}
   m_Layer: 7
   m_Name: Gin
   m_TagString: Player
@@ -265,7 +183,6 @@ Transform:
   - {fileID: 131036156371197357}
   - {fileID: 347832333377314407}
   - {fileID: 5071596880002893854}
-  - {fileID: 4536680501213930983}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3178795865636102768
@@ -614,13 +531,13 @@ MonoBehaviour:
     m_ActionName: Player/Dash[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIGameScene, Assembly-CSharp
-        m_MethodName: Pause_ResumeGame
-        m_Mode: 0
+      - m_Target: {fileID: 5747014262174486363}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -647,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: 
   gold: 0
-  health: 0
+  health: 100
   food: 0
   damage: 40
   inventory: []
@@ -655,6 +572,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   playerManager: {fileID: 0}
   playerInput: {fileID: 0}
+  uiGameScene: {fileID: 0}
   zRotate: 0
   attackDuration: 0.5
   attack_Sfx: {fileID: 8300000, guid: cad135e36cc09de42b56d1ea6d5ef673, type: 3}
@@ -733,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
-  inventoryData: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: 9b12320aae0c92245ba32d427dcfe9cb, type: 2}
   initialItems: []
 --- !u!114 &5979876996143144504
 MonoBehaviour:
@@ -761,6 +679,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackForce: 10
   knockbackDuration: 0.2
+--- !u!114 &3480748532160790786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747014262174486363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b35dbf05fd27614cbf00544761f237d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 0}
+--- !u!114 &8730792203009412666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747014262174486363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa84c1a568d6c674aa1e824f05118464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: 9b12320aae0c92245ba32d427dcfe9cb, type: 2}
 --- !u!1 &5997194703372804750
 GameObject:
   m_ObjectHideFlags: 0

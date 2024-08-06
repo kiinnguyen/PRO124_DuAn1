@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7724933553588880635}
   - component: {fileID: 7302680360979782612}
   - component: {fileID: 8490258116179909412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,10 +118,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04555559, y: -0.19337273}
+  m_Offset: {x: 0.007003784, y: -0.42323303}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.125, y: 2.1252077}
     newSize: {x: 2.125, y: 2.1252077}
     adaptiveTilingThreshold: 0.5
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1652384, y: 1.1478233}
+  m_Size: {x: 1.9619751, y: 1.1699371}
   m_EdgeRadius: 0
 --- !u!114 &8490258116179909412
 MonoBehaviour:
