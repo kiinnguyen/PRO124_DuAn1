@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 namespace Inventory.UI
 {
@@ -133,6 +134,7 @@ namespace Inventory.UI
         public void Show()
         {
             Debug.Log("Calling Show()");
+            GameManager.Instance.PauseGame();
             gameObject.SetActive(true);
             ResetSelection();
         }
@@ -166,6 +168,7 @@ namespace Inventory.UI
 
         public void Hide()
         {
+            GameManager.Instance.ResumeGame();
             gameObject.SetActive(false);
             ResetDraggedItem();
         }

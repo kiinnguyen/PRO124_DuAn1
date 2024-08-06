@@ -108,7 +108,6 @@ namespace inventory
             {
                 if (!inventoryUI.isActiveAndEnabled)
                 {
-                    GameManager.Instance.PauseGame();
                     inventoryUI.Show();
                     foreach (var item in inventoryData.GetCurrentInventoryState())
                     {
@@ -117,7 +116,6 @@ namespace inventory
                 }
                 else
                 {
-                    GameManager.Instance.ResumeGame();
                     inventoryUI.Hide();
                 }
             }

@@ -12,10 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] public int health = 100;
     [SerializeField] public int food = 100;
     [SerializeField] public int damage = 40;
-
-    [SerializeField] public List<Item> inventory;
-
-
+    [SerializeField] public Vector2 currentPOS;
     // Children
     [SerializeField] private GameObject meleeArea;
     [SerializeField] GameManager gameManager;
@@ -87,6 +84,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        currentPOS = transform.position;
     }
 
     // Input Actions

@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 6.2929, y: 50.17993}
+  m_AnchoredPosition: {x: 6.2929077, y: 50.17993}
   m_SizeDelta: {x: 34.3441, y: 110.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3858756
@@ -619,6 +619,7 @@ GameObject:
   - component: {fileID: 1901884211}
   - component: {fileID: 1901884215}
   - component: {fileID: 1901884216}
+  - component: {fileID: 1901884217}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -820,6 +821,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!320 &1901884217
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901884210}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: c990bc23eaba0b542a539266d47f0035, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1912418666
 GameObject:
   m_ObjectHideFlags: 0

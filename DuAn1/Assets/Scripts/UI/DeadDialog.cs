@@ -37,7 +37,7 @@ public class DeadDialog : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            elapsedTime += Time.deltaTime * 0.3f;
+            elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
 
             // Chuyển màu từ trong suốt sang màu gốc
@@ -63,7 +63,7 @@ public class DeadDialog : MonoBehaviour
         elapsedTime = 0f;
         while (elapsedTime < 1f)
         {
-            elapsedTime += Time.deltaTime * 0.3f;
+            elapsedTime += Time.deltaTime;
             float t = elapsedTime / 1f;
 
             text.transform.localPosition = Vector3.Lerp(originalPosition, originalPosition + new Vector3(0, moveDistance, 0), t);

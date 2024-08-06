@@ -18,11 +18,7 @@ public class SettingController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (settingsPanel != null)
-            {
-                bool isActive = settingsPanel.activeSelf;
-                settingsPanel.SetActive(!isActive); // Đảo ngược trạng thái hiển thị của bảng cài đặt
-            }
+            settingsPanel.SetActive(true);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class KingSkeletonManager : MonoBehaviour
@@ -133,8 +134,15 @@ public class KingSkeletonManager : MonoBehaviour
         agent.ResetPath();
         agent.enabled = false;
         this.enabled = false;
-    }
 
+        StartCoroutine(DeathAfter());
+        
+    }
+    IEnumerator DeathAfter()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
+    }
     void UpdateHealthUI()
     {
         if (healthBar != null)
@@ -173,5 +181,11 @@ public class KingSkeletonManager : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         isAttacking = false;
+    }
+
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(0);
     }
 }
