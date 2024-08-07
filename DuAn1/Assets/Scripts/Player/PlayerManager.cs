@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
@@ -66,12 +67,23 @@ public class PlayerManager : MonoBehaviour
     }
     public void Heal(int value)
     {
-        int health = player.health + value;
+        StartCoroutine(HealingEffect(value));
+    }
 
-        if (health >= 100) health = 100;
-        else
+    IEnumerator HealingEffect(int value)
+    {
+        float elapsed = 0f;
+        float healvalue = value / 10f;
+        while (elapsed < 10f)
         {
-            player.health = health;
+            elapsed++;
+            yield return new WaitForSeconds(1f);
+            player.health += (int)healvalue;
+
+            if (player.health >= player.maxHealth)
+            {
+                player.health = player.maxHealth;
+            }
             uiGameScene.UpdateHealthBar(player.health);
         }
     }

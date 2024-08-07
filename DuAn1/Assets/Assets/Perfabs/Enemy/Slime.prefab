@@ -183,7 +183,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708295594114132529}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
@@ -232,8 +232,9 @@ MonoBehaviour:
   health: 0
   isDead: 0
   deathSFX: {fileID: 8300000, guid: 2760be55d06433347be34da37db8c46d, type: 3}
-  listObject: []
-  percentToDropItem: 0
+  listObject:
+  - {fileID: 5399990650286350602, guid: f00d687c850083a418f82742b38eb6cd, type: 3}
+  percentToDropItem: 1
 --- !u!114 &7431540548290341881
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ namespace WorldTime
 
         private void Start()
         {
-            _currentTime = TimeSpan.FromHours(7);
             StartCoroutine(AddMinute());
         }
 
@@ -52,6 +51,34 @@ namespace WorldTime
                 rawImage.texture = _moonSprite;
             }
         }
+
+        private void OnEnable()
+        {
+            GameManager.OnSaveData.AddListener(HandleSave);
+            GameManager.OnUploadData.AddListener(HandleUpload);
+
+        }
+
+        void OnDisable()
+        {
+            GameManager.OnSaveData.RemoveListener(HandleSave);
+            GameManager.OnUploadData.RemoveListener(HandleUpload);
+
+        }
+
+        void HandleSave()
+        {
+            int totalMinutes = _currentTime.Hours * 60 + _currentTime.Minutes;
+            PlayerPrefs.SetInt("timer", totalMinutes);
+        }
+
+        void HandleUpload()
+        {
+            int totalMinutes = PlayerPrefs.GetInt("timer", 7 * 60);
+            _currentTime = TimeSpan.FromMinutes(totalMinutes);
+            UpdateSprite();
+        }
+
     }
 
 }
