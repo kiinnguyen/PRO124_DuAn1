@@ -50,6 +50,10 @@ public class Player : MonoBehaviour
     private bool canAttack = true;
     private bool isDead = false;
 
+    // Effects
+    private float originalSpeed;
+    private bool isSlowed = false;
+
 
     // Pause Game
 
@@ -69,6 +73,8 @@ public class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         knowFeedBack = GetComponent<KnockFeedBack>();
         uiGameScene = FindObjectOfType<UIGameScene>();
+
+        originalSpeed = speedMove;
     }
 
     private void Update()
@@ -126,12 +132,6 @@ public class Player : MonoBehaviour
         isAttacking = false;
         canAttack = true;
     }
-
-    public void OnOpenSetting(InputAction.CallbackContext context)
-    {
-
-    }
-
 
     // Actions
     private void RotateAttackArea(Vector2 vector)
@@ -193,6 +193,28 @@ public class Player : MonoBehaviour
         isPaused = false;
         Debug.Log("Player Resumed");
     }
+
+    // Slow effect
+    public void SlowEffect()
+    {
+        if (!isSlowed)
+        {
+            StartCoroutine(SlowEffectCoroutine());
+        }
+    }
+
+    private IEnumerator SlowEffectCoroutine()
+    {
+        isSlowed = true;
+        speedMove /= 2;
+
+        yield return new WaitForSeconds(5);
+
+        speedMove = originalSpeed;
+        isSlowed = false;
+    }
+
+
 
     // Data Manager
 
