@@ -26,7 +26,7 @@ namespace Inventory.Model
                 inventoryItems.Add(InventoryItem.GetEmptyItem());
             }
         }
-
+        
         public int AddItem(ItemSO item, int quantity)
         {
             if (item.IsStackable == false)
@@ -156,6 +156,18 @@ namespace Inventory.Model
                     InformAboutChange();
                 }
             }
+        }
+
+
+        public List<InventoryItem> GetInventoryItem()
+        {
+            return inventoryItems;
+        }
+        
+
+        public void SetInventoryItem(List<InventoryItem> itemsFromData)
+        {
+            inventoryItems = itemsFromData;
         }
     }
     [Serializable]

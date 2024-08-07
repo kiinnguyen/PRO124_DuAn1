@@ -18,6 +18,7 @@ public class PlayerData : Singleton<PlayerData>
             PlayerPrefsExtra.SetVector2("pos", player.currentPOS);
         }
 
+        
         PlayerPrefs.Save();
     }
 
@@ -31,6 +32,7 @@ public class PlayerData : Singleton<PlayerData>
             player.food = PlayerPrefs.GetInt("food", 100);
             player.gold = PlayerPrefs.GetInt("gold", 0);
             player.currentPOS = PlayerPrefsExtra.GetVector2("pos", new Vector2(22, -56));
+
         }
 
         Debug.Log("Upload Player Data Successfully");
