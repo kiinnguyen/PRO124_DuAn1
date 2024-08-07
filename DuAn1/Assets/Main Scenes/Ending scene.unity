@@ -362,8 +362,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -1052, y: -158.83092}
-  m_SizeDelta: {x: 973.05, y: 1080}
+  m_AnchoredPosition: {x: -1052, y: -669.7732}
+  m_SizeDelta: {x: 973.05, y: 2101.8845}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &944416067
 MonoBehaviour:
@@ -398,7 +398,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "CLASS:\n\nGVDH:\n\nTEAM:\n\nLEADER: \n\nMEMBER:"
+  m_Text: "CLASS:\n\nGVDH:\n\nTEAM:\n\nLEADER: \n\nMEMBER:\n\n\n\nTHIET KE UI:\n\n\nTHIET
+    KE PLAYER:\n\nTHIET KE MAP:\n\nTHIET KE QUAI:"
 --- !u!222 &944416068
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -458,26 +459,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'DU AN 1
-
-
-    MMMM
-
-
-    5
-
-
-    NGUYEN VAN TU
-
-
-    VU HOANG LAM
-
-    NGUYEN
-    TUAN ANH
-
-    DO PHUC
-
-'
+  m_Text: "GA19301 - PRO124\n\nNGUYEN DO ANH KHOA\n\n5\n\nNGUYEN VAN TU\n\nVU HOANG
+    LAM\nNGUYEN TUAN ANH\nDO PHUC\n\nTUAN ANH\n HOANG LAM\n\nVAN TU\n\nDO PHUC\n\nVAN
+    TU\nHOANG LAM\n"
 --- !u!222 &967735488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -502,8 +486,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -356, y: -308}
-  m_SizeDelta: {x: 946.9469, y: 1351.3015}
+  m_AnchoredPosition: {x: -295, y: -765}
+  m_SizeDelta: {x: 946.9469, y: 2303.181}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1067102856
 GameObject:
@@ -639,6 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078158620}
   - component: {fileID: 1078158621}
+  - component: {fileID: 1078158622}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -655,7 +640,7 @@ Transform:
   m_GameObject: {fileID: 1078158619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 203, y: -866, z: -18.36196}
+  m_LocalPosition: {x: 176, y: -921, z: -18.36196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -684,6 +669,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1078158622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078158619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e6d8fb9f537274f8cf0d592868c75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditscene: 20
+  sceneName: Menu
 --- !u!1 &1120349195
 GameObject:
   m_ObjectHideFlags: 0
