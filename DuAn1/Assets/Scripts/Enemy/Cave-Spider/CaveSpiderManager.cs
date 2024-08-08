@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CaveSpiderManager : MonoBehaviour
 {
+    CaveSpdier spider;
+
     public GameObject webPrefab;
     public Transform webShootPoint;
     public float shootingRange = 10f;
@@ -16,8 +19,14 @@ public class CaveSpiderManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        anim = GetComponent<Animator>();
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 
     void Update()
@@ -25,27 +34,26 @@ public class CaveSpiderManager : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         if (distanceToPlayer <= shootingRange && !onAttack)
         {
-            StartCoroutine(ShootWebAtTarget());
+
         }
     }
 
-    IEnumerator ShootWebAtTarget()
+}
+
+[Serializable]
+
+public class CaveSpdier
+{
+    private int health { get; set; }
+    private int damage { get; set; }
+
+    public CaveSpdier(int health, int damage)
     {
-        if (webPrefab != null && webShootPoint != null && player != null)
-        {
-            onAttack = true;
-            Vector3 attackToPOS = player.transform.position;
-            GameObject webInstance = Instantiate(webPrefab, webShootPoint.position, Quaternion.identity);
-            Vector2 direction = (attackToPOS - webShootPoint.position).normalized;
-            webInstance.GetComponent<Rigidbody2D>().velocity = direction * 2f;
-
-            yield return new WaitForSeconds(webInstance.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length / 2); // Đợi đến khi animation hoàn tất
-
-            webInstance.gameObject.SendMessage("AttackAnim");
-
-            yield return new WaitForSeconds(webInstance.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length); // Đợi đến khi animation hoàn tất
-
-            onAttack = false;
-        }
+        this.health = health;
+        this.damage = damage;
     }
+
+    public int Health { get { return health; } }
+
+    public int Damage { get { return damage; } }
 }

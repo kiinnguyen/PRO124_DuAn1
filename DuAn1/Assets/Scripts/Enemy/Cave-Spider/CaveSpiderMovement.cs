@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class CaveSpiderMovement : MonoBehaviour
 {
+    public bool isChase;
+    public bool isDead;
     private NavMeshAgent agent;
     private Rigidbody2D rb;
     private Animator anim;
@@ -13,8 +15,8 @@ public class CaveSpiderMovement : MonoBehaviour
 
     void Start()
     {
+        isChase = false;
         agent = GetComponent<NavMeshAgent>();
-
         if (agent != null)
         {
             agent.updateRotation = false;
@@ -30,21 +32,13 @@ public class CaveSpiderMovement : MonoBehaviour
 
     void Update()
     {
-        if (spiderManager.onAttack)
-        {
-            agent.ResetPath();
-            rb.velocity = Vector2.zero;
-            anim.SetBool("isMoving", false);
-            return;
-        }
+        if (isDead || isChase) return;
 
-        if (player != null)
-        {
-            agent.SetDestination(player.transform.position);
-        }
 
-        anim.SetFloat("xInput", agent.velocity.x);
-        anim.SetFloat("yInput", agent.velocity.y);
-        anim.SetBool("isMoving", rb.velocity.magnitude > 0.1f);
+    }
+
+    public void DeadState(bool state)
+    {
+        isDead = false;
     }
 }
