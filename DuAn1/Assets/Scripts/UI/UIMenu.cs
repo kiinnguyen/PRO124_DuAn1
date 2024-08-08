@@ -34,12 +34,12 @@ public class UIMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        SceneManager.LoadScene(1);
+        UILoading.Instance.LoadScene("GameScene");
     }
 
     public void ContinueGame()
     {
-        SceneManager.LoadScene(1);
+        UILoading.Instance.LoadScene("GameScene");
     }
 
     private bool CheckingNullData()

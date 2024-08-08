@@ -8,7 +8,15 @@ public class GameManager : Singleton<GameManager>
     public static UnityEvent OnPause = new UnityEvent();
     public static UnityEvent OnResume = new UnityEvent();
 
+    public static UnityEvent OnSaveData = new UnityEvent();
+    public static UnityEvent OnUploadData = new UnityEvent();
     private bool isPaused = false;
+
+    private void Start()
+    {
+        Debug.Log("Has Key timer:" + PlayerPrefs.HasKey("timer"));
+    }
+
 
     // UI Loading
     public void LoadScene(string sceneNameInput)
@@ -44,6 +52,17 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Game Resumed");
     }
 
+    public void SaveData()
+    {
+        OnSaveData?.Invoke();
+        Debug.Log("Save Data");
+    }
+
+    public void UploadData()
+    {
+        OnUploadData?.Invoke();
+        Debug.Log("Upload Data");
+    }
     public void OnPlayerDeath()
     {
         Debug.Log("Player has died!");

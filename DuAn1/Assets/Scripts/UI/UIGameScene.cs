@@ -74,9 +74,9 @@ public class UIGameScene : MonoBehaviour
 
 
         healthBar.value = player.health;
-        foodBar.value = player.food;
+        //foodBar.value = player.food;
         //waterBar.value = player.water;
-        goldText.text = player.gold.ToString();
+        //goldText.text = player.gold.ToString();
 
     }
 

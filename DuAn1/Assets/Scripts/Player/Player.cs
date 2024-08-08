@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [Header("Information")]
-    [SerializeField] public string userName;
     [SerializeField] public int gold;
     [SerializeField] public int health = 100;
+    [SerializeField] public int maxHealth = 100;
     [SerializeField] public int food = 100;
     [SerializeField] public int damage = 40;
     [SerializeField] public Vector2 currentPOS;

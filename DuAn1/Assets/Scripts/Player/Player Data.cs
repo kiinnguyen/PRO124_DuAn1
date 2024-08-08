@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerData : Singleton<PlayerData>
 {
     private Player player;
-
+    private GameObject worldTime;
     public void SavePlayerData()
     {
+        GameManager.Instance.SaveData();
         player = FindObjectOfType<Player>();
-
         if (player != null)
         {
             PlayerPrefs.SetInt("health", player.health);
@@ -18,12 +18,15 @@ public class PlayerData : Singleton<PlayerData>
             PlayerPrefsExtra.SetVector2("pos", player.currentPOS);
         }
 
-        
+        // Timer
+
+
         PlayerPrefs.Save();
     }
 
     public void LoadPlayerData()
     {
+        GameManager.Instance.UploadData();
         player = FindObjectOfType<Player>();
 
         if (player != null)
@@ -32,7 +35,6 @@ public class PlayerData : Singleton<PlayerData>
             player.food = PlayerPrefs.GetInt("food", 100);
             player.gold = PlayerPrefs.GetInt("gold", 0);
             player.currentPOS = PlayerPrefsExtra.GetVector2("pos", new Vector2(22, -56));
-
         }
 
         Debug.Log("Upload Player Data Successfully");

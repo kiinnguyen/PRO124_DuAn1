@@ -27,6 +27,11 @@ public class AttackCollision : MonoBehaviour
             }
             collision.SendMessage("TakeDamage", player.damage);
         }
+
+        if (collision.CompareTag("SpiderWeb"))
+        {
+            collision.SendMessage("TakeDamage", 5);
+        }
     }
 
     IEnumerator UnActive()
