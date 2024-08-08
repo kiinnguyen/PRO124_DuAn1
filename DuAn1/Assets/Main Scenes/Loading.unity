@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3858755}
   - component: {fileID: 3858756}
+  - component: {fileID: 3858757}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -154,11 +155,12 @@ RectTransform:
   m_Children:
   - {fileID: 317572559}
   - {fileID: 336377679}
+  - {fileID: 1985073808}
   m_Father: {fileID: 416609871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 6.2929077, y: 50.17993}
+  m_AnchoredPosition: {x: 6.2929688, y: 50.17993}
   m_SizeDelta: {x: 34.3441, y: 110.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3858756
@@ -212,8 +214,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1901884215}
-        m_TargetAssemblyTypeName: UILoading, Assembly-CSharp
+      - m_Target: {fileID: 3858757}
+        m_TargetAssemblyTypeName: ProgessLoading, Assembly-CSharp
         m_MethodName: UpdateProgressText
         m_Mode: 2
         m_Arguments:
@@ -224,18 +226,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1901884215}
-        m_TargetAssemblyTypeName: UILoading, Assembly-CSharp
-        m_MethodName: UpdateProgessToSystem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!114 &3858757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4aa7911398ed294ca2ceb6ee3c3bf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressLoading: {fileID: 3858756}
+  loadingDuration: 4
 --- !u!1 &317572558
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +382,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3858755}
-  - {fileID: 1985073808}
   m_Father: {fileID: 1901884214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -561,50 +564,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!1 &1624234140
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1624234142}
-  - component: {fileID: 1624234141}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1624234141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624234140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 775b692f07a955a42abd320b0d06536d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1624234142
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624234140}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.570993, y: -43.153824, z: 0.013689084}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901884210
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +576,6 @@ GameObject:
   - component: {fileID: 1901884213}
   - component: {fileID: 1901884212}
   - component: {fileID: 1901884211}
-  - component: {fileID: 1901884215}
   - component: {fileID: 1901884216}
   - component: {fileID: 1901884217}
   m_Layer: 5
@@ -710,21 +668,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1901884215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901884210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bba4ecc92db99a4faf1dabd688202dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressLoading: {fileID: 3858756}
-  loadingDuration: 4
-  gameManager: {fileID: 0}
 --- !u!82 &1901884216
 AudioSource:
   m_ObjectHideFlags: 0
@@ -938,16 +881,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985073807}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 416609871}
+  m_Father: {fileID: 3858755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -489.82007}
+  m_AnchoredPosition: {x: -6.2929654, y: 5.93927}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1985073810
@@ -991,7 +934,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 110%
+  m_Text: 100%
 --- !u!1 &2145335046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,4 +1010,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1901884214}
   - {fileID: 2145335049}
-  - {fileID: 1624234142}

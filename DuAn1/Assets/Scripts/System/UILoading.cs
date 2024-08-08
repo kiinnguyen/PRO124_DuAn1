@@ -1,50 +1,25 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UILoading : MonoBehaviour
+public class UILoading : Singleton<UILoading>
 {
     [Header("UI Loading")]
-    [SerializeField] Slider progressLoading;
-    [SerializeField] float loadingDuration;
+    [SerializeField] string sceneName;
 
-    [Header("System")]
-    [SerializeField] GameManager gameManager;
 
-    void Start()
+    public void LoadScene(string name)
     {
-        gameManager = FindObjectOfType<GameManager>();
-        if (progressLoading != null)
-        {
-            progressLoading.value = progressLoading.minValue;
-            StartCoroutine(LoadingCoroutine());
-        }
-    }
-
-    IEnumerator LoadingCoroutine()
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < loadingDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            progressLoading.value = Mathf.Lerp(progressLoading.minValue, progressLoading.maxValue, elapsedTime / loadingDuration);
-
-            yield return null;
-        }
-
-        progressLoading.value = progressLoading.maxValue;
+        sceneName = name;
+        SceneManager.LoadScene(1);
     }
 
 
-    public void UpdateProgressText(Text progessText)
+    public void ReadyToLoadScene()
     {
-        progessText.text = Mathf.RoundToInt(progressLoading.value).ToString() + "%";
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void UpdateProgessToSystem()
-    {
-        gameManager.CheckingProgessLoading(progressLoading.value);
-    }
 }
