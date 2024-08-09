@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8695367686212186599}
   - component: {fileID: 8772614498625071852}
   - component: {fileID: 423468902018207680}
+  - component: {fileID: 3610401835805968152}
   m_Layer: 0
   m_Name: Campfire 1 1
   m_TagString: Untagged
@@ -158,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 567090025
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 106146454, guid: 74590f625cff45448a9b9bc5b5522255, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -223,9 +224,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.0014839}
+  m_Offset: {x: 0, y: -1.0706177}
   serializedVersion: 2
-  m_Radius: 0.8252983
+  m_Radius: 0.75616455
 --- !u!114 &423468902018207680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,3 +239,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a19ab965b8ce184bb8c67dd2b3ba4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3610401835805968152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470322263412129902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a05c2bf817a9c4191b1c00344029a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goblinPrefab: {fileID: 5160204365201120659, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
+  spawnRadius: 5
+  goblinCount: 3
