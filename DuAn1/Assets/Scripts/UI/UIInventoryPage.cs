@@ -134,7 +134,7 @@ namespace Inventory.UI
         public void Show()
         {
             Debug.Log("Calling Show()");
-            GameManager.Instance.PauseGame();
+            GameManager.Instance?.PauseGame();
             gameObject.SetActive(true);
             ResetSelection();
         }
@@ -168,7 +168,7 @@ namespace Inventory.UI
 
         public void Hide()
         {
-            GameManager.Instance.ResumeGame();
+            GameManager.Instance?.ResumeGame();
             gameObject.SetActive(false);
             ResetDraggedItem();
         }
