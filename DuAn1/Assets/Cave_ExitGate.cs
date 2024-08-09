@@ -10,6 +10,7 @@ public class Cave_ExitGate : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerData.Instance.SavePlayerData();
+            UILoading.Instance.LoadScene("GameScene");
             
         }
     }
