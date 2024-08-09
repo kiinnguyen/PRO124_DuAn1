@@ -14,10 +14,6 @@ public class PlayerManager : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-
-    private float knockbackForce = 10f;
-    private float knockbackDuration = 0.2f;
-
     private void Start()
     {
         InitializePlayer();

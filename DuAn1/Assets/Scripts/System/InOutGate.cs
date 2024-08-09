@@ -23,16 +23,8 @@ public class InOutGate : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canTeleport)
         {
-            if (locate == "island")
-            {
-                locate = "cave";
-                gin.transform.position = cave.position;
-            }
-            else
-            {
-                locate = "island";
-                gin.transform.position = island.position;
-            }
+            PlayerData.Instance.SavePlayerData();
+            UILoading.Instance.LoadScene("Cave");
         }
     }
 
