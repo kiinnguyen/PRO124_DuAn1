@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,6 +12,7 @@ public class CaveSpiderMovement : MonoBehaviour
     private Animator anim;
     private Player player;
     private CaveSpiderManager spiderManager;
+    private Vector3 originalPosition;
 
     void Start()
     {
@@ -28,17 +29,50 @@ public class CaveSpiderMovement : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         spiderManager = GetComponent<CaveSpiderManager>();
+
+        originalPosition = transform.position; // Lưu vị trí ban đầu
     }
 
     void Update()
     {
-        if (isDead || isChase) return;
+        if (isDead) return;
 
+        if (isChase)
+        {
+            if (player != null)
+            {
+                agent.SetDestination(player.transform.position);
+                // Thực hiện các hành động tấn công ở đây
+            }
+        }
+        else
+        {
+            // Quay về vị trí cũ
+            if (Vector3.Distance(transform.position, originalPosition) > 0.1f)
+            {
+                agent.SetDestination(originalPosition);
+            }
+        }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isChase = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isChase = false;
+        }
     }
 
     public void DeadState(bool state)
     {
-        isDead = false;
+        isDead = state;
     }
 }
