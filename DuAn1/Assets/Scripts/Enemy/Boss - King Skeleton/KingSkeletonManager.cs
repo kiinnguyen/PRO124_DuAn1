@@ -69,7 +69,7 @@ public class KingSkeletonManager : MonoBehaviour
         while (player != null && !isDead)
         {
             // Bắt đầu tấn công
-            anim.SetTrigger("Attack");
+            anim.SetTrigger("Melee");
             isAttacking = true;
             kingSkeletonMovement.UseSkill(true);
 
