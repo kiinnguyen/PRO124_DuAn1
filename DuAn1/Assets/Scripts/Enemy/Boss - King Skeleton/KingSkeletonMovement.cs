@@ -14,6 +14,7 @@ public class KingSkeletonMovement : MonoBehaviour
     private bool isChase;
     private Vector2 targetPosition;
     private bool isUsingSkill;
+    [SerializeField] bool isPaused;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class KingSkeletonMovement : MonoBehaviour
             agent.updateUpAxis = false;
         }
         isChase = false;
+        isPaused = false;
     }
 
     public void StartMove()
@@ -56,7 +58,8 @@ public class KingSkeletonMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!kingSkeletonManager.isDead || !isUsingSkill)
+        if (kingSkeletonManager.isDead || isPaused) return;
+        if (!isUsingSkill)
         {
             if (isChase)
             {
@@ -81,4 +84,32 @@ public class KingSkeletonMovement : MonoBehaviour
     }
 
     public bool UseSkill(bool state) => isUsingSkill = state;
+
+
+
+    private void OnEnable()
+    {
+        GameManager.OnPause.AddListener(HandlePause);
+        GameManager.OnResume.AddListener(HandleResume);
+
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnPause.RemoveListener(HandlePause);
+        GameManager.OnResume.RemoveListener(HandleResume);
+
+    }
+
+    public void HandlePause()
+    {
+        isPaused = true;
+        rb.velocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+    }
+
+    void HandleResume()
+    {
+        isPaused = false;
+    }
 }

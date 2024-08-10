@@ -96,12 +96,20 @@ public class HinManager : MonoBehaviour
                     Vector2 knockback = (hitEnemy.transform.position - transform.position).normalized;
                     knockBack.ApplyKnockback(knockback);
                 }
-                hitEnemy.SendMessage("TakeDamage", 30);
+                hitEnemy.SendMessage("TakeDamage", 100);
                 Debug.Log("Hit Enemy: " + hitEnemy.name);
             }
         }
 
         yield return new WaitForSeconds(attackCooldown);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (damage > 0)
+        {
+            animator.SetTrigger("Hurt");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

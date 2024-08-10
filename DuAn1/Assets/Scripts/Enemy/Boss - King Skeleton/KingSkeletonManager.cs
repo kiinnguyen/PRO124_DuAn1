@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NavMeshPlus.Extensions;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,16 +58,13 @@ public class KingSkeletonManager : MonoBehaviour
         {
             if (attackCoroutine == null)
             {
-                attackCoroutine = StartCoroutine(AttackPlayer(collision.GetComponent<Player>()));
+                attackCoroutine = StartCoroutine(AttackPlayer());
             }
         }
     }
-
-    private IEnumerator AttackPlayer(Player player)
+    private IEnumerator AttackPlayer()
     {
-        PlayerManager playerManager = player.GetComponent<PlayerManager>();
-
-        while (player != null && !isDead)
+        while (!isDead)
         {
             // Bắt đầu tấn công
             anim.SetTrigger("Melee");
@@ -77,9 +75,23 @@ public class KingSkeletonManager : MonoBehaviour
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
             // Kiểm tra nếu player vẫn còn trong vùng va chạm
-            if (player != null && !isDead && !isUsingSkill)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f, LayerMask.GetMask("Player"));
+
+            foreach (Collider2D collider in colliders)
             {
-                playerManager.TakeDamage(damage); // Giảm máu người chơi thông qua PlayerManager
+                // Lấy tag của collider
+                if(collider.tag == "Player")
+                {
+                    Debug.Log("Attack by Boss");
+                    KnockBack knockBack = collider.GetComponent<KnockBack>();
+
+                    if (knockBack != null)
+                    {
+                        Vector2 knockback = (collider.transform.position - transform.position).normalized;
+                        knockBack.ApplyKnockback(knockback);
+                        collider.SendMessage("TakeDamage", damage);
+                    }
+                }
             }
 
             // Cooldown tấn công
@@ -96,7 +108,7 @@ public class KingSkeletonManager : MonoBehaviour
     {
         if (collision.CompareTag("Player") && attackCoroutine != null)
         {
-            StopCoroutine(attackCoroutine);
+            //StopCoroutine(attackCoroutine);
             attackCoroutine = null;
         }
     }
@@ -108,6 +120,7 @@ public class KingSkeletonManager : MonoBehaviour
 
         if (health <= 0)
         {
+            healthBar.value = 0;
             anim.SetTrigger("Death");
             Death();
         }
@@ -151,6 +164,7 @@ public class KingSkeletonManager : MonoBehaviour
     private void Death()
     {
         isDead = true;
+        kingSkeletonMovement.StopMove();
         GetComponent<Collider2D>().enabled = false;
         foreach (Transform child in transform)
         {

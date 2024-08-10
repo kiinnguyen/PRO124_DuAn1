@@ -30,7 +30,7 @@ public class AttackCollision : MonoBehaviour
 
         if (collision.CompareTag("SpiderWeb"))
         {
-            collision.SendMessage("TakeDamage", 5);
+            collision.SendMessage("TakeDamage", 20);
         }
     }
 
