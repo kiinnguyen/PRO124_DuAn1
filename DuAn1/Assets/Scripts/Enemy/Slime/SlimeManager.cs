@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -81,6 +81,8 @@ public class SlimeManager : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
+    
+
     private IEnumerator DestroyAfterDeathAnimation()
     {
         if (agent != null)
@@ -89,11 +91,17 @@ public class SlimeManager : MonoBehaviour
         }
         Enemy enemy = GetComponent<Enemy>();
         enemy.ActiveDestroyEnemy();
+
+        // Đợi hoạt ảnh chết hoàn thành
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Gọi hàm DropItem trước khi phá hủy đối tượng
+        DropItem();
+
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    private void DropItem()
     {
         float randomNumber = UnityEngine.Random.Range(0f, 1f);
 
@@ -102,7 +110,6 @@ public class SlimeManager : MonoBehaviour
             if (listObject.Count > 0)
             {
                 GameObject newObject = listObject[UnityEngine.Random.Range(0, listObject.Count)];
-
                 Instantiate(newObject, transform.position, Quaternion.identity);
             }
         }
