@@ -83,7 +83,10 @@ public class SlimeManager : MonoBehaviour
 
     private IEnumerator DestroyAfterDeathAnimation()
     {
-        agent.enabled = false;
+        if (agent != null)
+        {
+            agent.enabled = false;
+        }
         Enemy enemy = GetComponent<Enemy>();
         enemy.ActiveDestroyEnemy();
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
