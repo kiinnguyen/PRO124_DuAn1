@@ -17,7 +17,10 @@ public class KingSkeletonManager : MonoBehaviour
     [SerializeField] GameObject exitGate;
     [Header("Perfabs")]
     [SerializeField] GameObject slime;
-
+    [Header("Attack Settings")]
+    [SerializeField] private float attackCooldown = 2f; // Thời gian cooldown sau khi tấn công
+    private bool isAttacking;
+    private Coroutine attackCoroutine;
     // skills
     private bool isUsingSkill;
     // Heal skill
@@ -46,6 +49,56 @@ public class KingSkeletonManager : MonoBehaviour
     public void StopCombat()
     {
         kingSkeletonMovement.StopMove();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (attackCoroutine == null)
+            {
+                attackCoroutine = StartCoroutine(AttackPlayer(collision.GetComponent<Player>()));
+            }
+        }
+    }
+
+    private IEnumerator AttackPlayer(Player player)
+    {
+        PlayerManager playerManager = player.GetComponent<PlayerManager>();
+
+        while (player != null && !isDead)
+        {
+            // Bắt đầu tấn công
+            anim.SetTrigger("Attack");
+            isAttacking = true;
+            kingSkeletonMovement.UseSkill(true);
+
+            // Đợi cho đến khi hoạt ảnh hoàn thành
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+            // Kiểm tra nếu player vẫn còn trong vùng va chạm
+            if (player != null && !isDead && !isUsingSkill)
+            {
+                playerManager.TakeDamage(damage); // Giảm máu người chơi thông qua PlayerManager
+            }
+
+            // Cooldown tấn công
+            yield return new WaitForSeconds(attackCooldown);
+
+            isAttacking = false;
+            kingSkeletonMovement.UseSkill(false);
+        }
+        attackCoroutine = null;
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+        }
     }
 
     public void TakeDamage(int damage)
