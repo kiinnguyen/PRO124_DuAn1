@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Main Scenes/Loading.unity
     guid: b33514a1862e6ee43b7cf40e65db0ee4
   - enabled: 1
-    path: Assets/Main Scenes/GameScene.unity
+    path: Assets/Main Scenes/Game/GameScene.unity
     guid: 3b95ed475c368254bb3e93ff364f3195
   - enabled: 0
     path: Assets/Scenes/Adio.unity
@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Main Scenes/KK.unity
     guid: de5af2081f3993c45b88c310f8979606
   - enabled: 1
-    path: Assets/Main Scenes/Cave.unity
+    path: Assets/Main Scenes/Game/Cave.unity
     guid: 2cffba9da6272bb4bb5bdb3f9842f633
   - enabled: 1
     path: Assets/Main Scenes/Ending scene.unity
