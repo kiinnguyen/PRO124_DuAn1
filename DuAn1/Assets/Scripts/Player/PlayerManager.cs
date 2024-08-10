@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
@@ -31,7 +32,10 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Start Load Data For Player");
             PlayerData.Instance.LoadPlayerData();
-            transform.position = player.currentPOS;
+            if (SceneManager.GetActiveScene().name == "GameScene")
+            {
+                transform.position = player.currentPOS;
+            }
         }
     }
 
