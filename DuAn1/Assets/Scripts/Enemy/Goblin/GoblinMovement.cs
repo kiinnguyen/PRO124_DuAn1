@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,7 +31,7 @@ public class GoblinMovement : MonoBehaviour
         isPaused = false;
 
 
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         target = FindObjectOfType<Player>().transform;
@@ -88,7 +88,7 @@ public class GoblinMovement : MonoBehaviour
     {
         navAgent.Warp(position);
     }
-    
+
     public void StopMoving()
     {
         navAgent.ResetPath();

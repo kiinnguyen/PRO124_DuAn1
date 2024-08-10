@@ -50,7 +50,7 @@ public class GameSceneData : MonoBehaviour
         GameObject goblinObject = Instantiate(goblinPerfab, data.POS, Quaternion.identity);
         GoblinManager goblin = goblinObject.GetComponent<GoblinManager>();
         goblin.id = data.id;
-        goblin.POS = data.POS;
+        //goblin.POS = data.POS;
         goblin.health = data.health;
         goblins.Add(goblin);
     }
