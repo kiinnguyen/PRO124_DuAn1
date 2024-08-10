@@ -43,7 +43,7 @@ public class HinManager : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || isPaused) return;
 
         if (isTutorial)
         {
@@ -80,13 +80,10 @@ public class HinManager : MonoBehaviour
         agent.ResetPath();
         animator.SetTrigger("Attack");
 
-        // Điều chỉnh hướng nhìn của Hin
         RotateTowardsTarget(currentTarget);
 
-        // Đợi animation tấn công thực hiện xong
         yield return new WaitForSeconds(1f);
 
-        // Kiểm tra va chạm với quái vật trong vùng meleeArea
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(meleeArea.transform.position, meleeArea.GetComponent<BoxCollider2D>().size, 0);
         foreach (Collider2D hitEnemy in hitEnemies)
         {
@@ -153,7 +150,7 @@ public class HinManager : MonoBehaviour
 
     }
 
-    void HandlePause()
+    public void HandlePause()
     {
         isPaused = true;
         rb.velocity = Vector2.zero;

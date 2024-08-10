@@ -1,228 +1,119 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class KingSkeletonManager : MonoBehaviour
 {
-    [Header("Component")]
-    public Transform player;
-    public NavMeshAgent agent;
-    public Animator animator;
-    public GameObject slimePrefab;
-    private KingSkeletonMovement movement;
-    [SerializeField] Slider healthBar;
-
-    [Header("Stats")]
-    public float health = 1000f;
-    private float maxHealth;
-    public float attackCooldown = 3f;
-    private float nextAttackTime;
-    public float skillDuration = 7f;
-    private float skillCooldown = 10f;
-    private float nextSkillTime;
-    private bool isUsingSkill;
-    private bool isDead;
-
-    private bool isAttacking = false;
-    private bool hasHealed = false; // Cờ kiểm tra hồi máu
-
     [Header("Information")]
+    [SerializeField] int health;
     [SerializeField] int damage;
-    [SerializeField] float spawnSlimeInterval = 20f;
-    private float nextSpawnTime;
-    [SerializeField] bool isChase;
-
-    [Header("GameObject")]
+    public bool isDead;
+    [Header("Components")]
+    [SerializeField] KingSkeletonMovement kingSkeletonMovement;
+    [SerializeField] Animator anim;
+    [Header("Children")]
+    [SerializeField] Slider healthBar;
+    [Header("GameObjects")]
     [SerializeField] GameObject exitGate;
+    [Header("Perfabs")]
+    [SerializeField] GameObject slime;
 
-    void Start()
+    // skills
+    private bool isUsingSkill;
+    // Heal skill
+    private bool usedHealingskill;
+    private void Start()
     {
-        animator = GetComponent<Animator>();
-        player = FindObjectOfType<Player>().transform; // Đảm bảo Player biến đã được gán
-        agent = GetComponent<NavMeshAgent>();
-        if (agent != null)
-        {
-            agent.updateRotation = false;
-            agent.updateUpAxis = false;
-        }
+        usedHealingskill = false;
+        isUsingSkill = false;
+        kingSkeletonMovement = GetComponent<KingSkeletonMovement>();
+        anim = GetComponent<Animator>();
 
-        maxHealth = health;
         if (healthBar != null)
         {
-            healthBar.maxValue = maxHealth;
+            healthBar.maxValue = health;
             healthBar.value = health;
         }
-
-        nextAttackTime = Time.time;
-        nextSkillTime = Time.time + skillCooldown;
-        nextSpawnTime = Time.time + spawnSlimeInterval;
-        movement = GetComponent<KingSkeletonMovement>();
-        if (movement == null)
-        {
-            Debug.LogError("KingSkeletonMovement component is not attached to the GameObject.");
-        }
-
-        isChase = false;
-    }
-
-    void Update()
-    {
-        if (isDead) return;
-
-        if (Time.time >= nextSpawnTime)
-        {
-            SpawnSlimes();
-            nextSpawnTime = Time.time + spawnSlimeInterval;
-        }
-
-        if (health <= maxHealth * 0.4f && !hasHealed)
-        {
-            hasHealed = true; // Đặt cờ đã hồi máu
-            HealRoutine();
-        }
-        if (isUsingSkill)
-        {
-            SkillAttack();
-            return;
-        }
-
-        if (Time.time >= nextSkillTime)
-        {
-            StartCoroutine(UseSkill());
-        }
-
-        if (movement != null && isChase)
-        {
-            movement.MoveTo(player); // Di chuyển theo Player
-        }
-    }
-
-    IEnumerator UseSkill()
-    {
-        isUsingSkill = true;
-        nextSkillTime = Time.time + skillCooldown + skillDuration;
-        animator.SetTrigger("Skill1");
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        float distance = Vector2.Distance(transform.position, player.position); // Kiểm tra khoảng cách với Player
-        if (distance > 1f && distance < 2f)
-        {
-            PlayerManager.FindObjectOfType<PlayerManager>().TakeDamage(damage);
-        }
-        yield return new WaitForSeconds(skillDuration);
-        isUsingSkill = false;
-    }
-
-    void SkillAttack()
-    {
-        movement.MoveTo(player); // Di chuyển theo Player
     }
 
     public void StartCombat()
     {
-        isChase = true;
+        kingSkeletonMovement.StartMove();
+        StartCoroutine(SpawnCoroutine());
+
     }
 
-    void HealRoutine()
+    public void StopCombat()
     {
-        if (isDead) return;
-
-        float healAmount = maxHealth * 0.2f;
-        health = Mathf.Min(health + healAmount, maxHealth);
-        animator.SetTrigger("Heal");
-
-        SpawnSlimes();
-
-        UpdateHealthUI();
+        kingSkeletonMovement.StopMove();
     }
 
-    void SpawnSlimes()
+    public void TakeDamage(int damage)
     {
-        for (int i = 0; i < 2; i++)
-        {
-            Instantiate(slimePrefab, transform.position, Quaternion.identity);
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        if (isDead) return;
-
+        if (isUsingSkill) return;
         health -= damage;
-        agent.ResetPath();
-        animator.SetTrigger("Hurt");
+
         if (health <= 0)
         {
-            health = 0;
-            Die();
+            anim.SetTrigger("Death");
+            Death();
         }
-        UpdateHealthUI();
-    }
-
-    void Die()
-    {
-        isDead = true;
-        animator.SetTrigger("Death");
-        agent.ResetPath();
-        agent.enabled = false;
-        this.enabled = false;
-
-        StartCoroutine(DeathAfter());
-    }
-
-    IEnumerator DeathAfter()
-    {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        Destroy(gameObject);
-    }
-
-    void UpdateHealthUI()
-    {
-        if (healthBar != null)
+        else
         {
             healthBar.value = health;
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isDead || isUsingSkill || Time.time < nextAttackTime) return;
-
-        if (collision.CompareTag("Player"))
+        if (health <=  healthBar.maxValue * 0.4)
         {
-            nextAttackTime = Time.time + attackCooldown;
-            StartCoroutine(PerformMeleeAttack());
+            if (!usedHealingskill)
+            StartCoroutine(Skil_Heal());
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    IEnumerator Skil_Heal()
     {
-        if (isDead || isUsingSkill || Time.time < nextAttackTime) return;
+        // set using skill
+        isUsingSkill = true;
 
-        if (collision.CompareTag("Player"))
-        {
-            nextAttackTime = Time.time + attackCooldown;
-            StartCoroutine(PerformMeleeAttack());
-        }
+        usedHealingskill = true;
+        kingSkeletonMovement.UseSkill(true);
+        anim.SetTrigger("Heal");
+        float healvalue = healthBar.maxValue * 0.2f;
+        health += (int)healvalue;
+        healthBar.value = health;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        // buff
+
+        damage += 20;
+
+
+        kingSkeletonMovement.UseSkill(false);
+
+        isUsingSkill = false;
+        yield return null;
     }
 
-    IEnumerator PerformMeleeAttack()
+    
+    private void Death()
     {
-        isAttacking = true;
-        agent.ResetPath();
-        animator.SetTrigger("Melee");
-
-        yield return new WaitForSeconds(1f); // Adjust based on your animation duration
-        if (Vector2.Distance(transform.position, player.position) < 1f) // Kiểm tra khoảng cách với Player
+        isDead = true;
+        GetComponent<Collider2D>().enabled = false;
+        foreach (Transform child in transform)
         {
-            PlayerManager.FindObjectOfType<PlayerManager>().TakeDamage(damage);
+            child.gameObject.SetActive(false);
         }
-        isAttacking = false;
+        exitGate.SetActive(true);
     }
 
-    private void OnDestroy()
+    IEnumerator SpawnCoroutine()
     {
-        exitGate?.SetActive(true);
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+
+            Instantiate(slime, transform.position, Quaternion.identity);
+           
+        }
     }
 }

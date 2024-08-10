@@ -1,39 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class KingSkeletonMovement : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private Animator animator;
+    [Header("Components")]
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Player player;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] private Animator animator;
+    [SerializeField] KingSkeletonManager kingSkeletonManager;
 
-    void Start()
+    [Header("Varibles")]
+    private bool isChase;
+    private Vector2 targetPosition;
+    private bool isUsingSkill;
+
+    private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        player = FindObjectOfType<Player>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        kingSkeletonManager = GetComponent<KingSkeletonManager>();
+        agent = GetComponent<NavMeshAgent>();
 
         if (agent != null)
         {
             agent.updateRotation = false;
             agent.updateUpAxis = false;
         }
+        isChase = false;
     }
 
-    public void MoveTo(Transform target)
+    public void StartMove()
     {
-        if (agent != null && agent.isOnNavMesh)
+        isChase = true;
+        InvokeRepeating(nameof(UpdateTargetPosition), 0f, 1f);
+    }
+
+    public void StopMove()
+    {
+        isChase = false;
+        CancelInvoke(nameof(UpdateTargetPosition));
+        rb.velocity = Vector2.zero;
+
+        animator.SetBool("isMoving", false);
+    }
+
+    private void UpdateTargetPosition()
+    {
+        if (player != null)
         {
-            agent.SetDestination(target.position);
-            UpdateAnimator(agent.velocity);
+            targetPosition = player.transform.position;
         }
     }
 
-    private void UpdateAnimator(Vector2 velocity)
+    private void Update()
     {
-        Vector2 normalizedVelocity = velocity.sqrMagnitude > 0.1f ? velocity.normalized : Vector2.zero;
-        animator.SetFloat("xInput", normalizedVelocity.x);
-        animator.SetFloat("yInput", normalizedVelocity.y);
-        animator.SetBool("isMoving", velocity.sqrMagnitude > 0.1f);
+        if (!kingSkeletonManager.isDead || !isUsingSkill)
+        {
+            if (isChase)
+            {
+                agent.SetDestination(targetPosition);
+            }
+            else
+            {
+                agent.ResetPath();
+            }
+
+            Vector2 direction = (Vector2)agent.destination - rb.position;
+
+            animator.SetFloat("xInput", direction.x);
+            animator.SetFloat("yInput", direction.y);
+            animator.SetBool("isMoving", agent.velocity.magnitude > 0.1f);
+        }
+        else
+        {
+            agent.ResetPath();
+        }
+
     }
+
+    public bool UseSkill(bool state) => isUsingSkill = state;
 }
