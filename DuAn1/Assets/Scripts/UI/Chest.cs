@@ -31,12 +31,4 @@ public class Chest : MonoBehaviour
             chestBanner.SetActive(true);
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            pressDialog.SetActive(false);
-        }
-    }
 }

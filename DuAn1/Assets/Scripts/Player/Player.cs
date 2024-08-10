@@ -238,14 +238,4 @@ public class Player : MonoBehaviour
         return isDead;
     }
 
-
-    public void Die()
-    {
-        // Hiển thị thông báo chết
-        Debug.Log("Player đã chết!");
-
-        // Xử lý logic chết như làm cho nhân vật biến mất hoặc tải lại scene
-        // Ví dụ: Destroy(gameObject); hoặc SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
 }

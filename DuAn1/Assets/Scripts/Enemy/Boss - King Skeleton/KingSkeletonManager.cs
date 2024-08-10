@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class KingSkeletonManager : MonoBehaviour
 {
     [Header("Component")]
-    public Transform Player; // Đổi tên biến từ player thành Player
+    public Transform player;
     public NavMeshAgent agent;
     public Animator animator;
     public GameObject slimePrefab;
@@ -32,11 +32,15 @@ public class KingSkeletonManager : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] float spawnSlimeInterval = 20f;
     private float nextSpawnTime;
+    [SerializeField] bool isChase;
+
+    [Header("GameObject")]
+    [SerializeField] GameObject exitGate;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        Player = FindObjectOfType<Player>().transform; // Đảm bảo Player biến đã được gán
+        player = FindObjectOfType<Player>().transform; // Đảm bảo Player biến đã được gán
         agent = GetComponent<NavMeshAgent>();
         if (agent != null)
         {
@@ -59,27 +63,25 @@ public class KingSkeletonManager : MonoBehaviour
         {
             Debug.LogError("KingSkeletonMovement component is not attached to the GameObject.");
         }
+
+        isChase = false;
     }
 
     void Update()
     {
         if (isDead) return;
 
-        // Spawn slimes every 20 seconds
         if (Time.time >= nextSpawnTime)
         {
             SpawnSlimes();
             nextSpawnTime = Time.time + spawnSlimeInterval;
         }
 
-        // Heal if health is below 40% and not currently using skill
         if (health <= maxHealth * 0.4f && !hasHealed)
         {
             hasHealed = true; // Đặt cờ đã hồi máu
             HealRoutine();
         }
-
-        // Check skill usage
         if (isUsingSkill)
         {
             SkillAttack();
@@ -91,9 +93,9 @@ public class KingSkeletonManager : MonoBehaviour
             StartCoroutine(UseSkill());
         }
 
-        if (movement != null)
+        if (movement != null && isChase)
         {
-            movement.MoveTo(Player); // Di chuyển theo Player
+            movement.MoveTo(player); // Di chuyển theo Player
         }
     }
 
@@ -103,7 +105,7 @@ public class KingSkeletonManager : MonoBehaviour
         nextSkillTime = Time.time + skillCooldown + skillDuration;
         animator.SetTrigger("Skill1");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        float distance = Vector2.Distance(transform.position, Player.position); // Kiểm tra khoảng cách với Player
+        float distance = Vector2.Distance(transform.position, player.position); // Kiểm tra khoảng cách với Player
         if (distance > 1f && distance < 2f)
         {
             PlayerManager.FindObjectOfType<PlayerManager>().TakeDamage(damage);
@@ -114,7 +116,12 @@ public class KingSkeletonManager : MonoBehaviour
 
     void SkillAttack()
     {
-        movement.MoveTo(Player); // Di chuyển theo Player
+        movement.MoveTo(player); // Di chuyển theo Player
+    }
+
+    public void StartCombat()
+    {
+        isChase = true;
     }
 
     void HealRoutine()
@@ -207,7 +214,7 @@ public class KingSkeletonManager : MonoBehaviour
         animator.SetTrigger("Melee");
 
         yield return new WaitForSeconds(1f); // Adjust based on your animation duration
-        if (Vector2.Distance(transform.position, Player.position) < 1f) // Kiểm tra khoảng cách với Player
+        if (Vector2.Distance(transform.position, player.position) < 1f) // Kiểm tra khoảng cách với Player
         {
             PlayerManager.FindObjectOfType<PlayerManager>().TakeDamage(damage);
         }
@@ -216,6 +223,6 @@ public class KingSkeletonManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.LoadScene(0);
+        exitGate?.SetActive(true);
     }
 }
