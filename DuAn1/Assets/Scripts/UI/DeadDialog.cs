@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DeadDialog : MonoBehaviour
@@ -23,7 +24,8 @@ public class DeadDialog : MonoBehaviour
             button1.gameObject.SetActive(false);
             button2.gameObject.SetActive(false);
             text2.gameObject.SetActive(false);
-            StartCoroutine(DeadDialogCoroutine());
+            StartCoroutine(DeadDialogCoroutine());        
+
         }
     }
 
@@ -75,6 +77,7 @@ public class DeadDialog : MonoBehaviour
         button2.gameObject.SetActive(true);
         text2.gameObject.SetActive(true);
 
+       
         yield return null;
     }
 
