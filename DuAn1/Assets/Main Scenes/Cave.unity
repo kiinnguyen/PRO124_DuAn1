@@ -1007,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 160513298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -185.6941, y: -79.04167, z: -9.6187725}
+  m_LocalPosition: {x: -193.6284, y: -50.87286, z: -9.6187725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2829,11 +2829,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54792934407771431, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -158.1
+      value: -116.5
       objectReference: {fileID: 0}
     - target: {fileID: 54792934407771431, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -131
+      value: -76.75
       objectReference: {fileID: 0}
     - target: {fileID: 54792934407771431, guid: 44047652a5659f34b937492857115d0e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3076,11 +3076,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2023140534748457633, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -153.2
+      value: -169.63
       objectReference: {fileID: 0}
     - target: {fileID: 2023140534748457633, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -130.8
+      value: -98.07
       objectReference: {fileID: 0}
     - target: {fileID: 2023140534748457633, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3148,7 +3148,7 @@ PrefabInstance:
       objectReference: {fileID: 3549951695923767576}
     - target: {fileID: 5324947256192083657, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: damage
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5324947256192083657, guid: bf9da0e996a33d2418bf6effccf2232a, type: 3}
       propertyPath: health
@@ -33332,7 +33332,7 @@ Transform:
   m_GameObject: {fileID: 929650493}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -185.6941, y: -79.04167, z: -9.6187725}
+  m_LocalPosition: {x: -202.12411, y: -46.311665, z: -9.6187725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34027,7 +34027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2619238575197354351, guid: 21523db70a383764e8e5aa1257cf5913, type: 3}
       propertyPath: health
-      value: 5000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2619238575197354351, guid: 21523db70a383764e8e5aa1257cf5913, type: 3}
       propertyPath: exitGate
