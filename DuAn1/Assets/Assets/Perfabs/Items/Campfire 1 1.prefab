@@ -246,11 +246,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7470322263412129902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30a05c2bf817a9c4191b1c00344029a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goblinPrefab: {fileID: 5160204365201120659, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
-  spawnRadius: 5
-  goblinCount: 3
+  spawnRadius: 1
+  goblinCount: 5
