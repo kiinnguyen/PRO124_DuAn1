@@ -7,7 +7,7 @@ public class SpiderWeb : MonoBehaviour
     private Animator anim;
     private void Start()
     {
-        Destroy(this, 5f);
+        Destroy(this, 3f);
 
         anim = GetComponent<Animator>();    
     }
