@@ -18,7 +18,7 @@ public class CaveSpiderManager : MonoBehaviour
 
     public bool onAttack = false;
 
-    private CaveSpiderMovement spiderMovement; // Thêm tham chiếu tới CaveSpiderMovement
+    private CaveSpiderMovement spiderMovement;
 
     void Start()
     {
@@ -41,7 +41,7 @@ public class CaveSpiderManager : MonoBehaviour
         if (!onAttack)
         {
             onAttack = true;
-            spiderMovement.isChase = true; // Bắt đầu di chuyển theo người chơi
+            spiderMovement.isChase = true;
             StartCoroutine(SpiderCombat());
         }
     }
@@ -50,7 +50,7 @@ public class CaveSpiderManager : MonoBehaviour
     {
         StopAllCoroutines();
         onAttack = false;
-        spiderMovement.isChase = false; // Dừng di chuyển và quay lại vị trí ban đầu
+        spiderMovement.isChase = false;
     }
 
     IEnumerator SpiderCombat()
@@ -62,21 +62,26 @@ public class CaveSpiderManager : MonoBehaviour
             {
                 StartCoroutine(ShootWebSpider());
             }
-            yield return new WaitForSeconds(5f); // Kiểm tra khoảng cách mỗi giây
+            yield return new WaitForSeconds(5f);
         }
     }
 
     IEnumerator ShootWebSpider()
     {
-        Vector2 pos = player.transform.position;
+        // Kiểm tra khoảng cách lần nữa trước khi bắn
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceToPlayer <= shootingRange)
+        {
+            Vector2 pos = player.transform.position;
 
-        Instantiate(dangerRange, pos, Quaternion.identity);
+            Instantiate(dangerRange, pos, Quaternion.identity);
 
-        yield return new WaitForSeconds(1.9f);
+            yield return new WaitForSeconds(1.9f);
 
-        Instantiate(webPrefab, pos, Quaternion.identity);
+            Instantiate(webPrefab, pos, Quaternion.identity);
 
-        yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(5f);
+        }
     }
 
     public void TakeDamage(int amount)
@@ -88,21 +93,49 @@ public class CaveSpiderManager : MonoBehaviour
         }
         else
         {
-            //StartCoroutine(HurtCoroutine());
+            StartCoroutine(HurtCoroutine());
         }
     }
 
-    /*IEnumerator HurtCoroutine()
+    IEnumerator HurtCoroutine()
     {
-        // hiệu ứng nhấp nháy đỏ khi bị đánh trúng
-    }*/
+        // Giả sử bạn có SpriteRenderer gắn trên nhện
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Color originalColor = sr.color;
+
+        // Làm nhện nhấp nháy đỏ
+        for (int i = 0; i < 3; i++)
+        {
+            sr.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sr.color = originalColor;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
     private void Die()
     {
-        anim.SetTrigger("Die");
+        anim.SetTrigger("Die"); 
         spiderMovement.DeadState(true); // Báo cho CaveSpiderMovement rằng nhện đã chết
+        StopAllCoroutines();
         StopCombat();
-        Destroy(this);
-        // Thêm logic hủy hoặc respawn ở đây nếu cần
+        Destroy(gameObject);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Attack by Spider");
+            KnockBack knockBack = collision.gameObject.GetComponent<KnockBack>();
+
+            if (knockBack != null)
+            {
+                Vector2 knockback = (collision.transform.position - transform.position).normalized;
+                knockBack.ApplyKnockback(knockback);
+                collision.gameObject.SendMessage("TakeDamage", damage);
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ public class KingSkeletonManager : MonoBehaviour
     [SerializeField] Slider healthBar;
     [Header("GameObjects")]
     [SerializeField] GameObject exitGate;
+    public Transform spawnPOS;
     [Header("Perfabs")]
     [SerializeField] GameObject slime;
     [Header("Attack Settings")]
@@ -144,16 +145,18 @@ public class KingSkeletonManager : MonoBehaviour
         usedHealingskill = true;
         kingSkeletonMovement.UseSkill(true);
         anim.SetTrigger("Heal");
-        float healvalue = healthBar.maxValue * 0.2f;
+        float healvalue = healthBar.maxValue * 0.5f;
         health += (int)healvalue;
         healthBar.value = health;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
+        for (int i = 0; i < 2; i++)
+        {
+            Instantiate(slime, spawnPOS.position, Quaternion.identity);
+        }
+
         // buff
-
         damage += 20;
-
-
         kingSkeletonMovement.UseSkill(false);
 
         isUsingSkill = false;

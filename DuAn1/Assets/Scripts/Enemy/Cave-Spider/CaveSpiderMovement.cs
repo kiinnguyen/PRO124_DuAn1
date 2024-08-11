@@ -36,28 +36,38 @@ public class CaveSpiderMovement : MonoBehaviour
     void Update()
     {
         if (isDead) return;
-
         if (isChase)
         {
             if (player != null)
             {
-                agent.SetDestination(player.transform.position);
+                Vector3 targetPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+                agent.SetDestination(targetPosition);
+                UpdateAnimator();
             }
         }
         else
         {
-            // Quay về vị trí cũ
             if (Vector3.Distance(transform.position, originalPosition) > 0.2f)
             {
-                agent.SetDestination(originalPosition);
+                Vector3 targetPosition = new Vector3(originalPosition.x, originalPosition.y, transform.position.z);
+                agent.SetDestination(targetPosition);
+                UpdateAnimator();
             }
             else
             {
                 agent.ResetPath();
+                UpdateAnimator();
             }
         }
     }
 
+
+    void UpdateAnimator()
+    {
+        anim.SetFloat("xInput", agent.velocity.x);
+        anim.SetFloat("yInput", agent.velocity.y);
+        anim.SetBool("isMoving", agent.velocity.magnitude > 0.1f);
+    }
     public void DeadState(bool state)
     {
         isDead = state;
