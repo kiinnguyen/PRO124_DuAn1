@@ -91,11 +91,7 @@ public class GoblinManager : MonoBehaviour
     private IEnumerator DestroyAfterDeathAnimation()
     {
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
+        
         float randomNumber = UnityEngine.Random.Range(0f, 1f);
 
         if (randomNumber <= percentToDropItem)
@@ -106,5 +102,9 @@ public class GoblinManager : MonoBehaviour
                 Instantiate(newObject, transform.position, Quaternion.identity);
             }
         }
+
+
+        Destroy(gameObject);
     }
+
 }

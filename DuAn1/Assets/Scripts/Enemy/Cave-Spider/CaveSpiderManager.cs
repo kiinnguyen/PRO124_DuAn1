@@ -88,20 +88,21 @@ public class CaveSpiderManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(HurtCoroutine());
+            //StartCoroutine(HurtCoroutine());
         }
     }
 
-    IEnumerator HurtCoroutine()
+    /*IEnumerator HurtCoroutine()
     {
         // hiệu ứng nhấp nháy đỏ khi bị đánh trúng
-    }
+    }*/
 
     private void Die()
     {
         anim.SetTrigger("Die");
         spiderMovement.DeadState(true); // Báo cho CaveSpiderMovement rằng nhện đã chết
         StopCombat();
+        Destroy(this);
         // Thêm logic hủy hoặc respawn ở đây nếu cần
     }
 }

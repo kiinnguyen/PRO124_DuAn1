@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8772614498625071852}
   - component: {fileID: 423468902018207680}
   - component: {fileID: 3610401835805968152}
+  - component: {fileID: 6734949124369798002}
   m_Layer: 0
   m_Name: Campfire 1 1
   m_TagString: Untagged
@@ -254,3 +255,19 @@ MonoBehaviour:
   goblinPrefab: {fileID: 5160204365201120659, guid: ced15512a7c542149b5d546f48da8b3e, type: 3}
   spawnRadius: 1
   goblinCount: 5
+--- !u!114 &6734949124369798002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470322263412129902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
